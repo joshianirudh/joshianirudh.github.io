@@ -1,0 +1,1489 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Maikel Verouden, Ph.D." />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Instructions on how to install RStan on Windows 10/11." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="index.html" />
+
+  
+  
+  
+    <meta name="theme-color" content="#4caf50" />
+  
+
+  
+  
+    
+    <script src="../../../../../js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="../../../../../css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../../../../css/wowchemy.5ea77162870bf70f879de064550a2633.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="../../../../../manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="../../../../../media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="../../../../../media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="index.html" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@mverouden" />
+    <meta property="twitter:creator" content="@mverouden" />
+  
+  <meta property="og:site_name" content="Maikel P.H. Verouden, Ph.D." />
+  <meta property="og:url" content="https://www.verouden.net/post/2023/08/27/rstan-installation/" />
+  <meta property="og:title" content="RStan installation on a Windows 10/11 or a WURclient computer | Maikel P.H. Verouden, Ph.D." />
+  <meta property="og:description" content="Instructions on how to install RStan on Windows 10/11." /><meta property="og:image" content="https://www.verouden.net/post/2023/08/27/rstan-installation/featured.jpg" />
+    <meta property="twitter:image" content="https://www.verouden.net/post/2023/08/27/rstan-installation/featured.jpg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2023-08-27T16:19:00&#43;02:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-08-28T20:05:21&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.verouden.net/post/2023/08/27/rstan-installation/"
+  },
+  "headline": "RStan installation on a Windows 10/11 or a WURclient computer",
+  
+  "image": [
+    "https://www.verouden.net/post/2023/08/27/rstan-installation/featured.jpg"
+  ],
+  
+  "datePublished": "2023-08-27T16:19:00+02:00",
+  "dateModified": "2023-08-28T20:05:21+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Maikel Verouden, Ph.D."
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wageningen University \u0026 Research, Biometris",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Instructions on how to install RStan on Windows 10/11."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>RStan installation on a Windows 10/11 or a WURclient computer | Maikel P.H. Verouden, Ph.D.</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d25afd8adfe3068f43030ce4bd06dc5b" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="../../../../../js/wowchemy-init.min.7ce4903cc823e4a59f7a559e798b4420.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="index.html#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="../../../../../index.html">Maikel P.H. Verouden, Ph.D.</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="../../../../../index.html">Maikel P.H. Verouden, Ph.D.</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#events"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+          <li class="nav-item dropdown">
+            <a href="index.html#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Publications</span><span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              
+                <a class="dropdown-item" href="../../../../../index.html#featured"><span>Featured Publications</span></a>
+              
+                <a class="dropdown-item" href="../../../../../index.html#publications"><span>Recent Publications</span></a>
+              
+            </div>
+          </li>
+
+          
+          
+
+          
+          <li class="nav-item dropdown">
+            <a href="index.html#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Courses</span><span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              
+                <a class="dropdown-item" href="../../../../../course/data-science/index.html"><span>Learn Data Science</span></a>
+              
+                <a class="dropdown-item" href="../../../../../course/robotics/index.html"><span>Learn Robotics</span></a>
+              
+            </div>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="index.html#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="index.html#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="index.html#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="index.html#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>RStan installation on a Windows 10/11 or a WURclient computer</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      <a href="../../../../../author/maikel-verouden-ph.d./index.html">Maikel Verouden, Ph.D.</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Mon, Aug 28, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="../../../../../category/r/index.html">R</a>, <a href="../../../../../category/rstan/index.html">RStan</a>, <a href="../../../../../category/windows-10/index.html">Windows 10</a>, <a href="../../../../../category/windows-11/index.html">Windows 11</a>, <a href="../../../../../category/wurclient/index.html">WURclient</a>, <a href="../../../../../category/wur/index.html">WUR</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
+  <div style="position: relative">
+    <img src="featured_hu9010918964b24de6d9ea86f3d5818b95_269783_720x2500_fit_q90_h2_lanczos.webp" width="720" height="480" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://unsplash.com/photos/AwDVMJKMjlU" target="_blank" rel="noopener"><strong><em>Panos Sakalakis</em> on Unsplash</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="index.html#motivation">Motivation</a></li>
+    <li><a href="index.html#requirements-for-rstan-installation">Requirements for RStan installation</a></li>
+    <li><a href="index.html#installation">Installation</a></li>
+    <li><a href="index.html#verifying-the-rstan-installation">Verifying the RStan installation</a></li>
+    <li><a href="index.html#loading-the-package">Loading the package</a></li>
+    <li><a href="index.html#installing-the-brms-package">Installing the &lsquo;brms&rsquo; package</a></li>
+  </ul>
+</nav>
+</details>
+<h2 id="motivation">Motivation</h2>
+<p>Whether working or studying everybody uses various sorts and types of software on their computer. Students taking <a href="https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm" target="_blank" rel="noopener">Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp; Research</a>, will most likely use R. Students enrolled in <a href="https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT34806&amp;collegejaar=huidig" target="_blank" rel="noopener">MAT34806 Bayesian Data Analysis</a> will use RStan as well as basic R. Therefore, they will need to install RStan.</p>
+<p>RStan is an implementation of <a href="https://mc-stan.org/" target="_blank" rel="noopener">Stan</a> in <a href="https://www.r-project.org/" target="_blank" rel="noopener">R</a>. Stan is a state-of-the-art platform for statistical modeling and high-performance statistical computation. Thousands of users rely on Stan for statistical modeling, data analysis, and prediction in the social, biological, and physical sciences, engineering, and business.</p>
+<p>Users specify log density functions in Stan’s probabilistic programming language and get:</p>
+<ul>
+<li>
+<p>full Bayesian statistical inference with MCMC sampling (NUTS, HMC)</p>
+</li>
+<li>
+<p>approximate Bayesian inference with variational inference (ADVI)</p>
+</li>
+<li>
+<p>penalized maximum likelihood estimation with optimization (L-BFGS)</p>
+</li>
+</ul>
+<p>Stan’s math library provides differentiable probability functions &amp; linear algebra (C++ autodiff). Additional R packages provide expression-based linear modeling, posterior visualization, and leave-one-out cross-validation.</p>
+<div class="alert alert-note">
+  <div>
+    This post will show how to install Rtools on a <strong>privately owned</strong> computer running Windows 10/11, or a <strong>WURclient</strong> desktop or laptop computer.
+  </div>
+</div>
+<h2 id="requirements-for-rstan-installation">Requirements for RStan installation</h2>
+<p>Prior requirements for installing RStan:</p>
+<ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> R properly installed:</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <a href="../../../../2020/04/06/r-installation-windows-10/index.html">R installed on Windows 10/11</a></li>
+<li><input checked="" disabled="" type="checkbox"> R installed on a WURclient via Software Center, or</li>
+<li><input checked="" disabled="" type="checkbox"> <a href="../../../../2021/01/24/r-installation-wurclient/index.html">R installed on a WURclient using a custom installation</a></li>
+</ul>
+</li>
+<li>
+<p><input checked="" disabled="" type="checkbox"> <a href="../../../../2022/07/05/rtools-installation/index.html">Rtools installed on a Windows 10/11 or a WURclient computer</a></p>
+</li>
+</ul>
+<p>Without having R and Rtools installed on your desktop or laptop computer, it makes no sense to try to install RStan. RStan needs to be able to compile from source within R, making R and Rtools indispensable.</p>
+<p>Not required, however, highly recommended:</p>
+<ul>
+<li>
+<p><input disabled="" type="checkbox"> RStudio installed:</p>
+<ul>
+<li><input disabled="" type="checkbox"> <a href="../../../../2020/04/13/rstudio-installation-on-windows-10/index.html">RStudio installed on Windows 10/11</a></li>
+<li><input disabled="" type="checkbox"> RStudio installed on a WURclient via Software Ceneter, or</li>
+<li><input disabled="" type="checkbox"> <a href="../../../../2021/06/17/rstudio-installation-wurclient/index.html">RStudio installed on a WURclient using a custom installation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>The RStan installation, described here, assumes usage of <strong>R version 4.2.x or above</strong>. It uses the latest development version (v2.26.x) of the RStan package, because of incompatibility of the current RStan package on CRAN (v2.21.x) for R versions above v4.2.x, as mentioned on <a href="https://blog.mc-stan.org/2022/04/26/stan-r-4-2-on-windows/" target="_blank" rel="noopener">The Stan Blog: Stan &amp; R 4.2 on Windows</a>.</p>
+<p>To install RStan:</p>
+<ol>
+<li>
+<p>Start either <strong>RStudio</strong>, or the default <strong>R GUI</strong>. RStudio being the recommended interface!</p>
+</li>
+<li>
+<p>Remove, if present, the existing installation of the packages <code>StanHeaders</code> and <code>rstan</code> by executing at the R prompt:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">remove.packages</span><span class="p">(</span><span class="n">pkgs</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;StanHeaders&#34;</span><span class="p">,</span> <span class="s">&#34;rstan&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><ol start="3">
+<li>Install the latest development version of <code>StanHeaders</code> and <code>rstan</code> by executing at the R prompt:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="n">pkgs</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;StanHeaders&#34;</span><span class="p">,</span><span class="s">&#34;rstan&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">repos</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;https://mc-stan.org/r-packages/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">getOption</span><span class="p">(</span><span class="s">&#34;repos&#34;</span><span class="p">)))</span>
+</span></span></code></pre></div><div class="alert alert-note">
+  <div>
+    Congratulations, 😆, you now have RStan installed on your personal Windows 10/11 or WURclient computer!
+  </div>
+</div>
+<h2 id="verifying-the-rstan-installation">Verifying the RStan installation</h2>
+<p>To verify the RStan installation run the RStan example/test model at the R prompt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">example</span><span class="p">(</span><span class="n">stan_model</span><span class="p">,</span> <span class="n">package</span> <span class="o">=</span> <span class="s">&#34;rstan&#34;</span><span class="p">,</span> <span class="n">run.dontrun</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span></code></pre></div><p>The model should then compile and sample.</p>
+<p>If the example model fails with the error:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">Error</span> <span class="n">in</span> <span class="nf">compileCode</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">language</span> <span class="o">=</span> <span class="n">language</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span><span class="p">)</span> <span class="o">:</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">C</span><span class="o">:</span><span class="n">\rtools43\x86_64</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">mingw32.static.posix\bin</span><span class="o">/</span><span class="n">ld.exe</span><span class="o">:</span> <span class="n">file327c377a3dae.o</span><span class="o">:</span><span class="n">file327c377a3dae.cpp</span><span class="o">:</span><span class="p">(</span><span class="n">.text</span><span class="o">$</span><span class="n">_ZN3tbb8internal26task_scheduler_observer_v3D0Ev[_ZN3tbb8internal26task_scheduler_observer_v3D0Ev]</span><span class="m">+0</span><span class="n">x1d</span><span class="p">)</span><span class="o">:</span> <span class="n">undefined</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">`tbb::internal::task_scheduler_observer_v3::observe(bool)&#39;C:\rtools42\x86_64-w64-mingw32.static.posix\bin/ld.exe: file327c377a3dae.o:file327c377a3dae.cpp:(.text$_ZN3tbb10interface623task_scheduler_observerD1Ev[_ZN3tbb10interface623task_scheduler_observerD1Ev]+0x1d): undefined reference to `tbb</span><span class="o">::</span><span class="n">internal</span><span class="o">::</span><span class="n">task_scheduler_observer_v3</span><span class="o">::</span><span class="nf">observe</span><span class="p">(</span><span class="n">bool</span><span class="p">)</span><span class="s">&#39;C:\rtools42\x86_64-w64-mingw32.static.posix\bin/ld.exe: file327c377a3dae.o:file327c377a3dae.cpp:(.text$_ZN3tbb10interface623task_scheduler_observerD1Ev[_ZN3tbb10interface623task_scheduler_observerD1Ev]+0x3a): undefined reference to `tbb::internal::task_scheduler_observer_v3::observe(bool)&#39;</span><span class="n">C</span><span class="o">:</span><span class="n">\rtools42\x86_64</span><span class="o">-</span><span class="n">w64</span><span class="o">-</span><span class="n">mingw32.static.posix\bin</span><span class="o">/</span><span class="n">ld.exe</span><span class="o">:</span> <span class="n">file327c377a3dae.o</span><span class="o">:</span><span class="n">file327c377a3dae.cpp</span><span class="o">:</span><span class="p">(</span><span class="n">.text</span><span class="o">$</span><span class="n">_ZN3tbb10interface</span>
+</span></span><span class="line"><span class="cl"><span class="n">Error</span> <span class="n">in</span> <span class="nf">sink</span><span class="p">(</span><span class="n">type</span> <span class="o">=</span> <span class="s">&#34;output&#34;</span><span class="p">)</span> <span class="o">:</span> <span class="n">invalid</span> <span class="n">connection</span>
+</span></span></code></pre></div><p>Verify that the packages <code>StanHeaders</code> and <code>rstan</code> installed are of version 2.26.x. Executing the following commands will show the installed versions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">packageVersion</span><span class="p">(</span><span class="n">pkg</span> <span class="o">=</span> <span class="s">&#34;StanHeaders&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">packageVersion</span><span class="p">(</span><span class="n">pkg</span> <span class="o">=</span> <span class="s">&#34;rstan&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>When the installed versions differ from version 2.26.x, then repeat steps 2. and 3. as described in the section <a href="index.html#installation">Installation</a>.</p>
+<h2 id="loading-the-package">Loading the package</h2>
+<p>The package name is <code>rstan</code> (all lowercase), to load the package execute:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="s">&#34;rstan&#34;</span><span class="p">)</span> <span class="c1"># observe startup messages</span>
+</span></span></code></pre></div><p>As the startup message says, when using <code>rstan</code> locally on a multicore machine and the system has plenty of RAM to estimate the model in parallel, at this point execute at the R prompt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">options</span><span class="p">(</span><span class="n">mc.cores</span> <span class="o">=</span> <span class="n">parallel</span><span class="o">::</span><span class="nf">detectCores</span><span class="p">())</span>
+</span></span></code></pre></div><p>In addition, execute the second startup message at the R prompt:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">rstan_options</span><span class="p">(</span><span class="n">auto_write</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span></code></pre></div><p>which allows to automatically save a bare version of a compiled Stan program to the hard disk so that it does not need to be recompiled (unless after changing the program). These commands will need to be run, each time the <code>rstan</code> library is loaded load in R.</p>
+<p>Finally, when using Windows as operating system, there will be a third startup message saying <strong>not</strong> to use <code>--march=native</code> compiler flag. This warning can be ignored, if the steps above have been followed and a <code>Makevars.win</code> file on your system does not contain this flag. When the file name <code>Makevars.win</code> does not ring any bells, this probably means it doesn&rsquo;t exist in your system.</p>
+<h2 id="installing-the-brms-package">Installing the &lsquo;brms&rsquo; package</h2>
+<p>In the course <a href="https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT34806&amp;collegejaar=huidig" target="_blank" rel="noopener">MAT34806 Bayesian Data Analysis</a> the <code>brms</code> package will be used. This package extends RStan for Bayesian regression modeling. The package abbreviation <code>brms</code> stands for Bayesian Regression Models using &lsquo;Stan&rsquo;.</p>
+<p>When the installation of RStan has been completed successfully, install the <code>brms</code> package by executing at the R prompt the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="n">pkgs</span> <span class="o">=</span> <span class="s">&#34;brms&#34;</span><span class="p">)</span>
+</span></span></code></pre></div>
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="../../../../../tag/installation/index.html">Installation</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/r/index.html">R</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/rstan/index.html">RStan</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/windows-10/index.html">Windows 10</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/windows-11/index.html">Windows 11</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/wurclient/index.html">WURclient</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://www.verouden.net/post/2023/08/27/rstan-installation/&amp;text=RStan%20installation%20on%20a%20Windows%2010/11%20or%20a%20WURclient%20computer" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter-square">
+          <i class="fab fa-twitter-square"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://www.verouden.net/post/2023/08/27/rstan-installation/&amp;t=RStan%20installation%20on%20a%20Windows%2010/11%20or%20a%20WURclient%20computer" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook-square">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=RStan%20installation%20on%20a%20Windows%2010/11%20or%20a%20WURclient%20computer&amp;body=https://www.verouden.net/post/2023/08/27/rstan-installation/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope-square">
+          <i class="fas fa-envelope-square"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://www.verouden.net/post/2023/08/27/rstan-installation/&amp;title=RStan%20installation%20on%20a%20Windows%2010/11%20or%20a%20WURclient%20computer" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=RStan%20installation%20on%20a%20Windows%2010/11%20or%20a%20WURclient%20computer%20https://www.verouden.net/post/2023/08/27/rstan-installation/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp-square">
+          <i class="fab fa-whatsapp-square"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="../../../../../index.html"><img class="avatar mr-3 avatar-circle" src="../../../../../author/maikel-verouden-ph.d./avatar_hu7543b81bae599217a80b637684810b7a_212930_270x270_fill_q90_lanczos_center.jpg" alt="Maikel Verouden, Ph.D."></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="../../../../../index.html">Maikel Verouden, Ph.D.</a></h5>
+      <h6 class="card-subtitle">Researcher | Lecturer | IT &amp; Organization contact person</h6>
+      <p class="card-text">My research interests include Statistics, Teaching and programmable matter (statistical software).</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="../../../../../index.html#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.wur.nl/en/Persons/Maikel-dr.ing.-MPH-Maikel-Verouden.htm" target="_blank" rel="noopener">
+        <i class="fas fa-university"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4893-3323" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Maikel_Verouden" target="_blank" rel="noopener">
+        <i class="ai ai-researchgate"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.nl/citations?hl=en&amp;user=c4GxYqwAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/verouden/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/mverouden" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://git.wur.nl/verou004" target="_blank" rel="noopener">
+        <i class="fab fa-gitlab"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/mverouden" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="../../../../../privacy/index.html">License: CC BY-NC-SA 4.0</a>
+    
+    
+       &middot; 
+      <a href="../../../../../terms/index.html">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    © 2018&ndash;2023 Maikel P.H. Verouden &middot; 
+
+    Powered by the
+    <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i></a> <a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package and the
+    <a href="https://wowchemy.com/hugo-themes/" target="_blank" rel="noopener">Wowchemy Academic Resumé theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="index.html#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="../../../../../js/vendor-bundle.min.d26509351aa0ff874abbee824e982e9b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/bash.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="https://www.verouden.net/post/2023/08/27/rstan-installation/{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="../../../../../js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="../../../../../en/js/wowchemy.min.43c8f7a4851160885a7d8069dfa86538.js"></script>
+
+    
+    
+      <script src="../../../../../js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="index.html#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="index.html#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="../../../../../js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script>
+    var _paq = window._paq = window._paq || [];
+     
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//matomo.verouden.net/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

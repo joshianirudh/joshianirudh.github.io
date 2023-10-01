@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MyWorkspace | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/tag/myworkspace/</link>
+      <atom:link href="https://www.verouden.net/tag/myworkspace/index.xml" rel="self" type="application/rss+xml" />
+    <description>MyWorkspace</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>MyWorkspace</title>
+      <link>https://www.verouden.net/tag/myworkspace/</link>
+    </image>
+    
+    <item>
+      <title>Install and configure MyWorkSpace at WUR in Linux</title>
+      <link>https://www.verouden.net/post/2021/06/02/myworkspace-wur-linux/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2021/06/02/myworkspace-wur-linux/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download-vmware-horizon-client&#34;&gt;Download VMWare Horizon Client&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#install-vmware-horizon-client&#34;&gt;Install VMWare Horizon Client&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configure-vmware-horizon-client&#34;&gt;Configure VMWare Horizon Client&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#vmware-horizon-blast-settings&#34;&gt;VMWare Horizon Blast Settings&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#uninstall-vmware-horizon-client&#34;&gt;Uninstall VMWare Horizon Client&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;At Wageningen University &amp;amp; Research the Linux Operating System is supported on a best effort principle, meaning that it is supported as far as the knowledge of Facilities and Services Information Technology (FB-IT) reaches. FB-IT is supported by their colleagues maintaining the High Performance Computing Cluster Anunna, who have a lot of knowledge about the Linux Operating System, because it&amp;rsquo;s the Operating System used by Anunna. &lt;!-- and there is a support mail address: &lt;a href=&#34;mailto:linux.beheer@wur.nl&#34;&gt;linux.beheer AT wur.nl&lt;/a&gt;, where support questions can be sent.--&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately not all programs are available for the Linux Operating System, that employees need for their work at Wageningen University &amp;amp; Research. One example is MyProjects, which employees need for time recording of their workweek. This program is only available on Windows WURclients. Therefore, it is essential to be able to access a Windows WURclient when needed.&lt;/p&gt;
+&lt;p&gt;One solution would be to use a remote desktop client to access a Windows WURclient desktop. However, this would require each Linux user to have access to at least one Windows WURclient desktop. A more elegant solution is to use a Virtual Windows WURclient desktop via MyWorkspace.&lt;/p&gt;
+&lt;p&gt;In this post I will describe, how to install and configure MyWorkspace at Wageningen University &amp;amp; Research on a Debian/Ubuntu based Linux system.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install and configure MyWorkspace on a Debian/Ubuntu based Linux system within WUR.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Connecting to a Virtual Windows WURclient desktop with VMWare Horizon Client &lt;strong&gt;does not require&lt;/strong&gt; a VPN connection.&lt;/p&gt;
+&lt;p&gt;VMWare Horizon Client has ssh-tunneling build into the application and, therefore, creates its own safe connection to WURNET.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;download-vmware-horizon-client&#34;&gt;Download VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;At the time this post was written Horizon 8 is the latest version of the VMWare Horizon client. To check if there is a newer version available, check the pull down menu in the top left of the web page provided below.&lt;/p&gt;
+&lt;p&gt;To download the latest version of VMWare Horizon Client perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open in a web browser &lt;a href=&#34;https://my.vmware.com/en/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://my.vmware.com/en/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Navigate to &amp;lsquo;&lt;strong&gt;VMware Horizon Client for 64-bit Linux&lt;/strong&gt;&amp;rsquo; and click the &amp;lsquo;&lt;strong&gt;GO TO DOWNLOADS&lt;/strong&gt;&amp;rsquo; link provided on that line.&lt;/li&gt;
+&lt;li&gt;A new page will open in the same window. Select the version to download. At the time this post written the latest version of the VMware Horizon Client for 64-bit Linux is version 2013 build number:	17742757 (Release Date	2021-03-23).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Please do not use VMWare Horizon Client for Linux 2203! It does not start from the created menu item.&lt;/p&gt;
+&lt;p&gt;Instead use version 2111.1, which does not suffer from this issue.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Right-click the &lt;strong&gt;DOWNLOAD NOW&lt;/strong&gt; button and copy the link address.&lt;/li&gt;
+&lt;li&gt;Open a terminal&lt;/li&gt;
+&lt;li&gt;Change the directory to your personal downloads directory with the command &lt;code&gt;cd ~/Downloads/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Execute the following command to download the VMWare Horizon Client bundle: &lt;code&gt;wget URL&lt;/code&gt;. Instead of &lt;code&gt;URL&lt;/code&gt; use the copied &amp;lsquo;&lt;strong&gt;DOWNLOAD NOW&lt;/strong&gt;&amp;rsquo; url from step 4. This url can be pasted in the console with &lt;code&gt;Shift+Insert&lt;/code&gt;. At the time this post was written, the command looked like this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://download3.vmware.com/software/view/viewclients/CART22FQ1/VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;As administrator (root) make the downloaded bundle executable with &lt;code&gt;chmod +x&lt;/code&gt; in the terminal, e.g.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod +x VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;Do not close the terminal!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;install-vmware-horizon-client&#34;&gt;Install VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;In the following part it is assumed that you are using a Linux system, which is based on at least Ubuntu 19.04, for example Linux Mint 20, or higher. The reason is that I assume your Linux system is using &lt;code&gt;/usr&lt;/code&gt; merge, where softlinks have been created between &lt;code&gt;/&lt;/code&gt; folders and their equivalents in &lt;code&gt;/usr&lt;/code&gt; (e.g. &lt;code&gt;/bin -&amp;gt; /usr/bin&lt;/code&gt;, &lt;code&gt;/lib -&amp;gt; /usr/lib&lt;/code&gt;, &lt;em&gt;etc.&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;To install VMWare Horizon Client perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Become root in the terminal using: &lt;code&gt;sudo -i&lt;/code&gt;. Your console prompt should change to &lt;code&gt;root@&amp;lt;your-system-name&amp;gt;:~#&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change the active directory to &lt;code&gt;/usr/lib/x86_64-linux-gnu/&lt;/code&gt; using:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/lib/x86_64-linux-gnu/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Create the following softlinks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libudev.so.1 libudev.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libgstapp-1.0.so.0 libgstapp-0.10.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libgstbase-1.0.so.0 libgstbase-0.10.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libgstreamer-1.0.so.0 libgstreamer-0.10.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libffi.so.7 libffi.so.5&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Leave the adminstrator (root) mode in the terminal by executing: &lt;code&gt;exit&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change the directory to your Downloads folder with &lt;code&gt;cd ~/Downloads&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start the VMWare Horizon Client installer, for the version you downloaded, as administrator (root):&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle --eulas-agreed
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Follow the steps of the installer to properly install VMWare Horizon Client. Make sure all boxes during the installation with respect to USB Redirection, Virtual Printing, &lt;em&gt;etc.&lt;/em&gt; are ticked during the installation of the VMWare Horizon client to ensure correct operation later.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;configure-vmware-horizon-client&#34;&gt;Configure VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;Once the installation of the VMWare Horizon Client has finished, the application can be started (logging out and in might be required).&lt;/p&gt;
+&lt;p&gt;Next a connection server needs to be added to the client. The address to use is: &lt;code&gt;workspace.wur.nl&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To log in to MyWorkspace you need to provide:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Username: &lt;code&gt;user001&lt;/code&gt; (this is your WUR username)&lt;/li&gt;
+&lt;li&gt;Password: &lt;code&gt;your-windows-password&lt;/code&gt; (this is the WUR Windows password for your WUR username)&lt;/li&gt;
+&lt;li&gt;Domain: &lt;code&gt;WUR&lt;/code&gt; (this is optional, because the client will use the domain as provided by the connection server)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;vmware-horizon-blast-settings&#34;&gt;VMWare Horizon Blast Settings&lt;/h3&gt;
+&lt;p&gt;After adding the connection server and logging in the VMWare Horizon Blast settings need to be configured. This has to done only once.&lt;/p&gt;
+&lt;p&gt;Navigate to and click &amp;lsquo;&lt;strong&gt;File&lt;/strong&gt;&amp;rsquo; in the top menu of the VMWare Horizon Client. Next select &amp;lsquo;&lt;strong&gt;Configure VMWare Blast&lt;/strong&gt;&amp;rsquo;. Match the setting as displayed in &lt;a href=&#34;#figure-config_vmware_blast&#34;&gt;Figure 1&lt;/a&gt; and click &amp;lsquo;&lt;strong&gt;OK&lt;/strong&gt;&amp;rsquo; to confirm.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-config_vmware_blast&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Configure VMWare Horizon Blast&#34; srcset=&#34;
+               /media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_1095a5596115c1169cf0d7877efec86d.webp 400w,
+               /media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_fbd87e257fdd9e5e6bbc1b49784dd353.webp 760w,
+               /media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_1095a5596115c1169cf0d7877efec86d.webp&#34;
+               width=&#34;500&#34;
+               height=&#34;265&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Configure VMWare Horizon Blast
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Now VMWare Horizon Client is fully installed, configured and ready to log in to a Virtual Windows WURclient desktop, where you can use MyProjects and other Windows only applications you need to do your work within WUR.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;uninstall-vmware-horizon-client&#34;&gt;Uninstall VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;To uninstall VMWare Horizon Client for Linux the installation bundle of the installed version is required. Check the installed version and see &lt;a href=&#34;#download-vmware-horizon-client&#34;&gt;Download VMWare Horizon Client&lt;/a&gt; on how to obtain and make it executable.&lt;/p&gt;
+&lt;p&gt;To uninstall VMWare Horizon Client for Linux issue the following command in a terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo env &lt;span class=&#34;nv&#34;&gt;VMWARE_KEEP_CONFIG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;yes ./VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle -u vmware-horizon-client
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    Do not forget to modify the command above to reflect the correct version you wish to uninstall!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This will retain the VMWare Horizon Client configuration setings on your system. In order to also remove the configuration settings set &lt;code&gt;VMWARE_KEEP_CONFIG=no&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

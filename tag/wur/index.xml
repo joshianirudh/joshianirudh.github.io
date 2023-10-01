@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WUR | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/tag/wur/</link>
+      <atom:link href="https://www.verouden.net/tag/wur/index.xml" rel="self" type="application/rss+xml" />
+    <description>WUR</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Sat, 11 Jun 2022 16:46:11 +0200</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>WUR</title>
+      <link>https://www.verouden.net/tag/wur/</link>
+    </image>
+    
+    <item>
+      <title>Printing within WUR on Linux</title>
+      <link>https://www.verouden.net/post/2022/06/11/printing-wur-linux/</link>
+      <pubDate>Sat, 11 Jun 2022 16:46:11 +0200</pubDate>
+      <guid>https://www.verouden.net/post/2022/06/11/printing-wur-linux/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#printer-setup&#34;&gt;Printer Setup&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#resetting-your-wur-password-for-printing&#34;&gt;Resetting your WUR Password for printing&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;At Wageningen University &amp;amp; Research the Linux Operating System is supported on a best effort principle, meaning that it is supported as far as the knowledge of Facilities and Services Information Technology (FB-IT) reaches. FB-IT is supported by their colleagues maintaining the High Performance Computing Cluster Anunna, who have a lot of knowledge about the Linux Operating System, because it&amp;rsquo;s the Operating System used by Anunna. &lt;!-- and there is a support mail address: &lt;a href=&#34;mailto:linux.beheer@wur.nl&#34;&gt;linux.beheer AT wur.nl&lt;/a&gt;, where support questions can be sent.--&gt;&lt;/p&gt;
+&lt;p&gt;On the other hand Linux users are generally users, who are very independent and know how to search for and implement solutions themselves. Being one of those Linux users within WUR myself I want to share in this post, how I have set up printing on my Linux systems to use the facilities offered at  Wageningen University &amp;amp; Research.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;This post will show how to set up printing on a desk- or laptop using Linux as Operating System within WUR.&lt;/p&gt;
+&lt;p&gt;The described procedure should work on Ubuntu/Debian based Linux Operating Systems.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    To be able to print on facilities (multifunctionals) at WUR the desktop or laptop needs to be within WURNET, either physically or via a VPN connection. &lt;!--For setting up a VPN connection with WURNET, see the post [to be added]().--&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;For convenience the PostScript Printer Description (PPD) files of the printers in use at Wageningen University &amp;amp; Research are provided. You can save the files into the Downloads folder of your Linux desk- or laptop by right-clicking the link and selecting the option &amp;lsquo;Save link as&amp;hellip;&amp;rsquo; (&lt;strong&gt;&lt;span style=&#34;color:red&#34;&gt;IMPORTANT:&lt;/span&gt; &lt;u&gt;DO NOT CHANGE THE FILE NAMES!&lt;/u&gt;&lt;/strong&gt;):&lt;/p&gt;
+&lt;!--
+* &lt;a href=&#34;https://www.verouden.net/files/linux/print/Ricoh-IM_C4500-PDF-Ricoh.ppd&#34; target=&#34;_blank&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Ricoh-IM_C4500-PDF-Ricoh.ppd&lt;/a&gt;
+--&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.verouden.net/files/linux/print/Ricoh-IM_C4500-Postscript-Ricoh.ppd&#34; target=&#34;_blank&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Ricoh-IM_C4500-Postscript-Ricoh.ppd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span style=&#34;color:red&#34;&gt;RECOMMENDATION:&lt;/span&gt; Use the Postscript PPD file for the Ricoh IM C4500. On internet you can also find the PDF ppd file, but so far it does not work within WUR.&lt;/strong&gt;&lt;!--The other one (PDF ppd file) is provided just in case you require it.**--&gt;&lt;/p&gt;
+&lt;p&gt;Since February 2023 the Ricoh IM C4500 is the default printer at WUR. &lt;!-- This specific driver also works perfectly with the Ricoh MP C4503 printers, that are more commonly used in WUR buildings.--&gt;&lt;/p&gt;
+&lt;h2 id=&#34;printer-setup&#34;&gt;Printer Setup&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the system printer configuration tool (alternatively use console command: &lt;code&gt;system-config-printer&lt;/code&gt; in a terminal) as displayed below in &lt;a href=&#34;#figure-system-config-printer&#34;&gt;Figure 1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-system-config-printer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;System configuration for printers.&#34; srcset=&#34;
+               /media/printing-linux/1-system-printer-configuration_hudcf7cddb50ac7892ac7d0e2032827920_15137_4f044a8b907efe2c1cfef8cff471e8e0.webp 400w,
+               /media/printing-linux/1-system-printer-configuration_hudcf7cddb50ac7892ac7d0e2032827920_15137_ee5e19322948d1c81f29335a8f77bfce.webp 760w,
+               /media/printing-linux/1-system-printer-configuration_hudcf7cddb50ac7892ac7d0e2032827920_15137_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/1-system-printer-configuration_hudcf7cddb50ac7892ac7d0e2032827920_15137_4f044a8b907efe2c1cfef8cff471e8e0.webp&#34;
+               width=&#34;482&#34;
+               height=&#34;260&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      System configuration for printers.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Click the ‘+ Add’ button to configure a new printing device and a window will open as shown in &lt;a href=&#34;#figure-add-new-printer&#34;&gt;Figure 2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-add-new-printer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Configure a new printing device.&#34; srcset=&#34;
+               /media/printing-linux/2-new-printer_hu61170544e410ce3a5034036bebe783c6_81443_502a15c20afd63997cc218a96511e8a9.webp 400w,
+               /media/printing-linux/2-new-printer_hu61170544e410ce3a5034036bebe783c6_81443_4750a5e13454a03a2c98fd5064af9376.webp 760w,
+               /media/printing-linux/2-new-printer_hu61170544e410ce3a5034036bebe783c6_81443_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/2-new-printer_hu61170544e410ce3a5034036bebe783c6_81443_502a15c20afd63997cc218a96511e8a9.webp&#34;
+               width=&#34;674&#34;
+               height=&#34;591&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Configure a new printing device.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;In the left column named &lt;strong&gt;Devices&lt;/strong&gt; select ‘Network Printer’ &amp;gt; ‘Windows Printer via SAMBA’. As shown in &lt;a href=&#34;#figure-add-new-printer&#34;&gt;Figure 2&lt;/a&gt; fill the field &lt;strong&gt;SMB Printer&lt;/strong&gt; with the address &lt;code&gt;smb://scomp6352.wurnet.nl/WURprinter&lt;/code&gt; (printer queue, which handles printjobs at WUR).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Set the authentication details, as shown in &lt;a href=&#34;#figure-add-new-printer&#34;&gt;Figure 2&lt;/a&gt;. Click the ‘Forward’ button to start the search for the printer driver as displayed below in &lt;a href=&#34;#figure-search-printer-driver&#34;&gt;Figure 3&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    Replace &lt;code&gt;user001&lt;/code&gt; with your personal WUR username and make sure to add &lt;code&gt;@wurnet.nl&lt;/code&gt; behind it. The Password provided should be the WUR Windows password for your WUR username.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-search-printer-driver&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Searching for printer driver.&#34; srcset=&#34;
+               /media/printing-linux/3-searching-driver_hu265d65634a248f8be3749bbd94bf6570_8771_2e19c899fd00c0afa47a1f4ad4c2b238.webp 400w,
+               /media/printing-linux/3-searching-driver_hu265d65634a248f8be3749bbd94bf6570_8771_f28752d290d2c83effe03bd862cc97ff.webp 760w,
+               /media/printing-linux/3-searching-driver_hu265d65634a248f8be3749bbd94bf6570_8771_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/3-searching-driver_hu265d65634a248f8be3749bbd94bf6570_8771_2e19c899fd00c0afa47a1f4ad4c2b238.webp&#34;
+               width=&#34;298&#34;
+               height=&#34;155&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Searching for printer driver.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;The searching for drivers will take a little while, but none will be found. Instead a window will be presented as shown below in &lt;a href=&#34;#figure-choose-driver&#34;&gt;Figure 4&lt;/a&gt; to choose the proper printer driver. Use the radio button to select ‘Provide PPD file’ and select, as advised, the &lt;code&gt;Ricoh-IM_C4500-Postscript-Ricoh.ppd&lt;/code&gt; file (see &lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt; section). Next click the ‘Forward’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-choose-driver&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Choose the printer driver.&#34; srcset=&#34;
+               /media/printing-linux/4-choose-driver_hua1543859a38f86a65d75bb0270d03590_32303_f934f763b59b2b94eda28aa5a92414f4.webp 400w,
+               /media/printing-linux/4-choose-driver_hua1543859a38f86a65d75bb0270d03590_32303_fcbbb8f3167a2a8c6df7df320d5ba6d3.webp 760w,
+               /media/printing-linux/4-choose-driver_hua1543859a38f86a65d75bb0270d03590_32303_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/4-choose-driver_hua1543859a38f86a65d75bb0270d03590_32303_f934f763b59b2b94eda28aa5a92414f4.webp&#34;
+               width=&#34;674&#34;
+               height=&#34;591&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Choose the printer driver.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;A window with &lt;strong&gt;Installable Options&lt;/strong&gt; for the new printing device will open as shown in &lt;a href=&#34;#figure-installable-options&#34;&gt;Figure 5&lt;/a&gt;. Select the settings shown and, afterwards, click the ‘Forward’ button to continue:
+&lt;ul&gt;
+&lt;li&gt;Option Tray: Lower Paper Trays &lt;strong&gt;&lt;span style=&#34;color:red&#34;&gt;(SELECT THE PLURAL FORM HERE!)&lt;/span&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Large capacity tray: Not Installed&lt;/li&gt;
+&lt;li&gt;Internal Tray 2: Installed&lt;/li&gt;
+&lt;li&gt;Internal Shift Tray: Not Installed&lt;/li&gt;
+&lt;li&gt;External Tray : Not Installed&lt;/li&gt;
+&lt;li&gt;Finisher: Finisher SR3250&lt;/li&gt;
+&lt;li&gt;Folding Unit: Not Installed&lt;/li&gt;
+&lt;li&gt;PostScript: PostScript Emulation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-installable-options&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Configure installable options for the printer.&#34; srcset=&#34;
+               /media/printing-linux/5-installable-options_hucb99e6386e014b7ce412fdbaec6d27cd_40456_53a4128abbe253f4a26b0cc55dae2171.webp 400w,
+               /media/printing-linux/5-installable-options_hucb99e6386e014b7ce412fdbaec6d27cd_40456_8b14fd3390b4fc4ea32a8c99574ad966.webp 760w,
+               /media/printing-linux/5-installable-options_hucb99e6386e014b7ce412fdbaec6d27cd_40456_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/5-installable-options_hucb99e6386e014b7ce412fdbaec6d27cd_40456_53a4128abbe253f4a26b0cc55dae2171.webp&#34;
+               width=&#34;674&#34;
+               height=&#34;591&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Configure installable options for the printer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Next you will asked to describe the printer, as shown in &lt;a href=&#34;#figure-describe-printer&#34;&gt;Figure 6&lt;/a&gt;. Fill the fields as shown in the figure or with you own information:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Printer Name&lt;/strong&gt;: WURprinter&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Description&lt;/strong&gt;: WUR printer Ricoh IM C4500 Postscript&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Location&lt;/strong&gt;: Anywhere within WUR with user&amp;rsquo;s wurcard!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-describe-printer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Printer description.&#34; srcset=&#34;
+               /media/printing-linux/6-describe-printer_hucb20f3736f50de586d3d7fe8cc8c2364_35153_59c28b99922750681639cff852bd2fd9.webp 400w,
+               /media/printing-linux/6-describe-printer_hucb20f3736f50de586d3d7fe8cc8c2364_35153_7a3952391c1bc029005706a8f6839ea7.webp 760w,
+               /media/printing-linux/6-describe-printer_hucb20f3736f50de586d3d7fe8cc8c2364_35153_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/6-describe-printer_hucb20f3736f50de586d3d7fe8cc8c2364_35153_59c28b99922750681639cff852bd2fd9.webp&#34;
+               width=&#34;674&#34;
+               height=&#34;591&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Printer description.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Finish the printer setup by clicking on the ‘Apply’ button. A test print window will appear, as shown in &lt;a href=&#34;#figure-print-test&#34;&gt;Figure 7&lt;/a&gt;. Select whether you want to print a test page already or press the ‘Cancel’ button to ignore.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-print-test&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Print test page request.&#34; srcset=&#34;
+               /media/printing-linux/7-print-test_hu55f433011a66fa78828e39cc0dbd3d55_8163_a26ea9177589e59d6e1e491aac8c2997.webp 400w,
+               /media/printing-linux/7-print-test_hu55f433011a66fa78828e39cc0dbd3d55_8163_5bc619aeb3db6a9bc6f9181d3edf9e8a.webp 760w,
+               /media/printing-linux/7-print-test_hu55f433011a66fa78828e39cc0dbd3d55_8163_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/printing-linux/7-print-test_hu55f433011a66fa78828e39cc0dbd3d55_8163_a26ea9177589e59d6e1e491aac8c2997.webp&#34;
+               width=&#34;386&#34;
+               height=&#34;155&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Print test page request.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;&lt;strong&gt;REMOVE SHARING OFF THE WURprinter!!&lt;/strong&gt;&lt;br&gt;
+Sharing allows other users to print on your WUR account. However, you will have to print and collect the print jobs with your WUR card. This is of course very undesirable.&lt;/p&gt;
+&lt;p&gt;To prevent this behavior, right-click the &lt;strong&gt;WURprinter&lt;/strong&gt; as displayed in &lt;a href=&#34;#figure-system-config-printer&#34;&gt;Figure 1&lt;/a&gt; and remove the tick-mark in front of &lt;strong&gt;Shared&lt;/strong&gt;. This sub-menu, appearing with right-clicking the &lt;strong&gt;WURprinters&lt;/strong&gt;,  has other nice features such as making the selected printer your default.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;resetting-your-wur-password-for-printing&#34;&gt;Resetting your WUR Password for printing&lt;/h2&gt;
+&lt;p&gt;Every 4 months you need to change the password of your WUR Account for obvious safety reasons.&lt;/p&gt;
+&lt;p&gt;This also means that you need to change your WUR password in the printer settings, when you have filled your password during the printer setup (see &lt;a href=&#34;#printer-setup&#34;&gt;Printer Setup&lt;/a&gt; step 2.).&lt;/p&gt;
+&lt;p&gt;The are two options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Delete the &lt;strong&gt;WURprinter&lt;/strong&gt; and set up a new printer, as described in &lt;a href=&#34;#printer-setup&#34;&gt;Printer Setup&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Modify the &lt;code&gt;/etc/cups/printers.conf&lt;/code&gt; file to match your changed WUR password:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a terminal (CTR+ALT+T)&lt;/li&gt;
+&lt;li&gt;Issue the following command to shut down the Common UNIX Printing System (CUPS daemon):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  sudo service cups stop
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Open the &lt;code&gt;/etc/cups/printers.conf&lt;/code&gt; file as adminstrator in a text editor, e.g.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  sudo xed /etc/cups/printers.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Modify the line:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  DeviceURI smb://user001%40wurnet.nl:password@scomp6352.wurnet.nl/WURprinter
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;In this line &lt;code&gt;%40wurnet.nl&lt;/code&gt; represents &lt;code&gt;@wurnet.nl&lt;/code&gt;, where the &lt;code&gt;@&lt;/code&gt; is encoded as hexadecimal ASCII character (see &lt;a href=&#34;https://www.asciitable.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ASCII table&lt;/a&gt;). &lt;code&gt;user001&lt;/code&gt; will be displaying your own personal WUR username. The part between &lt;code&gt;:&lt;/code&gt; and &lt;code&gt;@&lt;/code&gt; represents your password, in which special characters are encoded as hexadecimal ASCII characters. Modify the password part to match you new password.
+&lt;ul&gt;
+&lt;li&gt;e.g. new password: qu!ck4L!9H+2 (very strong password), needs to be provided in &lt;code&gt;printers.conf&lt;/code&gt; as qu%21ck4L%219H%2B2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Save the modified &lt;code&gt;/etc/cups/printers.conf&lt;/code&gt; file and exit the text editor&lt;/li&gt;
+&lt;li&gt;Restart the CUPS daemon:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  sudo service cups start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Having reset your WUR account password, you should be able to print again.
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Install and configure MyWorkSpace at WUR in Linux</title>
+      <link>https://www.verouden.net/post/2021/06/02/myworkspace-wur-linux/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2021/06/02/myworkspace-wur-linux/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download-vmware-horizon-client&#34;&gt;Download VMWare Horizon Client&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#install-vmware-horizon-client&#34;&gt;Install VMWare Horizon Client&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configure-vmware-horizon-client&#34;&gt;Configure VMWare Horizon Client&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#vmware-horizon-blast-settings&#34;&gt;VMWare Horizon Blast Settings&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#uninstall-vmware-horizon-client&#34;&gt;Uninstall VMWare Horizon Client&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;At Wageningen University &amp;amp; Research the Linux Operating System is supported on a best effort principle, meaning that it is supported as far as the knowledge of Facilities and Services Information Technology (FB-IT) reaches. FB-IT is supported by their colleagues maintaining the High Performance Computing Cluster Anunna, who have a lot of knowledge about the Linux Operating System, because it&amp;rsquo;s the Operating System used by Anunna. &lt;!-- and there is a support mail address: &lt;a href=&#34;mailto:linux.beheer@wur.nl&#34;&gt;linux.beheer AT wur.nl&lt;/a&gt;, where support questions can be sent.--&gt;&lt;/p&gt;
+&lt;p&gt;Unfortunately not all programs are available for the Linux Operating System, that employees need for their work at Wageningen University &amp;amp; Research. One example is MyProjects, which employees need for time recording of their workweek. This program is only available on Windows WURclients. Therefore, it is essential to be able to access a Windows WURclient when needed.&lt;/p&gt;
+&lt;p&gt;One solution would be to use a remote desktop client to access a Windows WURclient desktop. However, this would require each Linux user to have access to at least one Windows WURclient desktop. A more elegant solution is to use a Virtual Windows WURclient desktop via MyWorkspace.&lt;/p&gt;
+&lt;p&gt;In this post I will describe, how to install and configure MyWorkspace at Wageningen University &amp;amp; Research on a Debian/Ubuntu based Linux system.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install and configure MyWorkspace on a Debian/Ubuntu based Linux system within WUR.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Connecting to a Virtual Windows WURclient desktop with VMWare Horizon Client &lt;strong&gt;does not require&lt;/strong&gt; a VPN connection.&lt;/p&gt;
+&lt;p&gt;VMWare Horizon Client has ssh-tunneling build into the application and, therefore, creates its own safe connection to WURNET.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;download-vmware-horizon-client&#34;&gt;Download VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;At the time this post was written Horizon 8 is the latest version of the VMWare Horizon client. To check if there is a newer version available, check the pull down menu in the top left of the web page provided below.&lt;/p&gt;
+&lt;p&gt;To download the latest version of VMWare Horizon Client perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open in a web browser &lt;a href=&#34;https://my.vmware.com/en/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://my.vmware.com/en/web/vmware/downloads/info/slug/desktop_end_user_computing/vmware_horizon_clients/horizon_8&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Navigate to &amp;lsquo;&lt;strong&gt;VMware Horizon Client for 64-bit Linux&lt;/strong&gt;&amp;rsquo; and click the &amp;lsquo;&lt;strong&gt;GO TO DOWNLOADS&lt;/strong&gt;&amp;rsquo; link provided on that line.&lt;/li&gt;
+&lt;li&gt;A new page will open in the same window. Select the version to download. At the time this post written the latest version of the VMware Horizon Client for 64-bit Linux is version 2013 build number:	17742757 (Release Date	2021-03-23).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Please do not use VMWare Horizon Client for Linux 2203! It does not start from the created menu item.&lt;/p&gt;
+&lt;p&gt;Instead use version 2111.1, which does not suffer from this issue.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Right-click the &lt;strong&gt;DOWNLOAD NOW&lt;/strong&gt; button and copy the link address.&lt;/li&gt;
+&lt;li&gt;Open a terminal&lt;/li&gt;
+&lt;li&gt;Change the directory to your personal downloads directory with the command &lt;code&gt;cd ~/Downloads/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Execute the following command to download the VMWare Horizon Client bundle: &lt;code&gt;wget URL&lt;/code&gt;. Instead of &lt;code&gt;URL&lt;/code&gt; use the copied &amp;lsquo;&lt;strong&gt;DOWNLOAD NOW&lt;/strong&gt;&amp;rsquo; url from step 4. This url can be pasted in the console with &lt;code&gt;Shift+Insert&lt;/code&gt;. At the time this post was written, the command looked like this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wget https://download3.vmware.com/software/view/viewclients/CART22FQ1/VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;As administrator (root) make the downloaded bundle executable with &lt;code&gt;chmod +x&lt;/code&gt; in the terminal, e.g.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo chmod +x VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;Do not close the terminal!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;install-vmware-horizon-client&#34;&gt;Install VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;In the following part it is assumed that you are using a Linux system, which is based on at least Ubuntu 19.04, for example Linux Mint 20, or higher. The reason is that I assume your Linux system is using &lt;code&gt;/usr&lt;/code&gt; merge, where softlinks have been created between &lt;code&gt;/&lt;/code&gt; folders and their equivalents in &lt;code&gt;/usr&lt;/code&gt; (e.g. &lt;code&gt;/bin -&amp;gt; /usr/bin&lt;/code&gt;, &lt;code&gt;/lib -&amp;gt; /usr/lib&lt;/code&gt;, &lt;em&gt;etc.&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;To install VMWare Horizon Client perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Become root in the terminal using: &lt;code&gt;sudo -i&lt;/code&gt;. Your console prompt should change to &lt;code&gt;root@&amp;lt;your-system-name&amp;gt;:~#&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Change the active directory to &lt;code&gt;/usr/lib/x86_64-linux-gnu/&lt;/code&gt; using:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /usr/lib/x86_64-linux-gnu/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Create the following softlinks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libudev.so.1 libudev.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libgstapp-1.0.so.0 libgstapp-0.10.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libgstbase-1.0.so.0 libgstbase-0.10.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libgstreamer-1.0.so.0 libgstreamer-0.10.so.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -sf libffi.so.7 libffi.so.5&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Leave the adminstrator (root) mode in the terminal by executing: &lt;code&gt;exit&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change the directory to your Downloads folder with &lt;code&gt;cd ~/Downloads&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start the VMWare Horizon Client installer, for the version you downloaded, as administrator (root):&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo ./VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle --eulas-agreed
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Follow the steps of the installer to properly install VMWare Horizon Client. Make sure all boxes during the installation with respect to USB Redirection, Virtual Printing, &lt;em&gt;etc.&lt;/em&gt; are ticked during the installation of the VMWare Horizon client to ensure correct operation later.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;configure-vmware-horizon-client&#34;&gt;Configure VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;Once the installation of the VMWare Horizon Client has finished, the application can be started (logging out and in might be required).&lt;/p&gt;
+&lt;p&gt;Next a connection server needs to be added to the client. The address to use is: &lt;code&gt;workspace.wur.nl&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To log in to MyWorkspace you need to provide:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Username: &lt;code&gt;user001&lt;/code&gt; (this is your WUR username)&lt;/li&gt;
+&lt;li&gt;Password: &lt;code&gt;your-windows-password&lt;/code&gt; (this is the WUR Windows password for your WUR username)&lt;/li&gt;
+&lt;li&gt;Domain: &lt;code&gt;WUR&lt;/code&gt; (this is optional, because the client will use the domain as provided by the connection server)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;vmware-horizon-blast-settings&#34;&gt;VMWare Horizon Blast Settings&lt;/h3&gt;
+&lt;p&gt;After adding the connection server and logging in the VMWare Horizon Blast settings need to be configured. This has to done only once.&lt;/p&gt;
+&lt;p&gt;Navigate to and click &amp;lsquo;&lt;strong&gt;File&lt;/strong&gt;&amp;rsquo; in the top menu of the VMWare Horizon Client. Next select &amp;lsquo;&lt;strong&gt;Configure VMWare Blast&lt;/strong&gt;&amp;rsquo;. Match the setting as displayed in &lt;a href=&#34;#figure-config_vmware_blast&#34;&gt;Figure 1&lt;/a&gt; and click &amp;lsquo;&lt;strong&gt;OK&lt;/strong&gt;&amp;rsquo; to confirm.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-config_vmware_blast&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Configure VMWare Horizon Blast&#34; srcset=&#34;
+               /media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_1095a5596115c1169cf0d7877efec86d.webp 400w,
+               /media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_fbd87e257fdd9e5e6bbc1b49784dd353.webp 760w,
+               /media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/myworkspace-linux/1-configure-vmware-blast_hu66dac387afd66cd535d6ef4c82c2d594_21704_1095a5596115c1169cf0d7877efec86d.webp&#34;
+               width=&#34;500&#34;
+               height=&#34;265&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Configure VMWare Horizon Blast
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Now VMWare Horizon Client is fully installed, configured and ready to log in to a Virtual Windows WURclient desktop, where you can use MyProjects and other Windows only applications you need to do your work within WUR.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;uninstall-vmware-horizon-client&#34;&gt;Uninstall VMWare Horizon Client&lt;/h2&gt;
+&lt;p&gt;To uninstall VMWare Horizon Client for Linux the installation bundle of the installed version is required. Check the installed version and see &lt;a href=&#34;#download-vmware-horizon-client&#34;&gt;Download VMWare Horizon Client&lt;/a&gt; on how to obtain and make it executable.&lt;/p&gt;
+&lt;p&gt;To uninstall VMWare Horizon Client for Linux issue the following command in a terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo env &lt;span class=&#34;nv&#34;&gt;VMWARE_KEEP_CONFIG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;yes ./VMware-Horizon-Client-2103-8.2.0-17742757.x64.bundle -u vmware-horizon-client
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    Do not forget to modify the command above to reflect the correct version you wish to uninstall!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;This will retain the VMWare Horizon Client configuration setings on your system. In order to also remove the configuration settings set &lt;code&gt;VMWARE_KEEP_CONFIG=no&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mounting Windows WUR shares in Linux</title>
+      <link>https://www.verouden.net/post/2021/05/31/mount-shares-wur-linux/</link>
+      <pubDate>Mon, 31 May 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2021/05/31/mount-shares-wur-linux/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#mounting-wurnet-shares&#34;&gt;Mounting WURNET shares&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#create-a-credentials-file-in-your-home-directory&#34;&gt;Create a credentials file in your HOME directory&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#create-a-mount-point-for-the-windows-share&#34;&gt;Create a mount point for the Windows share&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-filesystems-to-etcfstab&#34;&gt;Add filesystems to &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#mount-a-share-after-boot-or-setting-up-a-vpn-connection&#34;&gt;Mount a share after boot or setting up a VPN connection&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;At Wageningen University &amp;amp; Research the Linux Operating System is supported on a best effort principle, meaning that it is supported as far as the knowledge of Facilities and Services Information Technology (FB-IT) reaches. FB-IT is supported by their colleagues maintaining the High Performance Computing Cluster Anunna, who have a lot of knowledge about the Linux Operating System, because it&amp;rsquo;s the Operating System used by Anunna. &lt;!-- and there is a support mail address: &lt;a href=&#34;mailto:linux.beheer@wur.nl&#34;&gt;linux.beheer AT wur.nl&lt;/a&gt;, where support questions can be sent.--&gt;&lt;/p&gt;
+&lt;p&gt;On the other hand Linux users are generally users, who are very independent and know how to search for and implement solutions themselves. Being one of those Linux users within WUR myself I want to share in this post, how I mount Windows shares from Wageningen University &amp;amp; Research within my Linux systems.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to mount Windows shares on a desk- or laptop using Linux as Operating System within WUR.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    To be able to mount WUR shares in the network the desktop or laptop needs to be within WURNET, either physically or via a VPN connection. &lt;!--For setting up a VPN connection with WURNET, see the post [to be added]().--&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;mounting-wurnet-shares&#34;&gt;Mounting WURNET shares&lt;/h2&gt;
+&lt;p&gt;The method of mounting Windows shares from Wageningen University &amp;amp; Research, described in this post, uses the Common Internet File System (cifs) via the &lt;code&gt;/etc/fstab&lt;/code&gt; file. This allows for automatic mounting of Windows shares during boot, when the computer is physically within WURNET.&lt;/p&gt;
+&lt;p&gt;A prerequisite for the described method is that the common internet file system utilities &lt;code&gt;cifs-utils&lt;/code&gt; are available on your Linux system. When in doubt, open a terminal and execute, one by one, the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo apt install cifs-utils
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;create-a-credentials-file-in-your-home-directory&#34;&gt;Create a credentials file in your HOME directory&lt;/h3&gt;
+&lt;p&gt;The procedure described, using the &lt;code&gt;/etc/fstab&lt;/code&gt; file, requires a credentials file to store your WUR Windows username and password. This credentials files needs to be stored in the root of your HOME directory &lt;code&gt;/home/localusername&lt;/code&gt;, where &lt;code&gt;localusername&lt;/code&gt; is your username on the Linux system.&lt;/p&gt;
+&lt;p&gt;Open a terminal and change the directory with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Print the current directory with &lt;code&gt;pwd&lt;/code&gt; and confirm that you are in &lt;code&gt;/home/localusername&lt;/code&gt;, where &lt;code&gt;localusername&lt;/code&gt; reflects the username on your Linux system.&lt;/p&gt;
+&lt;p&gt;Create a credentials file, e.g. &lt;code&gt;.smbpassword&lt;/code&gt;, with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;touch .smbpassword
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Using your favorite editor, e.g. VIM, Emacs, nano or whatever editor your prefer, edit &lt;code&gt;.smbpassword&lt;/code&gt; and add the following lines:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;username&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;user001
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;password&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;your-windows-password
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nv&#34;&gt;domain&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;WUR
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here &lt;code&gt;user001&lt;/code&gt; is your WUR username and &lt;code&gt;your-windows-password&lt;/code&gt; is the current WUR Windows password, which you would use to log into  a WURclient computer or log in to get your WUR e-mail using Outlook  Online (&lt;a href=&#34;https://outlook.office365.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://outlook.office365.com&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 id=&#34;create-a-mount-point-for-the-windows-share&#34;&gt;Create a mount point for the Windows share&lt;/h3&gt;
+&lt;p&gt;For each Windows share you wish to mount during boot, you need to create a mount point.&lt;/p&gt;
+&lt;p&gt;For example I have created a mount point for my personal WUR Windows share (also known as the &lt;code&gt;M:-drive&lt;/code&gt; within WUR) under &lt;code&gt;/mnt&lt;/code&gt; as &lt;code&gt;wur-m&lt;/code&gt;. Creation of such a mount point is achieved with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mkdir /mnt/wur-m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;add-filesystems-to-etcfstab&#34;&gt;Add filesystems to &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;The file &lt;code&gt;/etc/fstab&lt;/code&gt; contains descriptive information about the filesystems the system can mount. The file is only read by programs, and not written; it is your duty as system administrator to properly create and maintain this file.&lt;/p&gt;
+&lt;p&gt;Each filesystem is described on a separate line. &lt;strong&gt;Fields on each line are separated by tabs.&lt;/strong&gt; Lines starting with &lt;code&gt;#&lt;/code&gt; are comments. Blank lines are ignored.&lt;/p&gt;
+&lt;h4 id=&#34;retrieve-user-and-group-identifier&#34;&gt;Retrieve user and group identifier&lt;/h4&gt;
+&lt;p&gt;To properly mount a filesystem the values of the user (&lt;code&gt;uid&lt;/code&gt;) and group (&lt;code&gt;gid&lt;/code&gt;) identifiers are required. To retrieve the &lt;code&gt;uid&lt;/code&gt; and &lt;code&gt;gid&lt;/code&gt; values issue the following command in a terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;id localusername
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here &lt;code&gt;localusername&lt;/code&gt; should be your username on the Linux system.&lt;/p&gt;
+&lt;p&gt;In most Linux systems the first user will have &lt;code&gt;uid=1000&lt;/code&gt; and &lt;code&gt;gid=1000&lt;/code&gt;. Do not assume these values are the same for your system, always check with before mentioned command!&lt;/p&gt;
+&lt;h4 id=&#34;open-etcfstab-and-add-the-filesystem&#34;&gt;Open &lt;code&gt;/etc/fstab&lt;/code&gt; and add the filesystem&lt;/h4&gt;
+&lt;p&gt;The file containing static information about the filesystems resides in &lt;code&gt;/etc&lt;/code&gt; and, therefore, can only be edited by the system administrator, also known as root.&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;/etc/fstab&lt;/code&gt; with administrator (root) privileges in your favorite text editor, e.g. VIM, Emacs, nano or whatever editor you prefer. As an example here the command to open the &lt;code&gt;/etc/fstab&lt;/code&gt; file with &lt;code&gt;xed&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo xed /etc/fstab
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Start on a new line below everything already present in the &lt;code&gt;/etc/fstab&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;To add your Personal WUR Windows share add the following line:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# WUR Personal M-drive&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//fs01mixedsmb.wurnet.nl/DBL-STANDARD_HOMEDIR$/user001 /mnt/wur-m cifs &lt;span class=&#34;nv&#34;&gt;credentials&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/home/localusername/.smbpassword,user,uid&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;uidvalue,gid&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;gidvalue &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Make sure that there are &lt;strong&gt;tabs&lt;/strong&gt; between each element in the line of the &lt;code&gt;/etc/fstab&lt;/code&gt; file&lt;/li&gt;
+&lt;li&gt;Replace &lt;code&gt;user001&lt;/code&gt; with your WUR username&lt;/li&gt;
+&lt;li&gt;Replace &lt;code&gt;localusername&lt;/code&gt; with your username on the Linux system&lt;/li&gt;
+&lt;li&gt;Replace &lt;code&gt;uidvalue&lt;/code&gt; and &lt;code&gt;gidvalue&lt;/code&gt; with the values obtained from the &lt;code&gt;id&lt;/code&gt; command as described above.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;retrieving-the-address-of-the-filesystem-to-be-mounted&#34;&gt;Retrieving the address of the filesystem to be mounted&lt;/h4&gt;
+&lt;p&gt;The easiest way to retrieve the address of the WUR filesystem to be mounted is via File Explorer on a Windows WURclient. A Linux user can alternatively use VMWare Horizon client to log into a virtual Windows desktop. Perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open File Explorer&lt;/li&gt;
+&lt;li&gt;Navigate in the left column to &lt;code&gt;dfs-root (\\wurnet.nl) (W:)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Locate the the folder you wish to mount as a filesystem in your Linux system, e.g. a project folder under &lt;code&gt;PROJECTS&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Right-click the folder you wish to mount as a filesystem and open up the &lt;code&gt;Properties&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Click the tab &lt;code&gt;DFS&lt;/code&gt; and denote the path provided.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Convert the denoted path to be used in the &lt;code&gt;/etc/fstab&lt;/code&gt; file:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Replace each &lt;code&gt;\&lt;/code&gt; with a &lt;code&gt;/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Replace underscore characters in the folder name by &lt;code&gt;\137&lt;/code&gt; (octal ascii code)&lt;/li&gt;
+&lt;li&gt;Replace whitspace characters in the folder name by &lt;code&gt;\040&lt;/code&gt; (octal ascii code)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Examples&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;W:\PSG\_Data Exchange (PSG-wide)&lt;/code&gt; becomes:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//fs01mixedsmb.wurnet.nl/DBL-STANDARD_PSG$/PSG~&lt;span class=&#34;se&#34;&gt;\1&lt;/span&gt;37Data&lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;40Exchange&lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;40&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;PSG-wide&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;W:\PSG\PSG Biometris&lt;/code&gt; (also known as the Biometris &lt;code&gt;N:-drive&lt;/code&gt;) becomes:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//fs01mixedsmb.wurnet.nl/DBL-STANDARD_PSG$/PSG~PSG&lt;span class=&#34;se&#34;&gt;\0&lt;/span&gt;40Biometris
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;W:\PROJECTS\BiomDatasetsArchive&lt;/code&gt; becomes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//fs02mixedsmb.wurnet.nl/TPE-STANDARD_PROJECTS$/PROJECTS~BiomEDatasetsArchive
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;W:\PROJECTS\Biom_ZeZhu&lt;/code&gt; becomes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;//fs02mixedsmb.wurnet.nl/TPE-STANDARD_PROJECTS$/PROJECTS~Biom&lt;span class=&#34;se&#34;&gt;\1&lt;/span&gt;37ZeZhu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;mount-a-share-after-boot-or-setting-up-a-vpn-connection&#34;&gt;Mount a share after boot or setting up a VPN connection&lt;/h3&gt;
+&lt;p&gt;When after booting your system a Windows share is not automatically mounted or you have set up a VPN connection to WURNET and want to mount a WUR Windows share from your &lt;code&gt;/etc/fstab&lt;/code&gt; file, this is done by issuing the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# For example connect /mnt/wur-m after setting up a VPN connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo mount /mnt/wur-m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To disconnect a WUR Windows share, for example prior to breaking of a VPN connection, issue the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# For example disconnect /mnt/wur-m prior to breaking a VPN connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo umount /mnt/wur-m
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

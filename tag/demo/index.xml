@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Demo | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/tag/demo/</link>
+      <atom:link href="https://www.verouden.net/tag/demo/index.xml" rel="self" type="application/rss+xml" />
+    <description>Demo</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>Demo</title>
+      <link>https://www.verouden.net/tag/demo/</link>
+    </image>
+    
+    <item>
+      <title>External Project</title>
+      <link>https://www.verouden.net/project/2016/04/27/external-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/project/2016/04/27/external-project/</guid>
+      <description>&lt;p&gt;Blah blah.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

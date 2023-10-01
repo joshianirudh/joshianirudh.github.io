@@ -1,0 +1,1988 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Anaconda | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/category/anaconda/</link>
+      <atom:link href="https://www.verouden.net/category/anaconda/index.xml" rel="self" type="application/rss+xml" />
+    <description>Anaconda</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>Anaconda</title>
+      <link>https://www.verouden.net/category/anaconda/</link>
+    </image>
+    
+    <item>
+      <title>Anaconda (re-)installation on macOS</title>
+      <link>https://www.verouden.net/post/2022/11/07/anaconda-installation-macos/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2022/11/07/anaconda-installation-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Around 34 courses at Wageningen University &amp;amp; Research use Anaconda Python as software in their course, e.g. &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB30806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-30806 Modelling in Systems Biology&lt;/a&gt; and &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB50806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-50806 Systems and Synthetic Biology&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The instructions in this post will show how to install Anaconda on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/h2&gt;
+&lt;p&gt;If you have previously installed Anaconda and wish to re-install the latest version or your current installation is not working as you expect, you first need to delete everything related to Anaconda. In macOS a complete removal is somewhat complicated, but doable if you follow all steps precisely as provided in this post.&lt;/p&gt;
+&lt;p&gt;For the complete removal of everything related to Anaconda the Terminal application will be used. In your Finder &amp;gt; Applications (shortcut: ⇧⌘A) there is a Utilities folder as depicted in &lt;a href=&#34;#figure-utilities_folder&#34;&gt;Figure 1&lt;/a&gt; below.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-utilities_folder&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finder Utilities Folder.&#34; srcset=&#34;
+               /media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_977414cad0d3ca1520146015f0958d03.webp 400w,
+               /media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_b55d7fd8bd6bb6b822d8285408ae8999.webp 760w,
+               /media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_977414cad0d3ca1520146015f0958d03.webp&#34;
+               width=&#34;138&#34;
+               height=&#34;176&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finder Utilities Folder.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Within this Utilities folder, which can be directly accessed by using the ⇧⌘U shortcut, the Terminal application is contained. The icon in &lt;a href=&#34;#figure-terminal_app&#34;&gt;Figure 2&lt;/a&gt; shows what the Terminal application looks like in the Finder &amp;gt; Applications &amp;gt; Utilities folder.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-terminal_app&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon Terminal Application.&#34; srcset=&#34;
+               /media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_c3ba97e8459945a34b3f28001415497b.webp 400w,
+               /media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_5e8a97e364ed245208960f638a62f6c4.webp 760w,
+               /media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_c3ba97e8459945a34b3f28001415497b.webp&#34;
+               width=&#34;138&#34;
+               height=&#34;176&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon Terminal Application.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The Terminal application can also be started via Lauchpad under the ‘Other’ group.&lt;/p&gt;
+&lt;p&gt;Steps for a complete removal of Anaconda on macOS:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Start the Terminal application. The terminal console prompt, where the commands will be entered, is depicted by a &lt;code&gt;%&lt;/code&gt; or a &lt;code&gt;$&lt;/code&gt; sign. Which sign is shown, depends whether your default shell is zsh (&lt;code&gt;%&lt;/code&gt; sign) or bash (&lt;code&gt;$&lt;/code&gt; sign).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install the &lt;code&gt;anaconda-clean&lt;/code&gt; package:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda install anaconda-clean
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Then, run &lt;code&gt;anaconda-clean&lt;/code&gt; with the argument &lt;code&gt;--yes&lt;/code&gt; to remove all those files and directories without being asked to confirm each one:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;anaconda-clean --yes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;code&gt;anaconda-clean --yes&lt;/code&gt; creates a backup of all files and directories that might be removed in a folder named &lt;code&gt;.anaconda_backup&lt;/code&gt; in your home directory. Also note that &lt;code&gt;anaconda-clean&lt;/code&gt; leaves your data files in the AnacondaProjects directory untouched.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Remove all Anaconda directories from your system by sequentially executing the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf /Applications/Anaconda-Navigator.app
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -rf /opt/anaconda3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf ~/.anaconda_backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sequentially open &lt;code&gt;.bash_profile&lt;/code&gt;, &lt;code&gt;tcshrc&lt;/code&gt;, &lt;code&gt;.xonshrc&lt;/code&gt;, and &lt;code&gt;.zshrc&lt;/code&gt; in TextEdit and delete the section starting with &lt;code&gt;# &amp;gt;&amp;gt;&amp;gt; conda initialize &amp;gt;&amp;gt;&amp;gt;&lt;/code&gt; and ending with &lt;code&gt;# &amp;lt;&amp;lt;&amp;lt; conda initialize &amp;lt;&amp;lt;&amp;lt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In a terminal this is done, e.g. for &lt;code&gt;.bash_profile&lt;/code&gt;, with &lt;code&gt;open -a TextEdit .bash_profile&lt;/code&gt;. Use the shortcut ⌘S to save the file, and close the file with the shortcut ⌘Q.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Having performed all 5 steps given above, your mac will be ready for a new installation of Anaconda.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;At the time this post was written, the latest release of Anaconda was version 2022.10 containing Python 3.9.13. It has been updated to the latest release version 2023.07 of Anaconda.&lt;/p&gt;
+&lt;p&gt;For newer versions of Anaconda than 2022.10 the steps described below are the same and still correct, but start with a newer version of the downloaded installer package file of Anaconda. The screenshots in this post have not been updated. Therefore, what you see during your installation can (and probably will) differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;For macOS there are two downloads of Anaconda available on the &lt;a href=&#34;https://repo.anaconda.com/archive/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Anaconda Repository Archive&lt;/a&gt;. To see which version you need click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; in the menu bar and select ‘About This Mac’.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: If you are using a mac with the newest M1 or M2 processor, download the &lt;strong&gt;Apple Silicon arm64&lt;/strong&gt; build!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Download Anaconda for your specific version of macOS using one of the following links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For an Intel processor based mac: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-MacOSX-x86_64.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 (ca. 610.5MB, &lt;strong&gt;Intel 64-bit&lt;/strong&gt; build)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For a M1/M2 processor based mac: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-MacOSX-arm64.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 (ca. 643.9MB, &lt;strong&gt;ARM 64-bit&lt;/strong&gt; build)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;For installing Anaconda on macOS follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the downloaded file, either &lt;strong&gt;Anaconda3-2023.07-2-MacOSX-x86_64.pkg&lt;/strong&gt;, or &lt;strong&gt;Anaconda3-2023.07-2-MacOSX-arm64.pkg&lt;/strong&gt; depending on the processor in your mac (as explained above). This file will most likely reside in Finder &amp;gt; Downloads (shortcut: ⌥⌘L). The file can more easily be found by switching into List view (shortcut: ⌘2). To switch to Icon view use the shortcut: ⌘1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The installler will start by displaying a message as shown in &lt;a href=&#34;#figure-allow-install&#34;&gt;Figure 3&lt;/a&gt;. Click &amp;lsquo;Allow&amp;rsquo; to let the package determine if the software can be installed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow-install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Determine whether package can be installed.&#34; srcset=&#34;
+               /media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_ad5718abe3ce2b2ac11d1a0122482098.webp 400w,
+               /media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_0ceff84da9ece635dca1c027a5d21884.webp 760w,
+               /media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_ad5718abe3ce2b2ac11d1a0122482098.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Determine whether package can be installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;When the package can be installed the welcome screen of the Anaconda3 Installer will be displayed as shown in &lt;a href=&#34;#figure-welcome-installer&#34;&gt;Figure 4&lt;/a&gt;. Click the &amp;lsquo;Continue&amp;rsquo; button to proceed with the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-welcome-installer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome Anaconda3 Installer.&#34; srcset=&#34;
+               /media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_999e32b169b059fef301fa3f29873afc.webp 400w,
+               /media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_81e4f4884f6ea482fd753fadc8bfcb70.webp 760w,
+               /media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_999e32b169b059fef301fa3f29873afc.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome Anaconda3 Installer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Now the Read Me for the software to be installed as displayed in &lt;a href=&#34;#figure-install-readme&#34;&gt;Figure 5&lt;/a&gt; below. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install-readme&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Installer Read Me.&#34; srcset=&#34;
+               /media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_45a7cdd9fd99bc69726587a507c942bc.webp 400w,
+               /media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_783b45863247c50024593b0d4c09ea93.webp 760w,
+               /media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_45a7cdd9fd99bc69726587a507c942bc.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Installer Read Me.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Right after the Read Me a Software Licence Agreement will appear as shown in &lt;a href=&#34;#figure-license-terms&#34;&gt;Figure 6&lt;/a&gt;. By clicking the ‘Continue’ button you will be asked to agree with this software licence agreement as diplayed below in &lt;a href=&#34;#figure-license-agree&#34;&gt;Figure 7&lt;/a&gt;. Click on ‘Agree’ to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-license-terms&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Aanconda3 Software License Agreement.&#34; srcset=&#34;
+               /media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_97969c878eae23fbddd26d82fb7b68fe.webp 400w,
+               /media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_49ed5d85af49d2376320a1479f5c3fc0.webp 760w,
+               /media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_97969c878eae23fbddd26d82fb7b68fe.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Aanconda3 Software License Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-license-agree&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Agree to Software License Agreement.&#34; srcset=&#34;
+               /media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_37259c25b79a5031e8ac838c1aff927d.webp 400w,
+               /media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_f3b85e1fbdc1de98a955b3d682ba33dd.webp 760w,
+               /media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_37259c25b79a5031e8ac838c1aff927d.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Agree to Software License Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;The installer will let you select how you want to install the software as shown in &lt;a href=&#34;#figure-install-type&#34;&gt;Figure 8&lt;/a&gt;. It is recommended to leave the settings as provided and click the &amp;lsquo;Continue&amp;rsquo; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install-type&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select the installation type.&#34; srcset=&#34;
+               /media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_209b619d4b14dfa1bf823ed9c417bed5.webp 400w,
+               /media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_c71d09120140feda3e086f7e89702eec.webp 760w,
+               /media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_209b619d4b14dfa1bf823ed9c417bed5.webp&#34;
+               width=&#34;623&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select the installation type.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;After selecting the installation type the installer asks to provide an installation destination as displayed in &lt;a href=&#34;#figure-install-location&#34;&gt;Figure 9&lt;/a&gt;. Also here it is recommended to leave the default settings and click the &amp;lsquo;Install&amp;rsquo; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install-location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select the installation location.&#34; srcset=&#34;
+               /media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_1ff2fa13ae7cebc3c3eaaff21f3b2a3d.webp 400w,
+               /media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_ffb684de64d062fab861db2e6e809e2e.webp 760w,
+               /media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_1ff2fa13ae7cebc3c3eaaff21f3b2a3d.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select the installation location.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Your system will ask to either provide the password (see &lt;a href=&#34;#figure-confirm-installation&#34;&gt;Figure 10&lt;/a&gt;) or use the fingerprint scanner to confirm the software installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-confirm-installation&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Confirm the software installation.&#34; srcset=&#34;
+               /media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_146f7cdc8cd72dca00c549182432825f.webp 400w,
+               /media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_58ffc626b59a218b4aa89bc9de0bfe99.webp 760w,
+               /media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_146f7cdc8cd72dca00c549182432825f.webp&#34;
+               width=&#34;260&#34;
+               height=&#34;326&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Confirm the software installation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Your system may ask you to allow access to your Downloads folder, as shown in &lt;a href=&#34;#figure-allow-downloads&#34;&gt;Figure 11&lt;/a&gt;. Click the &amp;lsquo;OK&amp;rsquo; button to grant access to the Downloads folder.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow-downloads&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Allow access to the Downloads folder.&#34; srcset=&#34;
+               /media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_8dd01e6e10a5104b5f95a066c5a931ed.webp 400w,
+               /media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_5e39b37446885647ee1f46915ec4faca.webp 760w,
+               /media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_8dd01e6e10a5104b5f95a066c5a931ed.webp&#34;
+               width=&#34;262&#34;
+               height=&#34;214&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Allow access to the Downloads folder.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Once the files have been installed the Anaconda3 installer will display a message about DataSpell as shown in &lt;a href=&#34;#figure-dataspell&#34;&gt;Figure 12&lt;/a&gt;. If your interested visit [https://www.anaconda.com/dataspell]. To proceed with the installer click the &amp;lsquo;Continue&amp;rsquo; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-dataspell&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Message about DataSpell.&#34; srcset=&#34;
+               /media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_23cddcc3039c7ccf91ceb0c94640fc47.webp 400w,
+               /media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_375e686d227deb7055f596ad61ba46d9.webp 760w,
+               /media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_23cddcc3039c7ccf91ceb0c94640fc47.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Message about DataSpell.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;After the DataSpell message the Anaconda3 installer has reached the end (see &lt;a href=&#34;#figure-finish&#34;&gt;Figure 13&lt;/a&gt;). Click on the &amp;lsquo;Close&amp;rsquo; button to finalize the installer and close the installer.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-finish&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finish and close the Anaconda3 installer.&#34; srcset=&#34;
+               /media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_23cba9473dfa2b1a4ef426aa4f11fc7b.webp 400w,
+               /media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_db1e4066a8c8cc1864b8498f5302075d.webp 760w,
+               /media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_23cba9473dfa2b1a4ef426aa4f11fc7b.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finish and close the Anaconda3 installer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Congratulations 😆, you now have Anaconda3 2023.07-2 containing Python 3.11.4 installed on your mac!&lt;/p&gt;
+&lt;p&gt;Before actively using Anaconda, some configuration may be required. The configuration is described in the next section.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/h2&gt;
+&lt;h3 id=&#34;upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/h3&gt;
+&lt;p&gt;When starting Anaconda Navigator from your Applications folder, the Navigator may open displaying the message shown in &lt;a href=&#34;#figure-navigator-upgrade&#34;&gt;Figure 14&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-navigator-upgrade&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Upgrade available for Anaconda Navigator&#34; srcset=&#34;
+               /media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_b3ddecc7a89d3ae0491986c6ff1eb4e1.webp 400w,
+               /media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_20a46542c259d38469747978673475f4.webp 760w,
+               /media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_b3ddecc7a89d3ae0491986c6ff1eb4e1.webp&#34;
+               width=&#34;560&#34;
+               height=&#34;239&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Upgrade available for Anaconda Navigator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;To upgrade Anaconda Navigator follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &amp;lsquo;Yes&amp;rsquo; as shown in &lt;a href=&#34;#figure-navigator-upgrade&#34;&gt;Figure 14&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Continue the procedure as indicated on your display to perform the update of Anaconda Navigator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;add-a-r-kernel&#34;&gt;Add a R kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present. To add a R kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Terminal application as described above in &lt;a href=&#34;#complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start R by typing &lt;code&gt;R&lt;/code&gt; and press return ↩ to execute.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the R prompt type the following commands sequentially and after each command press return ↩ to execute. Below version 4.2.1 of R is assumed, do not forget to change the R version number when you are using a different version of R!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;## At the R prompt, indicated by &amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; install.packages&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;IRkernel&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; IRkernel::installspec&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; q&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# Question in R: Save workspace image? [y/n/c]: n&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Close the Terminal application by typing &lt;code&gt;exit&lt;/code&gt; and press return ↩ to execute.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the R kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;h3 id=&#34;add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present, unless you already have &lt;a href=&#34;#add-a-r-kernel&#34;&gt;added a R kernel&lt;/a&gt;. To add a Julia kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Terminal application as described above in &lt;a href=&#34;#complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start Julia by typing &lt;code&gt;julia&lt;/code&gt; at the terminal prompt and press return ↩ to execute. Once Julia has started, you will see the prompt displayed as &lt;code&gt;julia&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type &lt;code&gt;]&lt;/code&gt; and the prompt will change into &lt;code&gt;(@v1.8) pkg&amp;gt;&lt;/code&gt;. This under the assumption that you have Julia v1.8.2 or later installed. For other versions of Julia the version number for package management will differ.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the command &lt;code&gt;add IJulia&lt;/code&gt; and press return ↩ to execute. This will install a lot of packages and make the Julia kernel available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Close the Julia package manager by pressing the BACKSPACE key on your keyboard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type &lt;code&gt;exit()&lt;/code&gt; and press return ↩ to execute, in order to close Julia.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Close the Terminal application by typing &lt;code&gt;exit&lt;/code&gt; and press return ↩ to execute.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the Julia kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Anaconda installation on Windows 10/11</title>
+      <link>https://www.verouden.net/post/2022/11/06/anaconda-installation-windows-10-11/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2022/11/06/anaconda-installation-windows-10-11/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#windows-1011-compatibility-and-wur-appstore-installation&#34;&gt;Windows 10/11 compatibility and WUR AppStore installation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#using-the-wur-appstore&#34;&gt;Using the WUR AppStore&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#support-wur-appstore&#34;&gt;Support WUR AppStore&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;2. Manual Installation&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Around 34 courses at Wageningen University &amp;amp; Research use Anaconda Python as software in their course, e.g. &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB30806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-30806 Modelling in Systems Biology&lt;/a&gt; and &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB50806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-50806 Systems and Synthetic Biology&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install Anaconda Python (Anaconda3) on a &lt;strong&gt;privately owned&lt;/strong&gt; desktop or laptop computer running Windows 10 or Windows 11 as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on WURclient desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a WURclient desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2022/11/03/anaconda-installation-wurclient/&#34;&gt;Custom Anaconda installation on a WURclient compute&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Two ways to install Anaconda are offered here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;WUR AppStore&lt;/a&gt;. This is the &lt;strong&gt;RECOMMENDED&lt;/strong&gt; way!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;Manual installation&lt;/a&gt; for those who, for whatever reason, do not want to use the WUR AppStore.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/h2&gt;
+&lt;p&gt;The WUR AppStore is the place where you will be able to download, link to, or virtually access the software you need for your study programme and courses. Not only during the computer labs and courses, but also for self-study after those.&lt;/p&gt;
+&lt;p&gt;For more information see: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1222947-what-is-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;What is the WUR AppStore&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;windows-1011-compatibility-and-wur-appstore-installation&#34;&gt;Windows 10/11 compatibility and WUR AppStore installation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;To safely use the study and course software, you need to &lt;strong&gt;connect your laptop to the WUR&lt;/strong&gt; network with your WUR account. &lt;strong&gt;Windows 10 or 11 Education Edition&lt;/strong&gt; or  &lt;strong&gt;Professional Edition&lt;/strong&gt; is needed on your laptop to be able to access the WUR AppStore. If you are using a Home Edition of Windows 10 or 11, you will be automatically upgraded to the Education Edition.&lt;/li&gt;
+&lt;li&gt;If you have Windows 10 or 11, you can proceed to the manual: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203863-how-to-connect-to-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to connect to the WUR AppStore&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--* If you have another version of Windows 10/11 (e.g. Windows 10/11 Home), follow the manual: [How to get Windows 10 Education](https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1223173-how-to-get-windows-10-education). After having upgraded Windows 10 to the Education version, you can proceed to the manual: [How to get access to the WUR AppStore](https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203863-how-to-connect-to-the-wur-appstore).--&gt;
+&lt;h3 id=&#34;using-the-wur-appstore&#34;&gt;Using the WUR AppStore&lt;/h3&gt;
+&lt;p&gt;The use of the WUR AppStore is very well described by the WUR TEAM Study Anytime, Anyplace. The first article can be found here: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203865-how-can-i-use-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How can I use the WUR AppStore&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The WUR AppStore currently contains &lt;strong&gt;Anaconda 2023.07&lt;/strong&gt;. &lt;!-- Soon **Anaconda 2022.10** will be made available! --&gt;&lt;/p&gt;
+&lt;h3 id=&#34;support-wur-appstore&#34;&gt;Support WUR AppStore&lt;/h3&gt;
+&lt;p&gt;In case you need support installing or using the WUR AppStore you can contact the WUR Servicedesk IT either by telephone: &lt;a href=&#34;tel:+31317488888&#34;&gt;+31 (0)317 488888&lt;/a&gt; / mail: &lt;a href=&#34;mailto:Servicedesk.IT@wur.nl&#34;&gt;Servicedesk.IT AT wur.nl&lt;/a&gt;. You can also visit the Servicepoint IT, ground floor left of the Grand Café, in Forum (Building 102) on the WUR Campus.&lt;/p&gt;
+&lt;h2 id=&#34;2-manual-installation&#34;&gt;2. Manual Installation&lt;/h2&gt;
+&lt;p&gt;By default the Anaconda installer wants to install into the &lt;code&gt;C:\ProgramData&lt;/code&gt; folder of your Windows Operating System. According to Microsoft this folder is &amp;ldquo;used by applications to store data for standard users, because it does not require elevated permissions&amp;rdquo;. However, it is not recommended to use for installing software. The reason, the Anaconda installer chooses this folder, is that it does not contain a whitespace character like in &lt;code&gt;C:\Program Files\&lt;/code&gt;. The Anaconda software can not deal with whitespace characters in path names, while running.&lt;/p&gt;
+&lt;p&gt;To prepare the Anaconda installation a folder needs to be created prior to the installation of Anaconda. Either create the folder &lt;code&gt;C:\MyPrograms&lt;/code&gt; yourself in File Explorer, or perform the following steps exactly as described:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Search for the Command Prompt App by typing &lt;code&gt;cmd&lt;/code&gt; in the search field of the Windows task bar. Press return (Enter) to start the application. A window will appear similar to as displayed in &lt;a href=&#34;#figure-command_promt&#34;&gt;Figure 1&lt;/a&gt; showing your own system username.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-command_prompt&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Windows Command Prompt Application window&#34; srcset=&#34;
+               /media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_be9dfa80fc4427fc3115b2d88a2f33d1.webp 400w,
+               /media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_a5c5f4969fbf36210508e5a09dfcadd9.webp 760w,
+               /media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_be9dfa80fc4427fc3115b2d88a2f33d1.webp&#34;
+               width=&#34;618&#34;
+               height=&#34;279&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Windows Command Prompt Application window
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Create the directory &lt;code&gt;C:\MyPrograms&lt;/code&gt;. This is done by copying (CTRL+C) the following line, pasting (CTRL+V) it behind the prompt and pressing return (Enter) to execute. In case the directory already exists, the message &lt;code&gt;A subdirectory or file C:\MyPrograms already exists.&lt;/code&gt; will appear.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir C:&lt;span class=&#34;se&#34;&gt;\M&lt;/span&gt;yPrograms
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The Command Prompt application can now be closed by typing &lt;code&gt;exit&lt;/code&gt; and executing it by pressing return (Enter).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;At the time this post was written, the latest release of Anaconda3 was version 2022.10. It has been updated to the latest release version 2023.07-2 of Anaconda3.&lt;/p&gt;
+&lt;p&gt;The installer for Windows 10/11 can be downloaded directly from this link: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Windows-x86_64.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 for Windows (ca. 898.6MB, 64-bit).&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    From Anaconda3 version 2022.10 the installer is only available for 64-bit Windows 10/11 and will not install on a 32-bit version of the Operating System.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;For newer versions of Anaconda3 than 2022.10 the steps described below are the same and still correct, but start with a newer version of the downloaded executable installer file of Anaconda3. The screenshots in this post have not been updated. Therefore, what you see during your installation will differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Right-click the downloaded file &lt;strong&gt;Anaconda3-2023.07-2-Windows-x86_64.exe&lt;/strong&gt; and select &amp;lsquo;Run as administrator&amp;rsquo;, as shown in &lt;a href=&#34;#figure-start_admin&#34;&gt;Figure 2&lt;/a&gt;. This file will most likely reside in your Downloads folder of your user account.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-start_admin&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Anaconda Installer as administrator&#34; srcset=&#34;
+               /media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_ffa2192adbac5811a7f3ebdf03ae33e6.webp 400w,
+               /media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_19da76c9c1b514f6d7e38b2d4dc714a2.webp 760w,
+               /media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_ffa2192adbac5811a7f3ebdf03ae33e6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;250&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Anaconda Installer as administrator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Windows will ask for permission to allow the application to make changes to your device as shown in &lt;a href=&#34;#figure-allow_changes_installer&#34;&gt;Figure 3&lt;/a&gt;. Click &amp;lsquo;Yes&amp;rsquo; to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow_changes_installer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Permission request for changes.&#34; srcset=&#34;
+               /media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_51609ce4fd06eb0078ddc16c2565d81f.webp 400w,
+               /media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_b6d5ce049b89eaf21956153a38ee03e9.webp 760w,
+               /media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_51609ce4fd06eb0078ddc16c2565d81f.webp&#34;
+               width=&#34;456&#34;
+               height=&#34;333&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Permission request for changes.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;After the installer has started, a first selection window will appear as displayed below in &lt;a href=&#34;#figure-welcome_anaconda_setup&#34;&gt;Figure 4&lt;/a&gt;. Click the ‘Next &amp;gt;’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-welcome_anaconda_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome to Anaconda3 2022.10 (64-bit) Setup.&#34; srcset=&#34;
+               /media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_d24f842eed9816252315bb4b0ddee228.webp 400w,
+               /media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_3b21234540a01963f1c4fc9bd17a3fc3.webp 760w,
+               /media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_d24f842eed9816252315bb4b0ddee228.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome to Anaconda3 2022.10 (64-bit) Setup.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;The installer will now display the license agreement for installation of Anaconda3, as shown below in &lt;a href=&#34;#figure-agreement_anaconda_setup&#34;&gt;Figure 5&lt;/a&gt;. Click on the ‘I Agree’ button to agree to the terms.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-agreement_anaconda_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup License Agreement&#34; srcset=&#34;
+               /media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_57ed631ec76eb609cd91d7feb03c9755.webp 400w,
+               /media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_9c0db05dcdea2fe53e49f92e2bb772cf.webp 760w,
+               /media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_57ed631ec76eb609cd91d7feb03c9755.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup License Agreement
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;After agreeing to the license terms, the Anaconda3 setup will ask for whom you wish to install for, as displayed in &lt;a href=&#34;#figure-install_for&#34;&gt;Figure 6&lt;/a&gt;. Select the radio button ‘All Users (requires admin priveleges)’ and click on the ‘Next &amp;gt;’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_for&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Select Installation Type&#34; srcset=&#34;
+               /media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_e46980934f55a7bc6c02bb638334e247.webp 400w,
+               /media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_3b1d7a7c142b5fdc45913e77c3164dc7.webp 760w,
+               /media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_e46980934f55a7bc6c02bb638334e247.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Select Installation Type
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Having selected the installation type, the Anaconda3 setup will request for an installation location as shown in &lt;a href=&#34;#figure-install_location&#34;&gt;Figure 7&lt;/a&gt;. Change the destination location to &lt;code&gt;C:\MyPrograms\Anaconda3&lt;/code&gt;, to match &lt;a href=&#34;#figure-install_location&#34;&gt;Figure 7&lt;/a&gt;, by typing the destination path directly into the text field displayed (currently showing &lt;code&gt;C:\ProgramData\Anaconda3&lt;/code&gt;). Click on the ‘Next &amp;gt;’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Choose Installation Location&#34; srcset=&#34;
+               /media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_3f54bc46838e72e0db1f5eb764752a28.webp 400w,
+               /media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_859217673d95eaebdcf36836c0b0c489.webp 760w,
+               /media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_3f54bc46838e72e0db1f5eb764752a28.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Choose Installation Location
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;After selecting the installation location folder the Advanced Installation Options will appear, as displayed below in &lt;a href=&#34;#figure-advanced_options&#34;&gt;Figure 8&lt;/a&gt;. Leave the selection as displayed and click on the ‘Install’ button to start the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-advanced_options&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Advanced Installation Options&#34; srcset=&#34;
+               /media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_4398ab462b715b1e01a176a5432bdb58.webp 400w,
+               /media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_50c49ae35cad4628d028ce9854cd9da0.webp 760w,
+               /media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_4398ab462b715b1e01a176a5432bdb58.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Advanced Installation Options
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Once the installation has been completed &lt;a href=&#34;#figure-installation_complete&#34;&gt;Figure 9&lt;/a&gt; will be displayed. Click on the ‘Next &amp;gt;’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-installation_complete&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Installation was completed successfully&#34; srcset=&#34;
+               /media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_94c46f367430ab6e2686f375ce433d51.webp 400w,
+               /media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_1981a980f044243fff12c5758a8a26d3.webp 760w,
+               /media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_94c46f367430ab6e2686f375ce433d51.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Installation was completed successfully
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Next the Anaconda3 Setup will show some information on how great Anaconda works with DataSpell, as shown in &lt;a href=&#34;#figure-anaconda_ds&#34;&gt;Figure 10&lt;/a&gt;. Click the &amp;lsquo;Next &amp;gt;&amp;rsquo; button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-anaconda_ds&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anacond3 Setup message about Anaconda and DataSpell&#34; srcset=&#34;
+               /media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_ee8b0291871541a4e4c6c4f38bb28fd3.webp 400w,
+               /media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_da14f7f4711936c6b90c18f7a2c04a74.webp 760w,
+               /media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_ee8b0291871541a4e4c6c4f38bb28fd3.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anacond3 Setup message about Anaconda and DataSpell
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Finally the Annaconda 3 Setup shows that installation has been completed as displayed in &lt;a href=&#34;#figure-anaconda_completing&#34;&gt;Figure 11&lt;/a&gt;. Remove the tick marks from the boxes in front of &amp;lsquo;Anaconda Distribution Tutorial&amp;rsquo; and &amp;lsquo;Getting Started with Anaconda&amp;rsquo;, unless you want to display this information, click the &amp;lsquo;Finish&amp;rsquo; button to finish off the installation and close the Anaconda3 Setup.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-anaconda_completing&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Completing Anacond3 Setup&#34; srcset=&#34;
+               /media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_26417ce3dd2d415f48f6056ceeb575e0.webp 400w,
+               /media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_a5bef7c70687d94898a5c32bd2c5d4a6.webp 760w,
+               /media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_26417ce3dd2d415f48f6056ceeb575e0.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Completing Anacond3 Setup
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have Anaconda3 version 2023.07-2 containing Python 3.11.4 installed on your Windows desktop or laptop computer!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Below in &lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt; you find information about additional tasks you may need to perform.&lt;/p&gt;
+&lt;p&gt;Use the ones required!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/h2&gt;
+&lt;h3 id=&#34;upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/h3&gt;
+&lt;p&gt;When starting Anaconda Navigator from your Start Menu the Navigator may open displaying the message shown in &lt;a href=&#34;#figure-navigator_upgrade&#34;&gt;Figure 12&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-navigator_upgrade&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Upgrade available for Anaconda Navigator&#34; srcset=&#34;
+               /media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_6d0d1258146fd8fd8e585031877b5729.webp 400w,
+               /media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_799f791fb7d83b8d2c3bc5e02c5f434a.webp 760w,
+               /media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_6d0d1258146fd8fd8e585031877b5729.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;458&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Upgrade available for Anaconda Navigator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;To upgrade Anaconda Navigator follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &amp;lsquo;Yes&amp;rsquo; as shown in &lt;a href=&#34;#figure-navigator_upgrade&#34;&gt;Figure 12&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows will ask for permission to allow the application to make changes to your device as shown in &lt;a href=&#34;#figure-allow_changes_update&#34;&gt;Figure 13&lt;/a&gt;. Click &amp;lsquo;Yes&amp;rsquo; to continue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow_changes_update&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Permission request for changes to update.&#34; srcset=&#34;
+               /media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_eebd83e068281175569789eccc7fe174.webp 400w,
+               /media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_d55f7d1ae22bc5ccdbc5e1157708c4f2.webp 760w,
+               /media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_eebd83e068281175569789eccc7fe174.webp&#34;
+               width=&#34;456&#34;
+               height=&#34;314&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Permission request for changes to update.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Continue the procedure as indicated on your display to perform the update of Anaconda Navigator.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;add-a-r-kernel&#34;&gt;Add a R kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present. To add a R kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Start Menu and navigate to &amp;lsquo;Anaconda3 (64-bit)&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start &amp;lsquo;Anaconda Powershell Prompt (Anaconda3)&amp;rsquo;. A window will open displaying the prompt as &lt;code&gt;(base) PS C:\&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to where &lt;code&gt;R.exe&lt;/code&gt; is located. Let&amp;rsquo;s assume you have R v4.2.1 installed, either via the WUR AppStore or via &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installation on Windows 10/11&lt;/a&gt;. For other R versions than 4.2.1 do not forget to change the R version number!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Use the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; C:&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;rogram Files&lt;span class=&#34;se&#34;&gt;\R\R&lt;/span&gt;-4.2.1&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;in&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; .&lt;span class=&#34;se&#34;&gt;\R&lt;/span&gt;.exe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;## At the R prompt, indicated by &amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; install.packages&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;IRkernel&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; IRkernel::installspec&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; q&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# Question in R: Save workspace image? [y/n/c]: n&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;## back at the powershell prompt, indicated by (base) PS C:\&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the R kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;h3 id=&#34;add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present, unless you already did &lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt; . To add a Julia kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Julia on your WURclient. A window will open and you will see the prompt displayed as &lt;code&gt;julia&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;]&lt;/code&gt; and the prompt will change into &lt;code&gt;(@v1.8) pkg&amp;gt;&lt;/code&gt;. This under the assumption that you have Julia v1.8.2 or later installed. For other versions of Julia the version number for package management will differ.&lt;/li&gt;
+&lt;li&gt;Type the command &lt;code&gt;add IJulia&lt;/code&gt;. This will install a lot of packages and make the Julia kernel available in Jupyter Notebook and JupyterLab.&lt;/li&gt;
+&lt;li&gt;Close the Julia package manager by pressing the BACKSPACE key on your keyboard.&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;exit()&lt;/code&gt; to close Julia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the Julia kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Custom Anaconda installation on a WURclient computer</title>
+      <link>https://www.verouden.net/post/2022/11/03/anaconda-installation-wurclient/</link>
+      <pubDate>Thu, 03 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2022/11/03/anaconda-installation-wurclient/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#prerequisite&#34;&gt;Prerequisite&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#uninstall-a-previously-installed-anaconda-python-version&#34;&gt;Uninstall a previously installed Anaconda Python version&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#installed-from-software-center&#34;&gt;Installed from Software Center&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#installed-previously-as-a-custom-installation&#34;&gt;Installed previously as a custom installation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#custom-anaconda-installation&#34;&gt;Custom Anaconda installation&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#changing-the-default-startup-working-directory&#34;&gt;Changing the Default Startup Working Directory&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;A WURclient desktop or laptop at Wageningen University &amp;amp; Research is not a standard Windows 10 computer. WURclients use Windows 10 Enterprise, which has been modified by Facilities and Services Information Technology (FB-IT) among others with respect to installation rights for security reasons.&lt;/p&gt;
+&lt;p&gt;WURclient desktops and laptops at Wageningen University &amp;amp; Research can install Anaconda from the Software Center created by the IT department, which is launched by clicking on Start and selecting the &amp;ldquo;Software Center&amp;rdquo; tile. At the time this post was written the latest version of Anaconda in Software Center was &lt;code&gt;Anaconda Python 2021.11&lt;/code&gt;. The current latest available version in Software Center is &lt;code&gt;Anaconda Python 2023.07-2&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This version of Anaconda Python was packaged for educational purposes. Only once per year a new version of Anaconda Python is released in Software Center and simultaneously in the WUR AppStore (course software for students).&lt;/p&gt;
+&lt;p&gt;Many users, however, would like to use a newer version of Anaconda Python than the one in Software Center. At the moment of writing this post the latest version of Anaconda Python released on the &lt;a href=&#34;https://repo.anaconda.com/archive/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Anaconda Repository Archive&lt;/a&gt; is Anaconda3 version 2022.10 containing Python 3.9.13 (released on 2022-10-17). The post has been updated, with the exception of the screenshots, to Anaconda3 version 2023.07-2 containing Python 3.11.4 (released 2023-08-04).&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to custom install Anaconda Python on a &lt;strong&gt;WURclient&lt;/strong&gt; desktop or laptop computer without using Software Center.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on privately owned desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a privately owned desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2022/11/06/anaconda-installation-windows-10-11/&#34;&gt;Anaconda installation on Windows 10/11&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+&lt;p&gt;To be able to perform a custom installation of R you need to have &lt;u&gt;&lt;strong&gt;POWER USER RIGHTS&lt;/strong&gt;&lt;/u&gt; on the WURclient desktop or laptop.&lt;/p&gt;
+&lt;p&gt;To see whether you possess these rights, right-click any icon (except Recycle Bin or WUR HELP) on the desktop. When the opened menu contains the option &amp;lsquo;WUR - Run with administrative rights&amp;rsquo; (seventh or eighth from the top), it means you have power user rights on that particular desktop or laptop.&lt;/p&gt;
+&lt;h2 id=&#34;uninstall-a-previously-installed-anaconda-python-version&#34;&gt;Uninstall a previously installed Anaconda Python version&lt;/h2&gt;
+&lt;p&gt;Before performing a new custom installation of Anaconda it is recommended to uninstall a previously installed version.&lt;/p&gt;
+&lt;p&gt;Here two procedures are described, follow the one that fits your needs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#installed-from-software-center&#34;&gt;Installed from Software Center&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#installed-previously-as-a-custom-installation&#34;&gt;Installed previously as a custom installation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In case you have no version of Anaconda installed on your WURclient desktop or laptop you can proceed to the section &lt;a href=&#34;#custom-anaconda-installation&#34;&gt;Custom Anaconda installation&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;installed-from-software-center&#34;&gt;Installed from Software Center&lt;/h3&gt;
+&lt;p&gt;If you previously installed Anaconda Python from Software Center, then to remove Anaconda Python reopen the Software Center by clicking on Start and next click on the Software Center tile. If for some reason you lack this tile in your start menu, just type &amp;lsquo;Software Center&amp;rsquo; and it will appear in a search results window in your Windows task bar.&lt;/p&gt;
+&lt;p&gt;In the left column of Software Center navigate to &amp;ldquo;Installation Status&amp;rdquo;. Select the installed Anaconda Python version and click on the green button bearing the text &amp;ldquo;Uninstall&amp;rdquo;. This will start the removal of the software. You will be informed by the Software Center, when the software has been uninstalled.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;If you have not installed another version of Anaconda Python, either via Software Center or via a custom installation, your computer should now be lacking a functioning Anaconda Python installation. Continue with the section &lt;a href=&#34;#custom-anaconda-installation&#34;&gt;Custom Anaconda installation&lt;/a&gt; to perform a new custom installation of Anaconda.&lt;/p&gt;
+&lt;p&gt;When you do still have a working Anaconda Python installation on your WURclient computer, return to &lt;a href=&#34;#uninstall-a-previously-installed-anaconda-python-version&#34;&gt;Uninstall a previously installed Anaconda version&lt;/a&gt; and follow the procedure applicable to your situation.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;installed-previously-as-a-custom-installation&#34;&gt;Installed previously as a custom installation&lt;/h3&gt;
+&lt;p&gt;Let&amp;rsquo;s assume you previously installed Anaconda3 version 2021.11 on a WURclient computer (either a desktop or laptop) by following the steps for a custom installation of Anaconda as described in this post. For a newer version of Anaconda the steps are the same, but names of folders may differ.&lt;/p&gt;
+&lt;p&gt;To uninstall Anaconda perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a File Explorer and navigate to the folder &lt;code&gt;C:\MyPrograms\Anaconda3&lt;/code&gt;. Right-click the file &lt;code&gt;Uninstall-Anaconda3.exe&lt;/code&gt; and select &amp;lsquo;WUR - Run with administrative rights&amp;rsquo; as displayed in &lt;a href=&#34;#figure-explorer_uninstall_anaconda&#34;&gt;Figure 1&lt;/a&gt; below.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-explorer_uninstall_anaconda&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Uninstall Custom Anaconda Installation from File Explorer.&#34; srcset=&#34;
+               /media/anaconda-wurclient/1-uninstall-anaconda_hu3bd2061bc70fab4a28a211ea258142c1_364372_247f65905b2770d561ef2b8c54f01142.webp 400w,
+               /media/anaconda-wurclient/1-uninstall-anaconda_hu3bd2061bc70fab4a28a211ea258142c1_364372_bf36b7af834ee1a8bc7daec8d459751a.webp 760w,
+               /media/anaconda-wurclient/1-uninstall-anaconda_hu3bd2061bc70fab4a28a211ea258142c1_364372_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/1-uninstall-anaconda_hu3bd2061bc70fab4a28a211ea258142c1_364372_247f65905b2770d561ef2b8c54f01142.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;474&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Uninstall Custom Anaconda Installation from File Explorer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The uninstaller will start as shown below in &lt;a href=&#34;#figure-uninstall_anaconda&#34;&gt;Figure 2&lt;/a&gt;. Click the &amp;lsquo;Next &amp;gt;&amp;rsquo; to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-uninstall_anaconda&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome to Anaconda3 2021.11 (64-bit) Uninstall Announcement.&#34; srcset=&#34;
+               /media/anaconda-wurclient/2-uninstaller-anaconda_hueef29ceddaa9971f96a4f59428e1e8d6_19338_865432ce5a4b0aec273f5654684bc9e8.webp 400w,
+               /media/anaconda-wurclient/2-uninstaller-anaconda_hueef29ceddaa9971f96a4f59428e1e8d6_19338_7e7c44b80eb7784aead9de3446fc7c7e.webp 760w,
+               /media/anaconda-wurclient/2-uninstaller-anaconda_hueef29ceddaa9971f96a4f59428e1e8d6_19338_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/2-uninstaller-anaconda_hueef29ceddaa9971f96a4f59428e1e8d6_19338_865432ce5a4b0aec273f5654684bc9e8.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome to Anaconda3 2021.11 (64-bit) Uninstall Announcement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The uninstaller proceeds to the next screen, as shown in &lt;a href=&#34;#figure-uninstall_anaconda_from&#34;&gt;Figure 3&lt;/a&gt;, displaying the folder from where Anaconda3 will be uninstalled. Click the &amp;lsquo;Uninstall&amp;rsquo; to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-uninstall_anaconda_from&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Uninstall Anaconda3 2021.11 (64-bit) from specified location.&#34; srcset=&#34;
+               /media/anaconda-wurclient/3-uninstall-anaconda-from_hub643296e29fd193afe28bd1772cc0141_11833_5aa4db2f6499b5c192d710e2da3acfc4.webp 400w,
+               /media/anaconda-wurclient/3-uninstall-anaconda-from_hub643296e29fd193afe28bd1772cc0141_11833_26a24392aa916dc3f3c0faa896944f92.webp 760w,
+               /media/anaconda-wurclient/3-uninstall-anaconda-from_hub643296e29fd193afe28bd1772cc0141_11833_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/3-uninstall-anaconda-from_hub643296e29fd193afe28bd1772cc0141_11833_5aa4db2f6499b5c192d710e2da3acfc4.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Uninstall Anaconda3 2021.11 (64-bit) from specified location.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Once the uninstallation has completed, a message of success will be display as shown below in &lt;a href=&#34;#figure-uninstall_anaconda_success&#34;&gt;Figure 4&lt;/a&gt;. Click the &amp;lsquo;Next &amp;gt;&amp;rsquo; button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-uninstall_anaconda_success&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anconda Uninstallation Complete&#34; srcset=&#34;
+               /media/anaconda-wurclient/4-successfull-uninstallation-anaconda_hu2aae7f97924636dc6f9a84339ee6f7b1_9550_e78dc40d273c9475dad19052a78b0745.webp 400w,
+               /media/anaconda-wurclient/4-successfull-uninstallation-anaconda_hu2aae7f97924636dc6f9a84339ee6f7b1_9550_0c8a2da0426a95704286d1af596094c7.webp 760w,
+               /media/anaconda-wurclient/4-successfull-uninstallation-anaconda_hu2aae7f97924636dc6f9a84339ee6f7b1_9550_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/4-successfull-uninstallation-anaconda_hu2aae7f97924636dc6f9a84339ee6f7b1_9550_e78dc40d273c9475dad19052a78b0745.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anconda Uninstallation Complete
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;To finish off the uninstallation click the &amp;lsquo;Finish&amp;rsquo; button as displayed in &lt;a href=&#34;#figure-finish_uninstall_anaconda&#34;&gt;Figure 5&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-finish_uninstall_anaconda&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Completing Anconda3 2021.11 (64-bit) Uninstall&#34; srcset=&#34;
+               /media/anaconda-wurclient/5-finish-uninstall-anaconda_huf72e4a329251eb600882b7b12f0ca078_18628_12aa733a9d7fe5a4fa3eb7e6b78b4a3f.webp 400w,
+               /media/anaconda-wurclient/5-finish-uninstall-anaconda_huf72e4a329251eb600882b7b12f0ca078_18628_a70a05dda4552e3824565deaef9d8d75.webp 760w,
+               /media/anaconda-wurclient/5-finish-uninstall-anaconda_huf72e4a329251eb600882b7b12f0ca078_18628_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/5-finish-uninstall-anaconda_huf72e4a329251eb600882b7b12f0ca078_18628_12aa733a9d7fe5a4fa3eb7e6b78b4a3f.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;434&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Completing Anconda3 2021.11 (64-bit) Uninstall
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;If you have not installed another version of Anaconda Python, either via Software Center or via a custom installation, your computer should now be lacking a functioning Anaconda Python installation. Continue with the section &lt;a href=&#34;#custom-anaconda-installation&#34;&gt;Custom Anaconda installation&lt;/a&gt; to perform a new custom installation of Anaconda.&lt;/p&gt;
+&lt;p&gt;When you do still have a working Anaconda Python installation on your WURclient computer, return to &lt;a href=&#34;#uninstall-a-previously-installed-anaconda-python-version&#34;&gt;Uninstall a previously installed Anaconda version&lt;/a&gt; and follow the procedure applicable to your situation.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;custom-anaconda-installation&#34;&gt;Custom Anaconda installation&lt;/h2&gt;
+&lt;p&gt;To prepare the custom Anaconda installation a couple of folders need to be created prior to the installation of Anaconda. Perform the following steps exactly as described:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Search for the Command Prompt App by typing &lt;code&gt;cmd&lt;/code&gt; in the search field of the Windows task bar.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The left part of the search results will show the Command Prompt App as best match and it will be highlighted in blue. Click on &lt;code&gt;Open file location&lt;/code&gt; (third from the top) in the right part displaying the options for the Command Prompt App.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A File Explorer window will open with the shortcut to Command Prompt highlighted in blue. Right click the Command Prompt shortcut and select &amp;lsquo;WUR - Run with adminstrative rights&amp;rsquo; as shown in &lt;a href=&#34;#figure-explorer_cmd_pusr3&#34;&gt;Figure 6&lt;/a&gt; below.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-explorer_cmd_pusr3&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Run CMD with &amp;#39;WUR administrative rights&amp;#39; from File Explorer.&#34; srcset=&#34;
+               /media/r-wurclient/file_explorer_cmd_hu0be18984296c739fc71e6496918e85fc_164873_934d0ffdb7ce8f9ce630438d215f5a5c.webp 400w,
+               /media/r-wurclient/file_explorer_cmd_hu0be18984296c739fc71e6496918e85fc_164873_b767fe9446bf447954591c28b1f1904e.webp 760w,
+               /media/r-wurclient/file_explorer_cmd_hu0be18984296c739fc71e6496918e85fc_164873_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-wurclient/file_explorer_cmd_hu0be18984296c739fc71e6496918e85fc_164873_934d0ffdb7ce8f9ce630438d215f5a5c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Run CMD with &amp;lsquo;WUR administrative rights&amp;rsquo; from File Explorer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;The Command Prompt application will open, as shown in &lt;a href=&#34;#figure-cmd_prompt3&#34;&gt;Figure 7&lt;/a&gt;, on the folder &lt;code&gt;C:\Windows&lt;/code&gt;. The top of the window shows that the Command Prompt application is used in Administrator mode (&lt;strong&gt;&lt;span style=&#34;color:red;&#34;&gt;WARNING:&lt;/span&gt; BE CAREFULL!!&lt;/strong&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-cmd_prompt3&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Command Prompt with Adminstrative Rights.&#34; srcset=&#34;
+               /media/r-wurclient/cmd_with_admin_rights_huf5be7323cfe34fc3d4301c52613bf226_42888_d2a46ed200483259f07179d651c8bf88.webp 400w,
+               /media/r-wurclient/cmd_with_admin_rights_huf5be7323cfe34fc3d4301c52613bf226_42888_9b336826b7887638f8c197de0f863e19.webp 760w,
+               /media/r-wurclient/cmd_with_admin_rights_huf5be7323cfe34fc3d4301c52613bf226_42888_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-wurclient/cmd_with_admin_rights_huf5be7323cfe34fc3d4301c52613bf226_42888_d2a46ed200483259f07179d651c8bf88.webp&#34;
+               width=&#34;670&#34;
+               height=&#34;213&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Command Prompt with Adminstrative Rights.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Create the directory &lt;code&gt;C:\MyPrograms&lt;/code&gt;. In case the directory already exists, the message &lt;code&gt;A subdirectory or file C:\MyPrograms already exists.&lt;/code&gt; will appear. To create the indicated folder copy (CTRL+C), paste (CTRL+V) the following line behind the prompt and press return (Enter) to execute it:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir C:&lt;span class=&#34;se&#34;&gt;\M&lt;/span&gt;yPrograms
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Next create the directory &lt;code&gt;C:\MyData&lt;/code&gt;. This is done by copying (CTRL+C) the following line, pasting (CTRL+V) it behind the prompt and pressing return (Enter) to execute. In case the directory already exists, the message &lt;code&gt;A subdirectory or file C:\MyData already exists.&lt;/code&gt; will appear.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir C:&lt;span class=&#34;se&#34;&gt;\M&lt;/span&gt;yData
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;To close the Command Prompt application type &lt;code&gt;exit&lt;/code&gt; and press return (Enter) to execute.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;At the time this post was written, the latest release of Anaconda3 was version 2022.10. It has been updated to the latest release version 2023.07-2 of Anaconda3.&lt;/p&gt;
+&lt;p&gt;The installer for Windows 10/11 can be downloaded directly from this link: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Windows-x86_64.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 for Windows (ca. 898.6MB, 64-bit).&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    From Anaconda3 version 2022.10 the installer is only available for 64-bit Windows 10/11 and will not install on a 32-bit version of the Operating System.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;For newer versions of Anaconda3 than 2022.10 the steps described below are the same and still correct, but start with a newer version of the downloaded executable installer file of Anaconda3. The screenshots in this post have not been updated. Therefore, what you see during your installation will differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Right-click the downloaded file &lt;strong&gt;Anaconda3-2023.07-2-Windows-x86_64.exe&lt;/strong&gt; and select &amp;lsquo;WUR - Run with administrative rights&amp;rsquo;. This file will most likely reside in your Downloads folder of your user account.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If asked for allow to install the software on your computer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After the installer has started, a first selection window will appear as displayed below in &lt;a href=&#34;#figure-welcome_anaconda_setup&#34;&gt;Figure 8&lt;/a&gt;. Click the ‘Next &amp;gt;’ button to proceed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-welcome_anaconda_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome to Anaconda3 2022.11 (64-bit) Setup.&#34; srcset=&#34;
+               /media/anaconda-wurclient/6-welcome-installer-anaconda_hu396f62c39475ba2d86ec4ca451730450_20230_6cd22eb7c0d9f92e094931b77c4cda02.webp 400w,
+               /media/anaconda-wurclient/6-welcome-installer-anaconda_hu396f62c39475ba2d86ec4ca451730450_20230_ec20aca3216417c2248cf88763c0ec33.webp 760w,
+               /media/anaconda-wurclient/6-welcome-installer-anaconda_hu396f62c39475ba2d86ec4ca451730450_20230_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/6-welcome-installer-anaconda_hu396f62c39475ba2d86ec4ca451730450_20230_6cd22eb7c0d9f92e094931b77c4cda02.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome to Anaconda3 2022.11 (64-bit) Setup.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;The installer will now display the license agreement for installation of Anaconda3, as shown below in &lt;a href=&#34;#figure-agreement_anaconda_setup&#34;&gt;Figure 9&lt;/a&gt;. Click on the ‘I Agree’ button to agree to the terms.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-agreement_anaconda_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup License Agreement&#34; srcset=&#34;
+               /media/anaconda-wurclient/7-license-agreement-anaconda_hu6158eac176ef75b4ac1f6a3ef1122574_16569_14b1819052cd88a730e9e0757b695ebd.webp 400w,
+               /media/anaconda-wurclient/7-license-agreement-anaconda_hu6158eac176ef75b4ac1f6a3ef1122574_16569_1c18fb9f321ef08fea96cd03b5e0e8de.webp 760w,
+               /media/anaconda-wurclient/7-license-agreement-anaconda_hu6158eac176ef75b4ac1f6a3ef1122574_16569_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/7-license-agreement-anaconda_hu6158eac176ef75b4ac1f6a3ef1122574_16569_14b1819052cd88a730e9e0757b695ebd.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup License Agreement
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;After agreeing to the license terms, the Anaconda3 setup will ask for whom you wish to install for, as displayed in &lt;a href=&#34;#figure-install_for&#34;&gt;Figure 10&lt;/a&gt;. Select the radio button ‘All Users (requires admin priveleges)’ and click on the ‘Next &amp;gt;’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_for&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Select Installation Type&#34; srcset=&#34;
+               /media/anaconda-wurclient/8-selection-installation-type_hu684a5c1b2c30995333270057cd6e7613_11760_bfc8d0652b444a185287ab5d9cce9af7.webp 400w,
+               /media/anaconda-wurclient/8-selection-installation-type_hu684a5c1b2c30995333270057cd6e7613_11760_756770c21037ed8061e856a3e943e587.webp 760w,
+               /media/anaconda-wurclient/8-selection-installation-type_hu684a5c1b2c30995333270057cd6e7613_11760_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/8-selection-installation-type_hu684a5c1b2c30995333270057cd6e7613_11760_bfc8d0652b444a185287ab5d9cce9af7.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Select Installation Type
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Having selected the installation type, the Anaconda3 setup will request for an installation location as shown in &lt;a href=&#34;#figure-install_location&#34;&gt;Figure 11&lt;/a&gt;. Change the destination location to &lt;code&gt;C:\MyPrograms\Anaconda3&lt;/code&gt;, to match &lt;a href=&#34;#figure-install_location&#34;&gt;Figure 11&lt;/a&gt;, by typing the destination path directly into the text field displayed (currently showing &lt;code&gt;C:\ProgramData\Anaconda3&lt;/code&gt;). Click on the ‘Next &amp;gt;’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Choose Installation Location&#34; srcset=&#34;
+               /media/anaconda-wurclient/9-choose-install-location_hu84b8422e5e10b403833e852526d2294f_13197_73ba1079665d2e8e49686e474558c294.webp 400w,
+               /media/anaconda-wurclient/9-choose-install-location_hu84b8422e5e10b403833e852526d2294f_13197_bb61276c24120bb1b688405180a3abe3.webp 760w,
+               /media/anaconda-wurclient/9-choose-install-location_hu84b8422e5e10b403833e852526d2294f_13197_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/9-choose-install-location_hu84b8422e5e10b403833e852526d2294f_13197_73ba1079665d2e8e49686e474558c294.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Choose Installation Location
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;After selecting the installation location folder the Advanced Installation Options will appear, as displayed below in &lt;a href=&#34;#figure-advanced_options&#34;&gt;Figure 12&lt;/a&gt;. Leave the selection as displayed and click on the ‘Install’ button to start the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-advanced_options&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Advanced Installation Options&#34; srcset=&#34;
+               /media/anaconda-wurclient/10-advanced-installation-options_hu90ff010ef82bdb293a632ac5998522a5_18126_439fe80d54a48b96d266e897f6afbeb0.webp 400w,
+               /media/anaconda-wurclient/10-advanced-installation-options_hu90ff010ef82bdb293a632ac5998522a5_18126_3bd825d0cc42e4cefdcefda8039e302e.webp 760w,
+               /media/anaconda-wurclient/10-advanced-installation-options_hu90ff010ef82bdb293a632ac5998522a5_18126_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/10-advanced-installation-options_hu90ff010ef82bdb293a632ac5998522a5_18126_439fe80d54a48b96d266e897f6afbeb0.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Advanced Installation Options
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Once the installation has been completed &lt;a href=&#34;#figure-installation_complete&#34;&gt;Figure 13&lt;/a&gt; will be displayed. Click on the ‘Next &amp;gt;’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-installation_complete&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Installation was completed successfully&#34; srcset=&#34;
+               /media/anaconda-wurclient/11-installation-complete_hu28daa146e736f79edd57a459eaa76450_9807_d1e67bc72cd7c96aba1f0ca38fb497ed.webp 400w,
+               /media/anaconda-wurclient/11-installation-complete_hu28daa146e736f79edd57a459eaa76450_9807_ea631d63ed5583cf0d739e660d9f47d9.webp 760w,
+               /media/anaconda-wurclient/11-installation-complete_hu28daa146e736f79edd57a459eaa76450_9807_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/11-installation-complete_hu28daa146e736f79edd57a459eaa76450_9807_d1e67bc72cd7c96aba1f0ca38fb497ed.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Installation was completed successfully
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Next the Anaconda3 Setup will show some information on how great Anaconda works with DataSpell as shown in &lt;a href=&#34;#figure-anaconda_ds&#34;&gt;Figure 14&lt;/a&gt;. Click the &amp;lsquo;Next &amp;gt;&amp;rsquo; button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-anaconda_ds&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anacond3 Setup message about Anaconda and DataSpell&#34; srcset=&#34;
+               /media/anaconda-wurclient/12-anaconda-jetbrains_hu3335129a9368a4d940b58af683515be7_16372_0976e1a176c221c79b3b90243194b19f.webp 400w,
+               /media/anaconda-wurclient/12-anaconda-jetbrains_hu3335129a9368a4d940b58af683515be7_16372_aada5bc43aab87c91dc4bd011ffdcda6.webp 760w,
+               /media/anaconda-wurclient/12-anaconda-jetbrains_hu3335129a9368a4d940b58af683515be7_16372_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/12-anaconda-jetbrains_hu3335129a9368a4d940b58af683515be7_16372_0976e1a176c221c79b3b90243194b19f.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anacond3 Setup message about Anaconda and DataSpell
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Finally the Annaconda 3 Setup shows that installation has been completed as displayed in &lt;a href=&#34;#figure-anaconda_completing&#34;&gt;Figure 15&lt;/a&gt;. Remove the tick marks from the boxes in front of &amp;lsquo;Anaconda Distribution Tutorial&amp;rsquo; and &amp;lsquo;Getting Started with Anaconda&amp;rsquo;, unless you want to display this information, click the &amp;lsquo;Finish&amp;rsquo; button to finish off the installation and close the Anaconda3 Setup.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-anaconda_completing&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Completing Anacond3 Setup&#34; srcset=&#34;
+               /media/anaconda-wurclient/13-finish-installer-anaconda_hu7515748c9898e057a5154c313d3418fe_20498_76fa4d43ffa90fdab0c60769dddead49.webp 400w,
+               /media/anaconda-wurclient/13-finish-installer-anaconda_hu7515748c9898e057a5154c313d3418fe_20498_0a7602b823dc8b69af5f95b0c857f269.webp 760w,
+               /media/anaconda-wurclient/13-finish-installer-anaconda_hu7515748c9898e057a5154c313d3418fe_20498_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/13-finish-installer-anaconda_hu7515748c9898e057a5154c313d3418fe_20498_76fa4d43ffa90fdab0c60769dddead49.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Completing Anacond3 Setup
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have Anaconda3 version 2023.07-2 containing Python 3.11.4w! installed on your WURclient desktop or laptop computer!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Before using Anaconda check out the configuration instructions below carefully.&lt;/p&gt;
+&lt;p&gt;At least do the part on &lt;a href=&#34;#changing-the-default-startup-working-directory&#34;&gt;Changing the Default Startup Working Directory&lt;/a&gt;!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/h2&gt;
+&lt;!-- ORIGINAL: C:\MyPrograms\Anaconda3\python.exe C:\MyPrograms\Anaconda3\cwp.py C:\MyPrograms\Anaconda3 C:\MyPrograms\Anaconda3\python.exe C:\MyPrograms\Anaconda3\Scripts\jupyter-notebook-script.py &#34;%USERPROFILE%/&#34; --&gt;
+&lt;!-- CHANGED WITH ADMIN RIGHTS TO: C:\MyPrograms\Anaconda3\python.exe C:\MyPrograms\Anaconda3\cwp.py C:\MyPrograms\Anaconda3 C:\MyPrograms\Anaconda3\python.exe C:\MyPrograms\Anaconda3\Scripts\jupyter-notebook-script.py &#34;M:\My Documents&#34; --&gt;
+&lt;h3 id=&#34;changing-the-default-startup-working-directory&#34;&gt;Changing the Default Startup Working Directory&lt;/h3&gt;
+&lt;p&gt;When starting JupyterLab or Jupyter Notebook from within Anaconda Navigator the default working directory on a WURclient will be &lt;code&gt;C:\User\user001&lt;/code&gt;, where &lt;code&gt;user001&lt;/code&gt; will display your own WUR username. This is not a very smart location to store your Jupyter Notebook files (files with the &lt;code&gt;*.ipynb&lt;/code&gt; extension), because this a local storage location without backup.&lt;/p&gt;
+&lt;p&gt;Most users would like to store their documents in &lt;code&gt;M:\My Documents&lt;/code&gt;, which is an internal mapping to &lt;code&gt;\\WURNET.NL\Homes\user001\Documents&lt;/code&gt;. Files stored in your &lt;code&gt;M:\&lt;/code&gt;-drive are backed up by FB-IT and, therefore, provide a much safer storage environment.&lt;/p&gt;
+&lt;p&gt;To change the default start up working directory perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Start Menu and navigate to &amp;lsquo;Anaconda3 (64-bit)&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Either start &amp;lsquo;Anaconda Powershell Prompt (Anaconda3)&amp;rsquo; or &amp;lsquo;Anaconda Prompt (Anaconda3)&amp;rsquo;. A window will open displaying the prompt as &lt;code&gt;(base) PS C:\&amp;gt;&lt;/code&gt; for &amp;lsquo;Anaconda Powershell&amp;rsquo;, or &lt;code&gt;(base) C:\&amp;gt;&lt;/code&gt; for &amp;lsquo;Anaconda Prompt`.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the command shown below behind the prompt and press return (Enter) to execute:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jupyter notebook --generate-config
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;A message stating: &lt;code&gt;Writing default config to: C:\Users\user001\.jupyter\jupyter_notebook_config.py&lt;/code&gt;, where &lt;code&gt;user001&lt;/code&gt; will display your own WUR username, is printed in the window. Type &lt;code&gt;exit&lt;/code&gt; and press return (Enter) to close the prompt window.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Open a File Explorer window and navigate to the created file &lt;code&gt;C:\Users\verou004\.jupyter\jupyter_notebook_config.py&lt;/code&gt;. You may have to change the settings in File Explorer to show the hidden items (File Explorer top menu bar &amp;lsquo;View&amp;rsquo; and place a tick mark in front of &amp;lsquo;hidden items&amp;rsquo;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Right-click the file &lt;code&gt;jupyter_notebook_config.py&lt;/code&gt; and select &amp;lsquo;&lt;strong&gt;Open with&lt;/strong&gt;&amp;rsquo;. Remove the tick mark in front of &amp;lsquo;Always use this app to open .py files&amp;rsquo; and select e.g. &amp;lsquo;Notepad&amp;rsquo;. If you do not see &amp;lsquo;Notepad&amp;rsquo;, click on &amp;lsquo;More apps&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The file &lt;code&gt;jupyter_notebook_config.py&lt;/code&gt; will open in the &amp;lsquo;Notepad&amp;rsquo; application. Navigate to line 450 (press &lt;code&gt;CTRL+G&lt;/code&gt; and enter 450). Remove the &lt;code&gt;#&lt;/code&gt; and whitespace character in front of &lt;code&gt;c.NotebookApp.notebook_dir&lt;/code&gt; and replace &lt;code&gt;&#39;&#39;&lt;/code&gt; with &lt;code&gt;&#39;M:\My Documents&#39;&lt;/code&gt;. Save the document by press &lt;code&gt;CTRL+S&lt;/code&gt;. Lines 448-450 should now look like this:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## The directory to use for notebooks and kernels.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;#  Default: &amp;#39;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;c.NotebookApp.notebook_dir &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;M:\My Documents&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Make sure you have saved your changes in the file &lt;code&gt;jupyter_notebook_config.py&lt;/code&gt; and close the &amp;lsquo;Notepad` application.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You have now changed the default start up working directory permanently.&lt;/p&gt;
+&lt;h3 id=&#34;upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/h3&gt;
+&lt;p&gt;After starting Anaconda Navigator, sometimes you will see that a newer version of the Navigator is available. In the top right corner this is indicated as displayed in &lt;a href=&#34;#figure-navigator_upgrade&#34;&gt;Figure 16&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-navigator_upgrade&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Upgrade available for Anaconda Navigator&#34; srcset=&#34;
+               /media/anaconda-wurclient/14-upgrade-navigator_hu5e2a456a3d1323cf60b4633b6f0fe935_2269_4f649266848a36fdd163b0e6cf70ac16.webp 400w,
+               /media/anaconda-wurclient/14-upgrade-navigator_hu5e2a456a3d1323cf60b4633b6f0fe935_2269_7afdaf6c4c6511196e6e7f263420ef17.webp 760w,
+               /media/anaconda-wurclient/14-upgrade-navigator_hu5e2a456a3d1323cf60b4633b6f0fe935_2269_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-wurclient/14-upgrade-navigator_hu5e2a456a3d1323cf60b4633b6f0fe935_2269_4f649266848a36fdd163b0e6cf70ac16.webp&#34;
+               width=&#34;371&#34;
+               height=&#34;106&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Upgrade available for Anaconda Navigator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;However, having started Anaconda Navigator from the Start Menu as regular user, you will be prompted to enter the administrator username and password. This is a problem, because you are a Power User and not an Administrator.&lt;/p&gt;
+&lt;p&gt;To be able to upgrade Anaconda Navigator you have to start the application with &amp;lsquo;WUR - Run with adminstrative rights&amp;rsquo;. This can be done by following these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Start Menu and navigate to &amp;lsquo;Anaconda3 (64-bit)&amp;rsquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Right-click on the &amp;lsquo;Anaconda Navigator (Anaconda3)&amp;rsquo; start item, select &amp;lsquo;More&amp;rsquo; &amp;gt; &amp;lsquo;Open file location&amp;rsquo;. This will open a File Explorer window displaying the shortcuts to start items of &amp;lsquo;Anaconda3 (64-bit)&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Again right-click on the start item &amp;ldquo;Anaconda Navigator (Anaconda3)&amp;rdquo; in the File Explorer windows and select &amp;lsquo;WUR - Run with adminstrative rights&amp;rsquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now you will be able to upgrade Anaconda Navigatore by clicking on &amp;lsquo;Upgrade Now&amp;rsquo;, as displayed in &lt;a href=&#34;#figure-navigator_upgrade&#34;&gt;Figure 16&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;add-a-r-kernel&#34;&gt;Add a R kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present. To add a R kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Start Menu and navigate to &amp;lsquo;Anaconda3 (64-bit)&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start &amp;lsquo;Anaconda Powershell Prompt (Anaconda3)&amp;rsquo;. A window will open displaying the prompt as &lt;code&gt;(base) PS C:\&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to where &lt;code&gt;R.exe&lt;/code&gt; is located. Let&amp;rsquo;s assume you have R v4.2.1 installed, either via Software Center or via &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;Custom installation on a WURclient&lt;/a&gt;. For other R versions than 4.2.1 do not forget to change the R version number!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;For a installation via Sofware Center use the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; C:&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;rogram Files&lt;span class=&#34;se&#34;&gt;\R\R&lt;/span&gt;-4.2.1&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;in&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; .&lt;span class=&#34;se&#34;&gt;\R&lt;/span&gt;.exe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# At the R prompt, indicated by &amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; install.packages&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;IRkernel&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   IRkernel::installspec&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; q&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Save workspace image? &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/n/c&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: n
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# back at the powershell prompt, indicated by (base) PS C:\&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For a &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;Custom installation on a WURclient&lt;/a&gt; use the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; C:&lt;span class=&#34;se&#34;&gt;\M&lt;/span&gt;yPrograms&lt;span class=&#34;se&#34;&gt;\R\R&lt;/span&gt;-4.2.1&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;in&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; .&lt;span class=&#34;se&#34;&gt;\R&lt;/span&gt;.exe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# At the R prompt, indicated as &amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; install.packages&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;IRkernel&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; IRkernel::installspec&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; q&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; Save workspace image? &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;y/n/c&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;: n
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# back at the powershell prompt, indicated by (base) PS C:\&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the R kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;h3 id=&#34;add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present, unless you already did &lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt; . To add a Julia kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Julia on your WURclient. A window will open and you will see the prompt displayed as &lt;code&gt;julia&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;]&lt;/code&gt; and the prompt will change into &lt;code&gt;(@v1.8) pkg&amp;gt;&lt;/code&gt;. This under the assumption that you have Julia v1.8.2 or later installed. For other versions of Julia the version number for package management will differ.&lt;/li&gt;
+&lt;li&gt;Type the command &lt;code&gt;add IJulia&lt;/code&gt;. This will install a lot of packages and make the Julia kernel available in Jupyter Notebook and JupyterLab.&lt;/li&gt;
+&lt;li&gt;Close the Julia package manager by pressing the BACKSPACE key on your keyboard.&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;exit()&lt;/code&gt; to close Julia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the Julia kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1660 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows 11 | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/category/windows-11/</link>
+      <atom:link href="https://www.verouden.net/category/windows-11/index.xml" rel="self" type="application/rss+xml" />
+    <description>Windows 11</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Sun, 27 Aug 2023 16:19:00 +0200</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>Windows 11</title>
+      <link>https://www.verouden.net/category/windows-11/</link>
+    </image>
+    
+    <item>
+      <title>RStan installation on a Windows 10/11 or a WURclient computer</title>
+      <link>https://www.verouden.net/post/2023/08/27/rstan-installation/</link>
+      <pubDate>Sun, 27 Aug 2023 16:19:00 +0200</pubDate>
+      <guid>https://www.verouden.net/post/2023/08/27/rstan-installation/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#requirements-for-rstan-installation&#34;&gt;Requirements for RStan installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#verifying-the-rstan-installation&#34;&gt;Verifying the RStan installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#loading-the-package&#34;&gt;Loading the package&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installing-the-brms-package&#34;&gt;Installing the &amp;lsquo;brms&amp;rsquo; package&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT34806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT34806 Bayesian Data Analysis&lt;/a&gt; will use RStan as well as basic R. Therefore, they will need to install RStan.&lt;/p&gt;
+&lt;p&gt;RStan is an implementation of &lt;a href=&#34;https://mc-stan.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stan&lt;/a&gt; in &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;. Stan is a state-of-the-art platform for statistical modeling and high-performance statistical computation. Thousands of users rely on Stan for statistical modeling, data analysis, and prediction in the social, biological, and physical sciences, engineering, and business.&lt;/p&gt;
+&lt;p&gt;Users specify log density functions in Stan’s probabilistic programming language and get:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;full Bayesian statistical inference with MCMC sampling (NUTS, HMC)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;approximate Bayesian inference with variational inference (ADVI)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;penalized maximum likelihood estimation with optimization (L-BFGS)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Stan’s math library provides differentiable probability functions &amp;amp; linear algebra (C++ autodiff). Additional R packages provide expression-based linear modeling, posterior visualization, and leave-one-out cross-validation.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install Rtools on a &lt;strong&gt;privately owned&lt;/strong&gt; computer running Windows 10/11, or a &lt;strong&gt;WURclient&lt;/strong&gt; desktop or laptop computer.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;requirements-for-rstan-installation&#34;&gt;Requirements for RStan installation&lt;/h2&gt;
+&lt;p&gt;Prior requirements for installing RStan:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; R properly installed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installed on Windows 10/11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; R installed on a WURclient via Software Center, or&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;R installed on a WURclient using a custom installation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2022/07/05/rtools-installation/&#34;&gt;Rtools installed on a Windows 10/11 or a WURclient computer&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Without having R and Rtools installed on your desktop or laptop computer, it makes no sense to try to install RStan. RStan needs to be able to compile from source within R, making R and Rtools indispensable.&lt;/p&gt;
+&lt;p&gt;Not required, however, highly recommended:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; RStudio installed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/13/rstudio-installation-on-windows-10/&#34;&gt;RStudio installed on Windows 10/11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; RStudio installed on a WURclient via Software Ceneter, or&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/&#34;&gt;RStudio installed on a WURclient using a custom installation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;The RStan installation, described here, assumes usage of &lt;strong&gt;R version 4.2.x or above&lt;/strong&gt;. It uses the latest development version (v2.26.x) of the RStan package, because of incompatibility of the current RStan package on CRAN (v2.21.x) for R versions above v4.2.x, as mentioned on &lt;a href=&#34;https://blog.mc-stan.org/2022/04/26/stan-r-4-2-on-windows/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Stan Blog: Stan &amp;amp; R 4.2 on Windows&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To install RStan:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Start either &lt;strong&gt;RStudio&lt;/strong&gt;, or the default &lt;strong&gt;R GUI&lt;/strong&gt;. RStudio being the recommended interface!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove, if present, the existing installation of the packages &lt;code&gt;StanHeaders&lt;/code&gt; and &lt;code&gt;rstan&lt;/code&gt; by executing at the R prompt:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;remove.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkgs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StanHeaders&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;rstan&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Install the latest development version of &lt;code&gt;StanHeaders&lt;/code&gt; and &lt;code&gt;rstan&lt;/code&gt; by executing at the R prompt:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkgs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;StanHeaders&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;rstan&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;repos&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://mc-stan.org/r-packages/&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;nf&#34;&gt;getOption&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;repos&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have RStan installed on your personal Windows 10/11 or WURclient computer!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;verifying-the-rstan-installation&#34;&gt;Verifying the RStan installation&lt;/h2&gt;
+&lt;p&gt;To verify the RStan installation run the RStan example/test model at the R prompt:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;example&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stan_model&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;rstan&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;run.dontrun&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The model should then compile and sample.&lt;/p&gt;
+&lt;p&gt;If the example model fails with the error:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Error&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;compileCode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;code&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;language&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;language&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;verbose&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;verbose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;\rtools43\x86_64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mingw32.static.posix\bin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ld.exe&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;file327c377a3dae.o&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file327c377a3dae.cpp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;.text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_ZN3tbb8internal26task_scheduler_observer_v3D0Ev[_ZN3tbb8internal26task_scheduler_observer_v3D0Ev]&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;+0&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x1d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;undefined&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;reference&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;`tbb::internal::task_scheduler_observer_v3::observe(bool)&amp;#39;C:\rtools42\x86_64-w64-mingw32.static.posix\bin/ld.exe: file327c377a3dae.o:file327c377a3dae.cpp:(.text$_ZN3tbb10interface623task_scheduler_observerD1Ev[_ZN3tbb10interface623task_scheduler_observerD1Ev]+0x1d): undefined reference to `tbb&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;internal&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;task_scheduler_observer_v3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;observe&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bool&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;C:\rtools42\x86_64-w64-mingw32.static.posix\bin/ld.exe: file327c377a3dae.o:file327c377a3dae.cpp:(.text$_ZN3tbb10interface623task_scheduler_observerD1Ev[_ZN3tbb10interface623task_scheduler_observerD1Ev]+0x3a): undefined reference to `tbb::internal::task_scheduler_observer_v3::observe(bool)&amp;#39;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;C&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;\rtools42\x86_64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;w64&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mingw32.static.posix\bin&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ld.exe&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;file327c377a3dae.o&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file327c377a3dae.cpp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;.text&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;$&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;_ZN3tbb10interface&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;Error&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;sink&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;output&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;invalid&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;connection&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Verify that the packages &lt;code&gt;StanHeaders&lt;/code&gt; and &lt;code&gt;rstan&lt;/code&gt; installed are of version 2.26.x. Executing the following commands will show the installed versions:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;packageVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;StanHeaders&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;packageVersion&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkg&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;rstan&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When the installed versions differ from version 2.26.x, then repeat steps 2. and 3. as described in the section &lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;loading-the-package&#34;&gt;Loading the package&lt;/h2&gt;
+&lt;p&gt;The package name is &lt;code&gt;rstan&lt;/code&gt; (all lowercase), to load the package execute:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;rstan&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# observe startup messages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As the startup message says, when using &lt;code&gt;rstan&lt;/code&gt; locally on a multicore machine and the system has plenty of RAM to estimate the model in parallel, at this point execute at the R prompt:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;options&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mc.cores&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;parallel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;detectCores&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In addition, execute the second startup message at the R prompt:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;rstan_options&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;auto_write&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;which allows to automatically save a bare version of a compiled Stan program to the hard disk so that it does not need to be recompiled (unless after changing the program). These commands will need to be run, each time the &lt;code&gt;rstan&lt;/code&gt; library is loaded load in R.&lt;/p&gt;
+&lt;p&gt;Finally, when using Windows as operating system, there will be a third startup message saying &lt;strong&gt;not&lt;/strong&gt; to use &lt;code&gt;--march=native&lt;/code&gt; compiler flag. This warning can be ignored, if the steps above have been followed and a &lt;code&gt;Makevars.win&lt;/code&gt; file on your system does not contain this flag. When the file name &lt;code&gt;Makevars.win&lt;/code&gt; does not ring any bells, this probably means it doesn&amp;rsquo;t exist in your system.&lt;/p&gt;
+&lt;h2 id=&#34;installing-the-brms-package&#34;&gt;Installing the &amp;lsquo;brms&amp;rsquo; package&lt;/h2&gt;
+&lt;p&gt;In the course &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT34806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT34806 Bayesian Data Analysis&lt;/a&gt; the &lt;code&gt;brms&lt;/code&gt; package will be used. This package extends RStan for Bayesian regression modeling. The package abbreviation &lt;code&gt;brms&lt;/code&gt; stands for Bayesian Regression Models using &amp;lsquo;Stan&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;When the installation of RStan has been completed successfully, install the &lt;code&gt;brms&lt;/code&gt; package by executing at the R prompt the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pkgs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;brms&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>Anaconda installation on Windows 10/11</title>
+      <link>https://www.verouden.net/post/2022/11/06/anaconda-installation-windows-10-11/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2022/11/06/anaconda-installation-windows-10-11/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#windows-1011-compatibility-and-wur-appstore-installation&#34;&gt;Windows 10/11 compatibility and WUR AppStore installation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#using-the-wur-appstore&#34;&gt;Using the WUR AppStore&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#support-wur-appstore&#34;&gt;Support WUR AppStore&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;2. Manual Installation&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Around 34 courses at Wageningen University &amp;amp; Research use Anaconda Python as software in their course, e.g. &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB30806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-30806 Modelling in Systems Biology&lt;/a&gt; and &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB50806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-50806 Systems and Synthetic Biology&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install Anaconda Python (Anaconda3) on a &lt;strong&gt;privately owned&lt;/strong&gt; desktop or laptop computer running Windows 10 or Windows 11 as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on WURclient desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a WURclient desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2022/11/03/anaconda-installation-wurclient/&#34;&gt;Custom Anaconda installation on a WURclient compute&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Two ways to install Anaconda are offered here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;WUR AppStore&lt;/a&gt;. This is the &lt;strong&gt;RECOMMENDED&lt;/strong&gt; way!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;Manual installation&lt;/a&gt; for those who, for whatever reason, do not want to use the WUR AppStore.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/h2&gt;
+&lt;p&gt;The WUR AppStore is the place where you will be able to download, link to, or virtually access the software you need for your study programme and courses. Not only during the computer labs and courses, but also for self-study after those.&lt;/p&gt;
+&lt;p&gt;For more information see: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1222947-what-is-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;What is the WUR AppStore&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;windows-1011-compatibility-and-wur-appstore-installation&#34;&gt;Windows 10/11 compatibility and WUR AppStore installation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;To safely use the study and course software, you need to &lt;strong&gt;connect your laptop to the WUR&lt;/strong&gt; network with your WUR account. &lt;strong&gt;Windows 10 or 11 Education Edition&lt;/strong&gt; or  &lt;strong&gt;Professional Edition&lt;/strong&gt; is needed on your laptop to be able to access the WUR AppStore. If you are using a Home Edition of Windows 10 or 11, you will be automatically upgraded to the Education Edition.&lt;/li&gt;
+&lt;li&gt;If you have Windows 10 or 11, you can proceed to the manual: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203863-how-to-connect-to-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to connect to the WUR AppStore&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--* If you have another version of Windows 10/11 (e.g. Windows 10/11 Home), follow the manual: [How to get Windows 10 Education](https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1223173-how-to-get-windows-10-education). After having upgraded Windows 10 to the Education version, you can proceed to the manual: [How to get access to the WUR AppStore](https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203863-how-to-connect-to-the-wur-appstore).--&gt;
+&lt;h3 id=&#34;using-the-wur-appstore&#34;&gt;Using the WUR AppStore&lt;/h3&gt;
+&lt;p&gt;The use of the WUR AppStore is very well described by the WUR TEAM Study Anytime, Anyplace. The first article can be found here: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203865-how-can-i-use-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How can I use the WUR AppStore&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The WUR AppStore currently contains &lt;strong&gt;Anaconda 2023.07&lt;/strong&gt;. &lt;!-- Soon **Anaconda 2022.10** will be made available! --&gt;&lt;/p&gt;
+&lt;h3 id=&#34;support-wur-appstore&#34;&gt;Support WUR AppStore&lt;/h3&gt;
+&lt;p&gt;In case you need support installing or using the WUR AppStore you can contact the WUR Servicedesk IT either by telephone: &lt;a href=&#34;tel:+31317488888&#34;&gt;+31 (0)317 488888&lt;/a&gt; / mail: &lt;a href=&#34;mailto:Servicedesk.IT@wur.nl&#34;&gt;Servicedesk.IT AT wur.nl&lt;/a&gt;. You can also visit the Servicepoint IT, ground floor left of the Grand Café, in Forum (Building 102) on the WUR Campus.&lt;/p&gt;
+&lt;h2 id=&#34;2-manual-installation&#34;&gt;2. Manual Installation&lt;/h2&gt;
+&lt;p&gt;By default the Anaconda installer wants to install into the &lt;code&gt;C:\ProgramData&lt;/code&gt; folder of your Windows Operating System. According to Microsoft this folder is &amp;ldquo;used by applications to store data for standard users, because it does not require elevated permissions&amp;rdquo;. However, it is not recommended to use for installing software. The reason, the Anaconda installer chooses this folder, is that it does not contain a whitespace character like in &lt;code&gt;C:\Program Files\&lt;/code&gt;. The Anaconda software can not deal with whitespace characters in path names, while running.&lt;/p&gt;
+&lt;p&gt;To prepare the Anaconda installation a folder needs to be created prior to the installation of Anaconda. Either create the folder &lt;code&gt;C:\MyPrograms&lt;/code&gt; yourself in File Explorer, or perform the following steps exactly as described:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Search for the Command Prompt App by typing &lt;code&gt;cmd&lt;/code&gt; in the search field of the Windows task bar. Press return (Enter) to start the application. A window will appear similar to as displayed in &lt;a href=&#34;#figure-command_promt&#34;&gt;Figure 1&lt;/a&gt; showing your own system username.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-command_prompt&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Windows Command Prompt Application window&#34; srcset=&#34;
+               /media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_be9dfa80fc4427fc3115b2d88a2f33d1.webp 400w,
+               /media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_a5c5f4969fbf36210508e5a09dfcadd9.webp 760w,
+               /media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/1-command-prompt_hu4dd8e1f0e701d72db9de77b5551c2603_16271_be9dfa80fc4427fc3115b2d88a2f33d1.webp&#34;
+               width=&#34;618&#34;
+               height=&#34;279&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Windows Command Prompt Application window
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Create the directory &lt;code&gt;C:\MyPrograms&lt;/code&gt;. This is done by copying (CTRL+C) the following line, pasting (CTRL+V) it behind the prompt and pressing return (Enter) to execute. In case the directory already exists, the message &lt;code&gt;A subdirectory or file C:\MyPrograms already exists.&lt;/code&gt; will appear.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir C:&lt;span class=&#34;se&#34;&gt;\M&lt;/span&gt;yPrograms
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The Command Prompt application can now be closed by typing &lt;code&gt;exit&lt;/code&gt; and executing it by pressing return (Enter).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;At the time this post was written, the latest release of Anaconda3 was version 2022.10. It has been updated to the latest release version 2023.07-2 of Anaconda3.&lt;/p&gt;
+&lt;p&gt;The installer for Windows 10/11 can be downloaded directly from this link: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-Windows-x86_64.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 for Windows (ca. 898.6MB, 64-bit).&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    From Anaconda3 version 2022.10 the installer is only available for 64-bit Windows 10/11 and will not install on a 32-bit version of the Operating System.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;For newer versions of Anaconda3 than 2022.10 the steps described below are the same and still correct, but start with a newer version of the downloaded executable installer file of Anaconda3. The screenshots in this post have not been updated. Therefore, what you see during your installation will differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Right-click the downloaded file &lt;strong&gt;Anaconda3-2023.07-2-Windows-x86_64.exe&lt;/strong&gt; and select &amp;lsquo;Run as administrator&amp;rsquo;, as shown in &lt;a href=&#34;#figure-start_admin&#34;&gt;Figure 2&lt;/a&gt;. This file will most likely reside in your Downloads folder of your user account.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-start_admin&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Anaconda Installer as administrator&#34; srcset=&#34;
+               /media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_ffa2192adbac5811a7f3ebdf03ae33e6.webp 400w,
+               /media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_19da76c9c1b514f6d7e38b2d4dc714a2.webp 760w,
+               /media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/2-start-installer-as-admin_hu0af27997cd9bc50aff8fbe0f2889cc42_57226_ffa2192adbac5811a7f3ebdf03ae33e6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;250&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Anaconda Installer as administrator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Windows will ask for permission to allow the application to make changes to your device as shown in &lt;a href=&#34;#figure-allow_changes_installer&#34;&gt;Figure 3&lt;/a&gt;. Click &amp;lsquo;Yes&amp;rsquo; to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow_changes_installer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Permission request for changes.&#34; srcset=&#34;
+               /media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_51609ce4fd06eb0078ddc16c2565d81f.webp 400w,
+               /media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_b6d5ce049b89eaf21956153a38ee03e9.webp 760w,
+               /media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/3-allow-changes-anaconda_hu5b1ed54e2634c9e07ff0b059cd46fff6_30841_51609ce4fd06eb0078ddc16c2565d81f.webp&#34;
+               width=&#34;456&#34;
+               height=&#34;333&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Permission request for changes.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;After the installer has started, a first selection window will appear as displayed below in &lt;a href=&#34;#figure-welcome_anaconda_setup&#34;&gt;Figure 4&lt;/a&gt;. Click the ‘Next &amp;gt;’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-welcome_anaconda_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome to Anaconda3 2022.10 (64-bit) Setup.&#34; srcset=&#34;
+               /media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_d24f842eed9816252315bb4b0ddee228.webp 400w,
+               /media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_3b21234540a01963f1c4fc9bd17a3fc3.webp 760w,
+               /media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/4-welcome-installer-anaconda_hu21a31acf9ebd87c41b26a00b3e4aceaf_41600_d24f842eed9816252315bb4b0ddee228.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome to Anaconda3 2022.10 (64-bit) Setup.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;The installer will now display the license agreement for installation of Anaconda3, as shown below in &lt;a href=&#34;#figure-agreement_anaconda_setup&#34;&gt;Figure 5&lt;/a&gt;. Click on the ‘I Agree’ button to agree to the terms.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-agreement_anaconda_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup License Agreement&#34; srcset=&#34;
+               /media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_57ed631ec76eb609cd91d7feb03c9755.webp 400w,
+               /media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_9c0db05dcdea2fe53e49f92e2bb772cf.webp 760w,
+               /media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/5-license-agreement-anaconda_hu0df103b4dcc18fb9e261f82bc064e962_42642_57ed631ec76eb609cd91d7feb03c9755.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup License Agreement
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;After agreeing to the license terms, the Anaconda3 setup will ask for whom you wish to install for, as displayed in &lt;a href=&#34;#figure-install_for&#34;&gt;Figure 6&lt;/a&gt;. Select the radio button ‘All Users (requires admin priveleges)’ and click on the ‘Next &amp;gt;’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_for&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Select Installation Type&#34; srcset=&#34;
+               /media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_e46980934f55a7bc6c02bb638334e247.webp 400w,
+               /media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_3b1d7a7c142b5fdc45913e77c3164dc7.webp 760w,
+               /media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/6-selection-installation-type_hud437446e03558702bec3f0109be4eb7a_29651_e46980934f55a7bc6c02bb638334e247.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Select Installation Type
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Having selected the installation type, the Anaconda3 setup will request for an installation location as shown in &lt;a href=&#34;#figure-install_location&#34;&gt;Figure 7&lt;/a&gt;. Change the destination location to &lt;code&gt;C:\MyPrograms\Anaconda3&lt;/code&gt;, to match &lt;a href=&#34;#figure-install_location&#34;&gt;Figure 7&lt;/a&gt;, by typing the destination path directly into the text field displayed (currently showing &lt;code&gt;C:\ProgramData\Anaconda3&lt;/code&gt;). Click on the ‘Next &amp;gt;’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Choose Installation Location&#34; srcset=&#34;
+               /media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_3f54bc46838e72e0db1f5eb764752a28.webp 400w,
+               /media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_859217673d95eaebdcf36836c0b0c489.webp 760w,
+               /media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/7-choose-install-location_huc0c56df2fcd8ea4ed14f180bd70367c7_34751_3f54bc46838e72e0db1f5eb764752a28.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Choose Installation Location
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;After selecting the installation location folder the Advanced Installation Options will appear, as displayed below in &lt;a href=&#34;#figure-advanced_options&#34;&gt;Figure 8&lt;/a&gt;. Leave the selection as displayed and click on the ‘Install’ button to start the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-advanced_options&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Advanced Installation Options&#34; srcset=&#34;
+               /media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_4398ab462b715b1e01a176a5432bdb58.webp 400w,
+               /media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_50c49ae35cad4628d028ce9854cd9da0.webp 760w,
+               /media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/8-advanced-installation-options_hu13a4096dcdeef5716b0c2cf53d88e276_40178_4398ab462b715b1e01a176a5432bdb58.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Advanced Installation Options
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Once the installation has been completed &lt;a href=&#34;#figure-installation_complete&#34;&gt;Figure 9&lt;/a&gt; will be displayed. Click on the ‘Next &amp;gt;’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-installation_complete&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Setup Installation was completed successfully&#34; srcset=&#34;
+               /media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_94c46f367430ab6e2686f375ce433d51.webp 400w,
+               /media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_1981a980f044243fff12c5758a8a26d3.webp 760w,
+               /media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/9-installation-complete_hu3ec4bb3fe1824136ab7d1a233696a7ae_24839_94c46f367430ab6e2686f375ce433d51.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Setup Installation was completed successfully
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Next the Anaconda3 Setup will show some information on how great Anaconda works with DataSpell, as shown in &lt;a href=&#34;#figure-anaconda_ds&#34;&gt;Figure 10&lt;/a&gt;. Click the &amp;lsquo;Next &amp;gt;&amp;rsquo; button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-anaconda_ds&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anacond3 Setup message about Anaconda and DataSpell&#34; srcset=&#34;
+               /media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_ee8b0291871541a4e4c6c4f38bb28fd3.webp 400w,
+               /media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_da14f7f4711936c6b90c18f7a2c04a74.webp 760w,
+               /media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/10-message-dataspell_hu1f767e41c446b3a01cc292a314b1c69c_38488_ee8b0291871541a4e4c6c4f38bb28fd3.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anacond3 Setup message about Anaconda and DataSpell
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Finally the Annaconda 3 Setup shows that installation has been completed as displayed in &lt;a href=&#34;#figure-anaconda_completing&#34;&gt;Figure 11&lt;/a&gt;. Remove the tick marks from the boxes in front of &amp;lsquo;Anaconda Distribution Tutorial&amp;rsquo; and &amp;lsquo;Getting Started with Anaconda&amp;rsquo;, unless you want to display this information, click the &amp;lsquo;Finish&amp;rsquo; button to finish off the installation and close the Anaconda3 Setup.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-anaconda_completing&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Completing Anacond3 Setup&#34; srcset=&#34;
+               /media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_26417ce3dd2d415f48f6056ceeb575e0.webp 400w,
+               /media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_a5bef7c70687d94898a5c32bd2c5d4a6.webp 760w,
+               /media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/11-finish-installer-anaconda_hu8a83dce263ff0728e5bf12c6992b2684_41465_26417ce3dd2d415f48f6056ceeb575e0.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Completing Anacond3 Setup
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have Anaconda3 version 2023.07-2 containing Python 3.11.4 installed on your Windows desktop or laptop computer!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Below in &lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt; you find information about additional tasks you may need to perform.&lt;/p&gt;
+&lt;p&gt;Use the ones required!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/h2&gt;
+&lt;h3 id=&#34;upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/h3&gt;
+&lt;p&gt;When starting Anaconda Navigator from your Start Menu the Navigator may open displaying the message shown in &lt;a href=&#34;#figure-navigator_upgrade&#34;&gt;Figure 12&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-navigator_upgrade&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Upgrade available for Anaconda Navigator&#34; srcset=&#34;
+               /media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_6d0d1258146fd8fd8e585031877b5729.webp 400w,
+               /media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_799f791fb7d83b8d2c3bc5e02c5f434a.webp 760w,
+               /media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/12-upgrade-navigator_hu33cc4b2f69507f78212e4d7f60331d19_110027_6d0d1258146fd8fd8e585031877b5729.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;458&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Upgrade available for Anaconda Navigator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;To upgrade Anaconda Navigator follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &amp;lsquo;Yes&amp;rsquo; as shown in &lt;a href=&#34;#figure-navigator_upgrade&#34;&gt;Figure 12&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows will ask for permission to allow the application to make changes to your device as shown in &lt;a href=&#34;#figure-allow_changes_update&#34;&gt;Figure 13&lt;/a&gt;. Click &amp;lsquo;Yes&amp;rsquo; to continue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow_changes_update&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Permission request for changes to update.&#34; srcset=&#34;
+               /media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_eebd83e068281175569789eccc7fe174.webp 400w,
+               /media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_d55f7d1ae22bc5ccdbc5e1157708c4f2.webp 760w,
+               /media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-windows/13-allow-app-changes_hu4d814a9d7f8182eff730c673ae3824e4_28809_eebd83e068281175569789eccc7fe174.webp&#34;
+               width=&#34;456&#34;
+               height=&#34;314&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Permission request for changes to update.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Continue the procedure as indicated on your display to perform the update of Anaconda Navigator.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;add-a-r-kernel&#34;&gt;Add a R kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present. To add a R kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Start Menu and navigate to &amp;lsquo;Anaconda3 (64-bit)&amp;rsquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start &amp;lsquo;Anaconda Powershell Prompt (Anaconda3)&amp;rsquo;. A window will open displaying the prompt as &lt;code&gt;(base) PS C:\&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigate to where &lt;code&gt;R.exe&lt;/code&gt; is located. Let&amp;rsquo;s assume you have R v4.2.1 installed, either via the WUR AppStore or via &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installation on Windows 10/11&lt;/a&gt;. For other R versions than 4.2.1 do not forget to change the R version number!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Use the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; C:&lt;span class=&#34;se&#34;&gt;\P&lt;/span&gt;rogram Files&lt;span class=&#34;se&#34;&gt;\R\R&lt;/span&gt;-4.2.1&lt;span class=&#34;se&#34;&gt;\b&lt;/span&gt;in&lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt; .&lt;span class=&#34;se&#34;&gt;\R&lt;/span&gt;.exe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;## At the R prompt, indicated by &amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; install.packages&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;IRkernel&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; IRkernel::installspec&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; q&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# Question in R: Save workspace image? [y/n/c]: n&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;## back at the powershell prompt, indicated by (base) PS C:\&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the R kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;h3 id=&#34;add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present, unless you already did &lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt; . To add a Julia kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open Julia on your WURclient. A window will open and you will see the prompt displayed as &lt;code&gt;julia&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;]&lt;/code&gt; and the prompt will change into &lt;code&gt;(@v1.8) pkg&amp;gt;&lt;/code&gt;. This under the assumption that you have Julia v1.8.2 or later installed. For other versions of Julia the version number for package management will differ.&lt;/li&gt;
+&lt;li&gt;Type the command &lt;code&gt;add IJulia&lt;/code&gt;. This will install a lot of packages and make the Julia kernel available in Jupyter Notebook and JupyterLab.&lt;/li&gt;
+&lt;li&gt;Close the Julia package manager by pressing the BACKSPACE key on your keyboard.&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;exit()&lt;/code&gt; to close Julia.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the Julia kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rtools installation on a Windows 10/11 or a WURclient computer</title>
+      <link>https://www.verouden.net/post/2022/07/05/rtools-installation/</link>
+      <pubDate>Tue, 05 Jul 2022 11:15:44 +0200</pubDate>
+      <guid>https://www.verouden.net/post/2022/07/05/rtools-installation/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#requirement-for-and-download-of-rtools&#34;&gt;Requirement for and Download of Rtools&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#requirement&#34;&gt;Requirement&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installation-rtools&#34;&gt;Installation Rtools&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#check-the-installation&#34;&gt;Check the Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Many people are able to use R, without ever having the need to compile from source and, therefore, the need to install Rtools. However, if you want to do package development, compile from source, or use packages like &lt;strong&gt;rstan&lt;/strong&gt; or &lt;strong&gt;cmdstanr&lt;/strong&gt;, you will definitely need to install Rtools.&lt;/p&gt;
+&lt;p&gt;In this post the installation procedure for Rtools will be given step wise. It will work for both regular Windows 10/11 computers as well as WURclient computers.&lt;/p&gt;
+&lt;p&gt;A WURclient desktop or laptop at Wageningen University &amp;amp; Research is not a standard Windows 10 computer. WURclients use Windows 10 Enterprise, which has been modified by Facilities and Services Information Technology (FB-IT) among others with respect to installation rights for security reasons.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;This post will show how to install Rtools on a &lt;strong&gt;privately owned&lt;/strong&gt; running Windows 10/11, or a &lt;strong&gt;WURclient&lt;/strong&gt; desktop or laptop computer, where the user possesses &lt;u&gt;&lt;strong&gt;POWER USER RIGHTS&lt;/strong&gt;&lt;/u&gt;.&lt;/p&gt;
+&lt;p&gt;The only difference is how the installer for Rtools is started.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;requirement-for-and-download-of-rtools&#34;&gt;Requirement for and Download of Rtools&lt;/h2&gt;
+&lt;h3 id=&#34;requirement&#34;&gt;Requirement&lt;/h3&gt;
+&lt;p&gt;Prior requirement for using Rtools:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; R properly installed:
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installed on Windows 10/11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; R installed on a WURclient via Software Center, or&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;R installed on a WURclient using a custom installation &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Without having R installed on your desktop or laptop computer it makes no sense to install RTools. The software Rtools provides, as the name suggests, tools (compilers, and such) for use within R.&lt;/p&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;Rtools can be downloaded for the following webpage: &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/bin/windows/Rtools/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download the correct vesion, which matches the version of R installed on your desktop or laptop computer.&lt;/p&gt;
+&lt;p&gt;For R version 4.3.0 and above the installer for Rtools can be downloaded directly from this link: &lt;a href=&#34;https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-5550-5548.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Rtools43 installer (ca. 465 MB, 64-bit).&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;installation-rtools&#34;&gt;Installation Rtools&lt;/h2&gt;
+&lt;p&gt;The screenshots below are for the installation of Rtools42 and have not been updated, because the procedure for Rtool43 remains the same.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open a File Explorer window (keyboard shortcut: 🪟 + E) and navigate to your downloads folder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On a Windows 10/11 computer start the downloaded Rtools installer. For a &lt;strong&gt;WURclient&lt;/strong&gt; computer right-click the downloaded Rtools installer and select select &amp;lsquo;WUR - Run with administrative rights&amp;rsquo; (see below in &lt;a href=&#34;#figure-start_installer_wurclient&#34;&gt;Figure 1&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-start_installer_wurclient&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Rtools installer on a WURclient.&#34; srcset=&#34;
+               /media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_343ec75a9cdd02af5a9fbed9331ecd84.webp 400w,
+               /media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_c6af86ed74cf22566f17f0aa71395587.webp 760w,
+               /media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_343ec75a9cdd02af5a9fbed9331ecd84.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;429&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Rtools installer on a WURclient.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The Rtools installer will open with the Select Destination Location window as displayed below in &lt;a href=&#34;#figure-select_destination_location&#34;&gt;Figure 2&lt;/a&gt;. &lt;strong&gt;Do not change the destination location, leave the default suggested value!&lt;/strong&gt; Click ‘Next’ to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_destination_location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select Rtools destination location.&#34; srcset=&#34;
+               /media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_d877147a18475987cb518457cd157b0a.webp 400w,
+               /media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_bd186d536afdecb1b5f192eefa29141a.webp 760w,
+               /media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_d877147a18475987cb518457cd157b0a.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select Rtools destination location.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;The installer will next show the Select Additional Tasks window, as show in &lt;a href=&#34;#figure-select_additional_tasks&#34;&gt;Figure 3&lt;/a&gt;. Make sure that both boxes are ticked and click the ‘Next’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_additional_tasks&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select Rtools additional tasks.&#34; srcset=&#34;
+               /media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_046f26330bb35d042746690540a00eeb.webp 400w,
+               /media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_4b3abdc797919490dc369adbc0e90003.webp 760w,
+               /media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_046f26330bb35d042746690540a00eeb.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select Rtools additional tasks.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Now the installer will present a window, as displayed below in &lt;a href=&#34;#figure-ready_to_install&#34;&gt;Figure 4&lt;/a&gt;, with the selected installation options. Click the ‘Install’ button to start the installation or select ‘Back’ to modify the installer options.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ready_to_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Rtools ready to install overview.&#34; srcset=&#34;
+               /media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_65f0a39f2c8704a7a9b2320930bfd1b8.webp 400w,
+               /media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_c38a2b7a8536a8c9eb81c389743e0a3a.webp 760w,
+               /media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_65f0a39f2c8704a7a9b2320930bfd1b8.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Rtools ready to install overview.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Once the installer has completed, &lt;a href=&#34;#figure-finish_setup&#34;&gt;Figure 5&lt;/a&gt; will be shown. Click the ‘Finish’ button to complete the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-finish_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finish the Rtools installation.&#34; srcset=&#34;
+               /media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_0c357d7f348fb624830f241361dd0c86.webp 400w,
+               /media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_e934eca497e8f117e48ab891d389f950.webp 760w,
+               /media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_0c357d7f348fb624830f241361dd0c86.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finish the Rtools installation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;check-the-installation&#34;&gt;Check the Installation&lt;/h2&gt;
+&lt;p&gt;For Rtools 4.3 there is an easy way to check, that the installation of Rtools was successful.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open R (either RGui or RStudio)&lt;/li&gt;
+&lt;li&gt;Execute the following command: &lt;code&gt;Sys.which(&amp;quot;make&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When R returns &lt;code&gt;&amp;quot;C:\\rtools43\\usr\\bin\\make.exe&amp;quot;&lt;/code&gt;, you know that Rtools was successfully installed.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;For Rtools 4.0 the returned path will be empty.&lt;/p&gt;
+&lt;p&gt;This does not mean that the installation was not successful. Just that Rtools was not automatically added to the PATH environment variable.&lt;/p&gt;
+&lt;p&gt;If you wish to add Rtools to the PATH environment variable, please follow the instructions on &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/rtools40.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/bin/windows/Rtools/rtools40.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RStudio installation on Windows 10/11</title>
+      <link>https://www.verouden.net/post/2020/04/13/rstudio-installation-on-windows-10/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/13/rstudio-installation-on-windows-10/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;2. Manual Installation&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#rstudio-installation&#34;&gt;RStudio Installation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Some of these courses (e.g. &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-20306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-20306&lt;/a&gt;, &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-32806&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-32806&lt;/a&gt;, and &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-50303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-50303&lt;/a&gt;) mainly use RStudio. Also other courses (e.g. &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/HNH-31506&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HNH-31506&lt;/a&gt; and &lt;a href=&#34;https://ssc.wur.nl/Handbook/2019/Course/BIF51306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BIF-51306&lt;/a&gt;) taught at Wageningen University &amp;amp; Research use R via RStudio as well. Therefore, students will need to be able to install RStudio.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install RStudio on a &lt;strong&gt;privately owned&lt;/strong&gt; desktop or laptop computer running Windows 10/11 as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on WURclient desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a WURclient desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/&#34;&gt;Custom RStudio installation on a WURclient computer&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Two ways to install R are offered here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;WUR AppStore&lt;/a&gt;. This is the &lt;strong&gt;RECOMMENDED&lt;/strong&gt; way!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;Manual installation&lt;/a&gt; for those who, for whatever reason, do not want to use the WUR AppStore.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/h2&gt;
+&lt;p&gt;The WUR AppStore is the place where you will be able to download, link to, or virtually access the software you need for your study programme and courses. Not only during, but also for self-study after, the computer practical&amp;rsquo;s and courses.&lt;/p&gt;
+&lt;p&gt;Prior requirement for the installation of RStudio via the WUR AppStore:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/#1-wur-appstore&#34;&gt;R installed on Windows 10/11 via the WUR AppStore&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The WUR AppStore currently contains RStudio version 2023.06.1 Build 524 under the name &lt;strong&gt;RStudio 2023.06.1.524&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;2-manual-installation&#34;&gt;2. Manual Installation&lt;/h2&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;At the time this post was written, the latest stable release of RStudio was version 1.2.5033. The post has been updated to the current stable release version 2023.06.2 Build 5561 (named &amp;ldquo;Mountain Hydrangea&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;Download RStudio using the following link: &lt;a href=&#34;https://download1.rstudio.org/electron/windows/RStudio-2023.06.2-561.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; RStudio 2023.06.2 Build 561 (ca. 212.78 MB)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;For newer versions of RStudio the steps described after the download are the same, but starting with a newer version of the RStudio executable file.&lt;/p&gt;
+&lt;h3 id=&#34;rstudio-installation&#34;&gt;RStudio Installation&lt;/h3&gt;
+&lt;p&gt;Prior requirement for the installation of RStudio:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/#2-manual-installation&#34;&gt;R installed on Windows 10/11 via Manual Installation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install RStudio you will need to have R installed first. If you haven&amp;rsquo;t done so already, please first install R on your Windows 10/11 computer (use the link above to go to that specific post).&lt;/p&gt;
+&lt;p&gt;To install RStudio on Windows 10/11 perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the downloaded file &lt;strong&gt;RStudio-2023.06.2-561.exe&lt;/strong&gt;. This file will most likely reside in the Downloads folder of your user account.&lt;/li&gt;
+&lt;li&gt;Allow to install the software on your computer.&lt;/li&gt;
+&lt;li&gt;After the installler has started, a Welcome window will appear as displayed below in &lt;a href=&#34;#figure-rstudio_setup&#34;&gt;Figure 1&lt;/a&gt;. Click the ‘Next’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome screen RStudio Setup.&#34; srcset=&#34;
+               /media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_89f97afe8513a07d58d5affe705e3391.webp 400w,
+               /media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_f55a4b86288b75ccac10fd809fcfcf12.webp 760w,
+               /media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_89f97afe8513a07d58d5affe705e3391.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome screen RStudio Setup.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Now the RStudio Setup will allow you to select the installation location by selecting a destination folder, as shown in &lt;a href=&#34;#figure-rstudio_install_location&#34;&gt;Figure 2&lt;/a&gt; below. Leave the default specified folder or, if you know what you are doing, select an alternative installation destination folder, then click the ‘Next’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_install_location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;RStudio Installation Location Selection.&#34; srcset=&#34;
+               /media/rstudio-windows/2-rstudio-location-w10_hu86684e2eb4b604b36806acca70bf3746_20370_4ac9bd7d93df7a88e3cf3e85eacba4bb.webp 400w,
+               /media/rstudio-windows/2-rstudio-location-w10_hu86684e2eb4b604b36806acca70bf3746_20370_b4dadbf8de1ac5ad554c950972baaf61.webp 760w,
+               /media/rstudio-windows/2-rstudio-location-w10_hu86684e2eb4b604b36806acca70bf3746_20370_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-windows/2-rstudio-location-w10_hu86684e2eb4b604b36806acca70bf3746_20370_4ac9bd7d93df7a88e3cf3e85eacba4bb.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      RStudio Installation Location Selection.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Next the RStudio Setup allows choosing a Start Menu folder, as displayed below in &lt;a href=&#34;#figure-rstudio_startmenu_folder&#34;&gt;Figure 3&lt;/a&gt;, where the RStudio shortcut to start the program will be put. Click on ‘Install’ to start the installation of RStudio.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_startmenu_folder&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Setting the RStudio Start Menu Folder.&#34; srcset=&#34;
+               /media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_a6f69321f9ac5913e4e71819c4a9caec.webp 400w,
+               /media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_81e125f2c79774c9db3f730f90adcfb7.webp 760w,
+               /media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_a6f69321f9ac5913e4e71819c4a9caec.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Setting the RStudio Start Menu Folder.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Once the installation of RStudio has finished, the window will look like the one shown below in &lt;a href=&#34;#figure-rstudio_install_completed&#34;&gt;Figure 4&lt;/a&gt;. Click the ‘Finish’ button to close the setup.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_install_completed&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;RStudio Installation Completion.&#34; srcset=&#34;
+               /media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_df77c4f2bc204e6cdc3e54366ed5e768.webp 400w,
+               /media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_3d3c3ae2aecb117b6177a2858e063305.webp 760w,
+               /media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_df77c4f2bc204e6cdc3e54366ed5e768.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      RStudio Installation Completion.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have RStudio 2023.06.2 Build 561 installed on your private Windows desktop or laptop computer!
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Commander installation in R on Windows 10/11</title>
+      <link>https://www.verouden.net/post/2020/04/06/r-commander-installation-in-r-on-windows-10/</link>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/06/r-commander-installation-in-r-on-windows-10/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#r-commander-installation-from-the-r-gui&#34;&gt;R Commander Installation from the R GUI&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#starting-and-restarting-r-commander&#34;&gt;Starting and restarting R Commander&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#start-r-commander&#34;&gt;Start R Commander&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#restart-r-commander&#34;&gt;Restart R Commander&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT14303&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT14303 Basic Statistics&lt;/a&gt;, &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT15303&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT15303 Statistics 1&lt;/a&gt;, &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT154036&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT15403 Statistics 2&lt;/a&gt; and &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT20306&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT20306 Advanced Statistics&lt;/a&gt; (first two weeks of this course) will use R Commander instead of basic R. Therefore, they will need to install R Commander.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install R Commander within R on a &lt;strong&gt;privately owned&lt;/strong&gt; desktop or laptop computer running Windows 10/11 as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on WURclient desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a WURclient desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2021/04/23/r-commander-installation-in-r-on-wurclient/&#34;&gt;R Commander installation in R on a WURclient computer&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;r-commander-installation-from-the-r-gui&#34;&gt;R Commander Installation from the R GUI&lt;/h2&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Students, who installed R by using the &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/#1-wur-appstore&#34;&gt;WUR AppStore&lt;/a&gt;, can skip the installation of R Commander. The WUR AppStore version of R already contains everything to run R Commander.&lt;/p&gt;
+&lt;p&gt;This post is only intended for students, who followed the &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/#2-manual-installation&#34;&gt;Manual Installation&lt;/a&gt; of R.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Prior requirement:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installed on Windows 10/11&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install R Commander you will need to have R installed first. If you haven&amp;rsquo;t done so already, please first install R on your Windows 10/11 computer (use the link above to go to that specific post).&lt;/p&gt;
+&lt;p&gt;This post was originally based on R version 3.6.3. For newer versions of R the steps described are the same, only some screens you will see during your installation will display a higher version number of R compared to the screenshots in this post.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start &lt;code&gt;R x64 4.3.1&lt;/code&gt; from the ‘R’ folder in the ‘Start Menu’ as displayed below in &lt;a href=&#34;#figure-startmenu_r&#34;&gt;Figure 1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-startmenu_r&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Menu R x64&#34; srcset=&#34;
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_d8d36d69a43a8b6d3a01060a400e8dbe.webp 400w,
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_47079a3cdf45ae547a0e7d125ce8be67.webp 760w,
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_d8d36d69a43a8b6d3a01060a400e8dbe.webp&#34;
+               width=&#34;294&#34;
+               height=&#34;430&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Menu R x64
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The R GUI (graphical user interface) will open and the cursor will be ready for input behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign. Use the mouse pointer and navigate to the top menu and select ‘Packages’ &amp;gt; ‘Install Package(s)&amp;hellip;’ as shown in &lt;a href=&#34;#figure-install_packages_rgui&#34;&gt;Figure 2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_packages_rgui&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Install Packages&#34; srcset=&#34;
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_7305e032d9e2df9d71d7b45c756fe69c.webp 400w,
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_5ea6c806db73e503c279da299163f6ac.webp 760w,
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_7305e032d9e2df9d71d7b45c756fe69c.webp&#34;
+               width=&#34;370&#34;
+               height=&#34;193&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Install Packages
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Now a CRAN (Comprehensive R Archive Network) mirror needs to be selected, from which packages will be installed. Select, as shown below in &lt;a href=&#34;#figure-select_cran_mirror&#34;&gt;Figure 3&lt;/a&gt;, the top one ‘0-Cloud [https]’. This to make sure, that always the nearest CRAN mirror will be used no matter where you will be on the globe 🌍. Click on the ‘OK’ button to confirm the selection.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_cran_mirror&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Select CRAN Mirror&#34; srcset=&#34;
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_8ebf53d717eef19a48ff9f8d89b95feb.webp 400w,
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_78a04fe82c87f28c85e5b96578ac05f5.webp 760w,
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_8ebf53d717eef19a48ff9f8d89b95feb.webp&#34;
+               width=&#34;209&#34;
+               height=&#34;77&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Select CRAN Mirror
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;After the CRAN mirror selection a list of available packages will appear. Scroll down to find the &lt;code&gt;Rcmdr&lt;/code&gt; package and click it to select. As shown below in &lt;a href=&#34;#figure-install_rcmdr_package&#34;&gt;Figure 4&lt;/a&gt; the package will turn blue, when selected. Confirm the installation by clicking the ‘OK’ button. Now a lot will happen in your display while the &lt;code&gt;Rcmdr&lt;/code&gt; pacakage and its dependencies are being installed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_rcmdr_package&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Select the Rcmdr package to be installed.&#34; srcset=&#34;
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_530e6ba0fab0c95ec8019fc46b167d27.webp 400w,
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_1f0a704f3a9f928c5c29bb9049b07c2d.webp 760w,
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_530e6ba0fab0c95ec8019fc46b167d27.webp&#34;
+               width=&#34;219&#34;
+               height=&#34;262&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Select the Rcmdr package to be installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Repeat step 4. for installing the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package. This plugin is required &lt;!--in MAT-15403 Statistics 2--&gt; to be able to do assignments about Simple Linear Regression.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Once the installation of the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package has finished, you are ready 😆 to start R 4.3.1 and use R Commander.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;When using R Commander for the first time additional packages, required for R Commander to work correctly, will need to be installed. Allow the installation to be able to work smoothly without errors!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;starting-and-restarting-r-commander&#34;&gt;Starting and restarting R Commander&lt;/h2&gt;
+&lt;h3 id=&#34;start-r-commander&#34;&gt;Start R Commander&lt;/h3&gt;
+&lt;p&gt;To start R Commander type the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command behind the R Console prompt (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;h3 id=&#34;restart-r-commander&#34;&gt;Restart R Commander&lt;/h3&gt;
+&lt;p&gt;In case R Commander crashes while using it, you will need to resart it. However, in the R Console currently running R, the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command will not restart R Commander.&lt;/p&gt;
+&lt;p&gt;The reason is, that the R Commander package is still loaded and first needs to be detached. To detach the R Commander package you can copy (Ctrl+C) the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;detach&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;package:Rcmdr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;paste (Ctrl+V) it behind the prompt in the R Console (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;p&gt;Now R Commander can be restarted by using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command as before.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R installation on Windows 10/11</title>
+      <link>https://www.verouden.net/post/2020/04/06/r-installation-windows-10/</link>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/06/r-installation-windows-10/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#windows-1011-compatibility-and-wur-appstore-installation&#34;&gt;Windows 10/11 compatibility and WUR AppStore installation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#using-the-wur-appstore&#34;&gt;Using the WUR AppStore&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#support-wur-appstore&#34;&gt;Support WUR AppStore&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;2. Manual Installation&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install R on a &lt;strong&gt;privately owned&lt;/strong&gt; desktop or laptop computer running Windows 10 or Windows 11 as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on WURclient desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a WURclient desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;Custom R installation on a WURclient&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Two ways to install R are offered here:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;#1-wur-appstore&#34;&gt;WUR AppStore&lt;/a&gt;. This is the &lt;strong&gt;RECOMMENDED&lt;/strong&gt; way, because it includes R and everything to run R Commander!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-manual-installation&#34;&gt;Manual installation&lt;/a&gt; for those who, for whatever reason, do not want to use the WUR AppStore.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;1-wur-appstore&#34;&gt;1. WUR AppStore&lt;/h2&gt;
+&lt;p&gt;The WUR AppStore is the place where you will be able to download, link to, or virtually access the software you need for your study programme and courses. Not only during the computer labs and courses, but also for self-study after those.&lt;/p&gt;
+&lt;p&gt;For more information see: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1222947-what-is-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;What is the WUR AppStore&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;windows-1011-compatibility-and-wur-appstore-installation&#34;&gt;Windows 10/11 compatibility and WUR AppStore installation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;To safely use the study and course software, you need to &lt;strong&gt;connect your laptop to the WUR&lt;/strong&gt; network with your WUR account. &lt;strong&gt;Windows 10 or 11 Education Edition&lt;/strong&gt; or  &lt;strong&gt;Professional Edition&lt;/strong&gt; is needed on your laptop to be able to access the WUR AppStore. If you are using a Home Edition of Windows 10 or 11, you will be automatically upgraded to the Education Edition.&lt;/li&gt;
+&lt;li&gt;If you have Windows 10 or 11, you can proceed to the manual: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203863-how-to-connect-to-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to connect to the WUR AppStore&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--* If you have another version of Windows 10/11 (e.g. Windows 10/11 Home), follow the manual: [How to get Windows 10 Education](https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1223173-how-to-get-windows-10-education). After having upgraded Windows 10 to the Education version, you can proceed to the manual: [How to get access to the WUR AppStore](https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203863-how-to-connect-to-the-wur-appstore).--&gt;
+&lt;h3 id=&#34;using-the-wur-appstore&#34;&gt;Using the WUR AppStore&lt;/h3&gt;
+&lt;p&gt;The use of the WUR AppStore is very well described by the WUR TEAM Study Anytime, Anyplace. The first article can be found here: &lt;a href=&#34;https://wur-studentsupport.screenstepslive.com/m/WURAppStore/l/1203865-how-can-i-use-the-wur-appstore&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How can I use the WUR AppStore&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The WUR AppStore currently contains &lt;strong&gt;R 4.3.1 Rcmdr&lt;/strong&gt;. &lt;strong&gt;Rcmdr&lt;/strong&gt; indicates that, apart from running &lt;strong&gt;R v4.3.1&lt;/strong&gt; by using the default Graphical User Interface (a.k.a. &lt;strong&gt;RGUI&lt;/strong&gt;), everything is included to run &lt;strong&gt;R Commander&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;support-wur-appstore&#34;&gt;Support WUR AppStore&lt;/h3&gt;
+&lt;p&gt;In case you need support installing or using the WUR AppStore you can contact the WUR Servicedesk IT either by telephone: &lt;a href=&#34;tel:+31317488888&#34;&gt;+31 (0)317 488888&lt;/a&gt; / mail: &lt;a href=&#34;mailto:Servicedesk.IT@wur.nl&#34;&gt;Servicedesk.IT AT wur.nl&lt;/a&gt;. You can also visit the Servicepoint IT, ground floor left of the Grand Café, in Forum (Building 102) on the WUR Campus.&lt;/p&gt;
+&lt;h2 id=&#34;2-manual-installation&#34;&gt;2. Manual Installation&lt;/h2&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;At the time this post was written, the latest release of R was version 3.6.3. It has been updated to the latest release version 4.3.1 of R, named &amp;ldquo;Beagle Scouts&amp;rdquo;. As of version 4.2.0 the R software is only available as 64-bit, meaning that it will not install on a 32-bit version of Windows 10.&lt;/p&gt;
+&lt;p&gt;The installer for Windows 10/11 can be downloaded directly from this link: &lt;a href=&#34;https://cloud.r-project.org/bin/windows/base/R-4.3.1-win.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; R 4.3.1 for Windows (ca. 79 MB, 64-bit)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For newer versions of R than 3.6.3 the steps described below are the same and still correct, but start with a newer version of the downloaded executable file of R. The screenshots in this post have not been updated. Therefore, what you see during your installation will differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the downloaded file &lt;strong&gt;R-4.3.1-win.exe&lt;/strong&gt;. This file will most likely reside in your Downloads folder of your user account.&lt;/li&gt;
+&lt;li&gt;Allow to install the software on your computer.&lt;/li&gt;
+&lt;li&gt;After the installer has started, a first selection window will appear as displayed below in &lt;a href=&#34;#figure-r_language&#34;&gt;Figure 1&lt;/a&gt;. Select the English language and click the ‘OK’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_language&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Language Selection&#34; srcset=&#34;
+               /media/r-windows/1-install-r-language_hub38f1e048f726dedea74efd6d0e4f594_3355_66a417f9f253b08f1b8b239fbd76cd69.webp 400w,
+               /media/r-windows/1-install-r-language_hub38f1e048f726dedea74efd6d0e4f594_3355_5e59d6f9fb8997f6989e6fe720f03fe7.webp 760w,
+               /media/r-windows/1-install-r-language_hub38f1e048f726dedea74efd6d0e4f594_3355_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/1-install-r-language_hub38f1e048f726dedea74efd6d0e4f594_3355_66a417f9f253b08f1b8b239fbd76cd69.webp&#34;
+               width=&#34;299&#34;
+               height=&#34;172&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Language Selection
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Click on the ‘Next’ button to agree to the terms. After this a window will appear, allowing you to select or choose the destination folder, as shown in &lt;a href=&#34;#figure-r_destination_folder&#34;&gt;Figure 2&lt;/a&gt;, where R version 4.3.1 for Windows should be installed. If you are content with the default &lt;code&gt;C:\Program Files\R\R-4.3.1&lt;/code&gt; click on the ‘Next’ button to continu, otherwise use the ‘B&lt;u&gt;r&lt;/u&gt;owse&amp;hellip;’ button to navigate to an alternative destination or type the destination path directly into the text field displayed (currently showing &lt;code&gt;C:\Program Files\R\R-4.3.1&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_destination_folder&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Destination Location Selection&#34; srcset=&#34;
+               /media/r-windows/2-install-r-destination-folder_hu2b2517621388feb574ae5e8b8fa4c72e_11541_aca69c41ebc8e79992b81499cb3452e3.webp 400w,
+               /media/r-windows/2-install-r-destination-folder_hu2b2517621388feb574ae5e8b8fa4c72e_11541_977440bf0d3b3979f5cb0a14206874fd.webp 760w,
+               /media/r-windows/2-install-r-destination-folder_hu2b2517621388feb574ae5e8b8fa4c72e_11541_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/2-install-r-destination-folder_hu2b2517621388feb574ae5e8b8fa4c72e_11541_aca69c41ebc8e79992b81499cb3452e3.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Destination Location Selection
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;After selecting the installation destination folder the component selector will appear, as displayed in &lt;a href=&#34;#figure-r_components_selection&#34;&gt;Figure 3&lt;/a&gt;. Most desktop and laptop computers these days are using a 64-bit architecture, therefore select (using the pull down menu) the 64-bit User installation as displayed in the image shown below and click on the ‘Next’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_components_selection&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Selection Components to Install&#34; srcset=&#34;
+               /media/r-windows/3-install-r-select-components_huee595409eac5baa6305874cdbce67f76_11605_12ec8096a1e02b200d891890ffa4aaea.webp 400w,
+               /media/r-windows/3-install-r-select-components_huee595409eac5baa6305874cdbce67f76_11605_5733a173074d1856b3654a719ab07224.webp 760w,
+               /media/r-windows/3-install-r-select-components_huee595409eac5baa6305874cdbce67f76_11605_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/3-install-r-select-components_huee595409eac5baa6305874cdbce67f76_11605_12ec8096a1e02b200d891890ffa4aaea.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Selection Components to Install
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;After selecting the components to install the startup options need to be set. Select, as shown in &lt;a href=&#34;#figure-r_customize_startup&#34;&gt;Figure 4&lt;/a&gt; below, the customized startup by selecting the ‘&lt;strong&gt;Yes (customized startup)&lt;/strong&gt;’ radio button followed by clicking on the ‘Next’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_customize_startup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Customize Startup Options&#34; srcset=&#34;
+               /media/r-windows/4-install-r-startup-options_huba2887d0ad96c28df6354885ff0ffcad_8718_31f83295491a1c08dded97667b3e9166.webp 400w,
+               /media/r-windows/4-install-r-startup-options_huba2887d0ad96c28df6354885ff0ffcad_8718_712ae7b6656c12a263acfede256a7b8b.webp 760w,
+               /media/r-windows/4-install-r-startup-options_huba2887d0ad96c28df6354885ff0ffcad_8718_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/4-install-r-startup-options_huba2887d0ad96c28df6354885ff0ffcad_8718_31f83295491a1c08dded97667b3e9166.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Customize Startup Options
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;The first startup option to set is the Display Mode, as shown below in &lt;a href=&#34;#figure-r_display_mode&#34;&gt;Figure 5&lt;/a&gt;. Select the Single Document Interface by selecting the ‘&lt;strong&gt;SDI (separate windows)&lt;/strong&gt;’ radio button as displayed and clicking on the ‘Next’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_display_mode&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Display Mode Selection&#34; srcset=&#34;
+               /media/r-windows/5-install-r-display-mode_hu02b7d9e7742de5f2dd32c7d29fccc7ad_8753_aef53d4167367d70b8b573914862497a.webp 400w,
+               /media/r-windows/5-install-r-display-mode_hu02b7d9e7742de5f2dd32c7d29fccc7ad_8753_1b1e4ac34bc10ddb6c1e311802c3c3e5.webp 760w,
+               /media/r-windows/5-install-r-display-mode_hu02b7d9e7742de5f2dd32c7d29fccc7ad_8753_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/5-install-r-display-mode_hu02b7d9e7742de5f2dd32c7d29fccc7ad_8753_aef53d4167367d70b8b573914862497a.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Display Mode Selection
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Next select the help style startup option. Leave this at the default ‘&lt;strong&gt;HTML help&lt;/strong&gt;’ value, as displayed in &lt;a href=&#34;#figure-r_help_style&#34;&gt;Figure 6&lt;/a&gt;, and click on the ‘Next’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_help_style&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Help Style Selection&#34; srcset=&#34;
+               /media/r-windows/6-install-r-help-style_hu010f2c81fe693fe1f5f6cdae0b383ce6_8530_dcbd454c39e76cd71271e2cb5cbe208b.webp 400w,
+               /media/r-windows/6-install-r-help-style_hu010f2c81fe693fe1f5f6cdae0b383ce6_8530_147ce5688d4712072778c4a5cc93a714.webp 760w,
+               /media/r-windows/6-install-r-help-style_hu010f2c81fe693fe1f5f6cdae0b383ce6_8530_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/6-install-r-help-style_hu010f2c81fe693fe1f5f6cdae0b383ce6_8530_dcbd454c39e76cd71271e2cb5cbe208b.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Help Style Selection
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;The one before last startup option is to set a ‘Start Menu’ folder name. Unless wishing to use a different name, leave the default value as displayed below in &lt;a href=&#34;#figure-r_start_menu&#34;&gt;Figure 7&lt;/a&gt;. This will create a folder named ‘R’ in the ‘Start Menu’ of Windows, from which the R GUI (graphical user interface) can be started.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_start_menu&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Menu Folder selection&#34; srcset=&#34;
+               /media/r-windows/7-install-r-start-menu_hufa19af96ffb58afceb688f9c78f294ef_10906_2f0c2cb5a9017df5bd89710d47f4a223.webp 400w,
+               /media/r-windows/7-install-r-start-menu_hufa19af96ffb58afceb688f9c78f294ef_10906_552797f70c5a7c39d86602fb54466f53.webp 760w,
+               /media/r-windows/7-install-r-start-menu_hufa19af96ffb58afceb688f9c78f294ef_10906_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/7-install-r-start-menu_hufa19af96ffb58afceb688f9c78f294ef_10906_2f0c2cb5a9017df5bd89710d47f4a223.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Menu Folder selection
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;The last startup option to set allows for some customization of shortcut links. Preferably leave the default settings and continue by clicking on the ‘Next’ button. This will trigger the installation. At the end the image shown in &lt;a href=&#34;#figure-r_completion&#34;&gt;Figure 8&lt;/a&gt; will appear. To exit the setup click on the ‘Finish’ button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;Do not mess around with the ‘Registry entries’ settings.&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_completion&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Completion of the R installation.&#34; srcset=&#34;
+               /media/r-windows/9-install-r-completion_hua2ee1939df60f7faae196a20fff8e7eb_10800_057df2f71a88b649c1a4e508afe356c4.webp 400w,
+               /media/r-windows/9-install-r-completion_hua2ee1939df60f7faae196a20fff8e7eb_10800_8a0add06e66af766c248c9513e0b8e0b.webp 760w,
+               /media/r-windows/9-install-r-completion_hua2ee1939df60f7faae196a20fff8e7eb_10800_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-windows/9-install-r-completion_hua2ee1939df60f7faae196a20fff8e7eb_10800_057df2f71a88b649c1a4e508afe356c4.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Completion of the R installation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have R version 4.3.1 installed on your private desktop or laptop computer!
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1293 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Commander | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/tag/r-commander/</link>
+      <atom:link href="https://www.verouden.net/tag/r-commander/index.xml" rel="self" type="application/rss+xml" />
+    <description>R Commander</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Fri, 23 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>R Commander</title>
+      <link>https://www.verouden.net/tag/r-commander/</link>
+    </image>
+    
+    <item>
+      <title>R Commander installation in R on a WURclient computer</title>
+      <link>https://www.verouden.net/post/2021/04/23/r-commander-installation-in-r-on-wurclient/</link>
+      <pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2021/04/23/r-commander-installation-in-r-on-wurclient/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#r-commander-installation-from-the-r-gui&#34;&gt;R Commander Installation from the R GUI&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#starting-and-restarting-r-commander&#34;&gt;Starting and restarting R Commander&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#start-r-commander&#34;&gt;Start R Commander&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#restart-r-commander&#34;&gt;Restart R Commander&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;A WURclient desktop or laptop at Wageningen University &amp;amp; Research is not a standard Windows 10 computer. WURclients use Windows 10 Enterprise, which has been modified by Facilities and Services Information Technology (FB-IT) among others with respect to installation rights for security reasons.&lt;/p&gt;
+&lt;p&gt;WURclient desktops and laptops at Wageningen University &amp;amp; Research can install R from the Software Center created by the IT department, which is launched by clicking on Start and selecting the &amp;ldquo;Software Center&amp;rdquo; tile. At the time this post was written the latest version of R in Software Center is &lt;code&gt;R 4.1.0 Rcmdr&lt;/code&gt;. Currently the latest available version in Software Center is &lt;code&gt;R 4.3.1 Rcmdr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This version of R was packaged for educational purposes, where &lt;code&gt;Rcmdr&lt;/code&gt; reflects that the installer includes R Commander. Only once per year a new version of R (including R Commander and additional packages for serveral courses) is released in Software Center. The consequence is, that core packages can not be updated by users.&lt;/p&gt;
+&lt;p&gt;Many users, however, need to be able to update core packages, because of dependencies with packages they would like to install or would just like to use a newer version of R than the one in Software Center. At the moment of writing this post the latest version of R released on &lt;a href=&#34;https://www.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;r-project.org&lt;/a&gt; is R version 4.0.5 named: &amp;ldquo;Shake and Throw&amp;rdquo; (released on 2021-03-31). The post has been updated to R version 4.3.1 named: &amp;ldquo;Beagle Scouts&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Some users will also like to install the latest version of R Commander on their WURclient, after having installed the latest version of R via a custom installation without using Software Center.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install R Commander within R on a &lt;strong&gt;WURclient&lt;/strong&gt; desktop or laptop computer after a custom R installation.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on privately owned desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a privately owned desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-commander-installation-in-r-on-windows-10/&#34;&gt;R Commander installation in R on Windows 10&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;r-commander-installation-from-the-r-gui&#34;&gt;R Commander Installation from the R GUI&lt;/h2&gt;
+&lt;p&gt;Prior requirement:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;R installed on a WURclient using a custom installation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install R Commander you will need to have R installed first. If you haven&amp;rsquo;t done so already, please first perform a custom installation of R on your WURclient computer (use the link above to go to that specific post).&lt;/p&gt;
+&lt;p&gt;Some Figures in this post are based on R version 3.6.3. For newer versions of R the steps described are the same, only some screens you will see during your installation will display a higher version number of R compared to the screenshots in the figures of this post.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start &lt;code&gt;R x64 4.3.1&lt;/code&gt; from the ‘R’ folder in the ‘Start Menu’ as displayed below in &lt;a href=&#34;#figure-startmenu_r&#34;&gt;Figure 1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-startmenu_r&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Menu R x64&#34; srcset=&#34;
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_d8d36d69a43a8b6d3a01060a400e8dbe.webp 400w,
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_47079a3cdf45ae547a0e7d125ce8be67.webp 760w,
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_d8d36d69a43a8b6d3a01060a400e8dbe.webp&#34;
+               width=&#34;294&#34;
+               height=&#34;430&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Menu R x64
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The R GUI (graphical user interface) will open and the cursor will be ready for input behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign. Use the mouse pointer and navigate to the top menu and select ‘Packages’ &amp;gt; ‘Install Package(s)&amp;hellip;’ as shown in &lt;a href=&#34;#figure-install_packages_rgui&#34;&gt;Figure 2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_packages_rgui&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Install Packages&#34; srcset=&#34;
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_7305e032d9e2df9d71d7b45c756fe69c.webp 400w,
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_5ea6c806db73e503c279da299163f6ac.webp 760w,
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_7305e032d9e2df9d71d7b45c756fe69c.webp&#34;
+               width=&#34;370&#34;
+               height=&#34;193&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Install Packages
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Now a CRAN (Comprehensive R Archive Network) mirror needs to be selected, from which packages will be installed. Select, as shown below in &lt;a href=&#34;#figure-select_cran_mirror&#34;&gt;Figure 3&lt;/a&gt;, the top one ‘0-Cloud [https]’. This to make sure, that always the nearest CRAN mirror will be used no matter where you will be on the globe 🌍. Click on the ‘OK’ button to confirm the selection.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_cran_mirror&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Select CRAN Mirror&#34; srcset=&#34;
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_8ebf53d717eef19a48ff9f8d89b95feb.webp 400w,
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_78a04fe82c87f28c85e5b96578ac05f5.webp 760w,
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_8ebf53d717eef19a48ff9f8d89b95feb.webp&#34;
+               width=&#34;209&#34;
+               height=&#34;77&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Select CRAN Mirror
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;After the CRAN mirror selection a list of available packages will appear. Scroll down to find the &lt;code&gt;Rcmdr&lt;/code&gt; package and click it to select. As shown below in &lt;a href=&#34;#figure-install_rcmdr_package&#34;&gt;Figure 4&lt;/a&gt; the package will turn blue, when selected. Confirm the installation by clicking the ‘OK’ button. Now a lot will happen in your display while the &lt;code&gt;Rcmdr&lt;/code&gt; pacakage and its dependencies are being installed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_rcmdr_package&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Select the Rcmdr package to be installed.&#34; srcset=&#34;
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_530e6ba0fab0c95ec8019fc46b167d27.webp 400w,
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_1f0a704f3a9f928c5c29bb9049b07c2d.webp 760w,
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_530e6ba0fab0c95ec8019fc46b167d27.webp&#34;
+               width=&#34;219&#34;
+               height=&#34;262&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Select the Rcmdr package to be installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Repeat step 4. for installing the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package or any other additional Plugin for R Commander you need. The &lt;code&gt;HH&lt;/code&gt; plugin for example provides additional functionality for Simple Linear Regression.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Once the installation of the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package, or any other additional Plugins you require, has finished, you are ready 😆 to start R version 4.3.1 and use R Commander.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;When using R Commander for the first time additional packages, required for R Commander to work correctly, will need to be installed. Allow the installation to be able to work smoothly without errors!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;starting-and-restarting-r-commander&#34;&gt;Starting and restarting R Commander&lt;/h2&gt;
+&lt;h3 id=&#34;start-r-commander&#34;&gt;Start R Commander&lt;/h3&gt;
+&lt;p&gt;To start R Commander type the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command behind the R Console prompt (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;h3 id=&#34;restart-r-commander&#34;&gt;Restart R Commander&lt;/h3&gt;
+&lt;p&gt;In case R Commander crashes while using it, you will need to resart it. However, in the R Console currently running R, the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command will not restart R Commander.&lt;/p&gt;
+&lt;p&gt;The reason is, that the R Commander package is still loaded and first needs to be detached. To detach the R Commander package you can copy (Ctrl+C) the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;detach&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;package:Rcmdr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;paste (Ctrl+V) it behind the prompt in the R Console (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;p&gt;Now R Commander can be restarted by using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command as before.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Commander installation in R on macOS</title>
+      <link>https://www.verouden.net/post/2020/04/10/r-commander-installation-in-r-on-macos/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/10/r-commander-installation-in-r-on-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#r-commander-installation&#34;&gt;R Commander Installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#first-time-use-of-r-commander&#34;&gt;First time use of R Commander&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#alternative-way-of-starting-r-commander-without-the-app-nap-problem&#34;&gt;Alternative way of starting R Commander without the App nap problem&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#restarting-r-commander&#34;&gt;Restarting R Commander&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-14303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-14303 Basic Statistics&lt;/a&gt;, &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15303 Statistics 1&lt;/a&gt;, &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15403&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15403 Statistics 2&lt;/a&gt; and &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-20306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-20306 Advanced Statistics&lt;/a&gt; (first two weeks of this course) will use R Commander instead of basic R. Therefore, they will need to install R Commander.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install R Commander within R on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;r-commander-installation&#34;&gt;R Commander Installation&lt;/h2&gt;
+&lt;p&gt;Prior requirements for the R Commander installation within R on macOS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/08/r-installation-macos/&#34;&gt;R installed and configured on macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/09/xquartz-installation-macos/&#34;&gt;XQuartz installed on macOS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install R Commander you will need to have both R installed and configured as well as have XQuartz installed first. If you haven&amp;rsquo;t done so already, please read the (re-)install and configure R on macOS as well as the XQuartz installation on macOS posts (use the links above to go to those specific posts) before continuing with this post.&lt;/p&gt;
+&lt;p&gt;The screenshots in this post are based on R version 3.6.3. However, the procedure and steps described are still correct for higher versions of R.&lt;/p&gt;
+&lt;p&gt;To install R commander on macOS perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start the R application from Finder &amp;gt; Applications (shortcut: ⇧⌘A) or via Launchpad. The icon representing the R application is shown in &lt;a href=&#34;#figure-r_app_icon&#34;&gt;Figure 1&lt;/a&gt; below.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_icon&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon R Application&#34; srcset=&#34;
+               /media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_321fa52271d23af9b1cf971e0fde3a80.webp 400w,
+               /media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_95469d71fdfd8e8b1399576860e6010a.webp 760w,
+               /media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_321fa52271d23af9b1cf971e0fde3a80.webp&#34;
+               width=&#34;154&#34;
+               height=&#34;178&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon R Application
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The R Console will open, as shown below in &lt;a href=&#34;#figure-r_app_console&#34;&gt;Figure 2&lt;/a&gt;, and the cursor will be ready for input behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_console&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Console&#34; srcset=&#34;
+               /media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_bc749913182a126b9c1a0e1e41d361c2.webp 400w,
+               /media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_ea388117ebd96abaca57a5ff8323b9b3.webp 760w,
+               /media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_bc749913182a126b9c1a0e1e41d361c2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;729&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Console
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;In case the ‘command line developer tools’ requirement window appears as shown in &lt;a href=&#34;#figure-otool_install&#34;&gt;Figure 3&lt;/a&gt; below, click ‘Cancel’ to make it disappear. &lt;strong&gt;There is no need to install it!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-otool_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Developer Tools Requirement&#34; srcset=&#34;
+               /media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_d25bfb54bdb0ee1b8cb22940d0a21372.webp 400w,
+               /media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_96543d4e5a7ce243346c5e549c2b509d.webp 760w,
+               /media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_d25bfb54bdb0ee1b8cb22940d0a21372.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;401&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Developer Tools Requirement
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Navigate the mouse pointer to the menu bar click on ‘Packages &amp;amp; Data’ and select the ‘Package Installer’ (shortcut: ⌥⌘I). This will cause the R Package Installer to open as shown below in &lt;a href=&#34;#figure-r_package_install&#34;&gt;Figure 4&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_package_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Package Installer for Rcmdr&#34; srcset=&#34;
+               /media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_5c946982e06f2f72724bf82c59984ab8.webp 400w,
+               /media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_ac22dc8d93c2649b2726260dde22a902.webp 760w,
+               /media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_5c946982e06f2f72724bf82c59984ab8.webp&#34;
+               width=&#34;699&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Package Installer for Rcmdr
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;First click on the ‘Get List’ to retrieve the available packages on the CRAN mirror. Next type &lt;code&gt;Rcmdr&lt;/code&gt; in the ‘Package Search’ field and press return (↩) to execute the search. Select the &lt;code&gt;Rcmdr&lt;/code&gt; package in the results list underneath by clicking on it, which will make it turn blue to indicate the selection. In the last block named ‘Install Location’ select the radio button ‘At User Level’ and tick the checkbox ‘Install Dependencies’. When the ‘Package Installer’ window matches the one shown in &lt;a href=&#34;#figure-r_package_install&#34;&gt;Figure 4&lt;/a&gt; above, you click the ‘Install Selected’ button.&lt;/li&gt;
+&lt;li&gt;Loads of packages will be downloaded and installed. When the installation has finished, the ‘Package Installer’ will resemble the image shown below in &lt;a href=&#34;#figure-r_package_rcmdrplugin&#34;&gt;Figure 5&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_package_rcmdrplugin&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Package Installer for RcmdrPlugin.HH&#34; srcset=&#34;
+               /media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_ba538138aec705ab919534eeb18f26af.webp 400w,
+               /media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_4b4e62a3d35141307274b3aec3b1fbfd.webp 760w,
+               /media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_ba538138aec705ab919534eeb18f26af.webp&#34;
+               width=&#34;699&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Package Installer for RcmdrPlugin.HH
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Now select the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt;. Make sure your ‘Install Location’ is still set to ‘At User Level’ and that the checkbox ‘Install Dependencies’ is still ticked, before clicking the ‘Install Selected’ button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Once the installation of the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package has finised, you are ready to use R Commander for the first time 😆.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;Continue with the next section &amp;ldquo;First time use of R Commander&amp;rdquo; now. Do not wait until the first Computer Practicum!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;first-time-use-of-r-commander&#34;&gt;First time use of R Commander&lt;/h2&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;When using R Commander for the first time additional packages required for R Commander to work correctly will need to be installed. Allow the installation to be able to work smoothly without errors!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;To start R Commander from the R Console, type the command &lt;code&gt;library(Rcmdr)&lt;/code&gt; behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign, and and press return (↩) to execute. This will cause R Commander to be started.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    When starting &lt;strong&gt;R Commander&lt;/strong&gt; via &lt;code&gt;Packages &amp;amp; Data&lt;/code&gt; &amp;gt; &lt;code&gt;Packages Manager&lt;/code&gt; in the top bar menu of &lt;strong&gt;R&lt;/strong&gt; and marking the tick box in front of the &lt;code&gt;Rcmdr&lt;/code&gt; package, many users experience that R Commander fails to show the menu items in the top bar menu of R Commander. This is resolved by starting R Commander by explicitly type the command &lt;code&gt;libary(Rcmdr)&lt;/code&gt; at the prompt and executing by pressing return (↩) instead of using the graphical user interface of R to load the &lt;code&gt;Rcmdr&lt;/code&gt; package.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The first time you start R Commander, you will see at the bottom of the main R Commander window in the ‘Messages’ section the message as shown in &lt;a href=&#34;#figure-rcmdr_app_nap&#34;&gt;Figure 6&lt;/a&gt; below.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rcmdr_app_nap&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Commander App Nap Warning&#34; srcset=&#34;
+               /media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_acd1dc3bc78a089e0a09cf5502968b87.webp 400w,
+               /media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_e75e9cfb3cf1ffeaf52c5f0be8ee56fb.webp 760w,
+               /media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_acd1dc3bc78a089e0a09cf5502968b87.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;63&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Commander App Nap Warning
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The warning is referring to a feature that was added to macOS in 2013, which  is called App Nap. App Nap puts programs you are not currently actively using or looking at into ‘sleep’ mode, blocking them from using system resources, especially the CPU, until you focus on them again. It will cause R Commander to work not very smoothly, because the R application is being put to ‘sleep’ as it is running in the background of R Commander. R Commander will at moments work with a huge lag time, which will feel like it is frozen and not responding.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solving this problem will ask quite a bit of your patience! Fortunately you only have to do this once, afterwards R Commander will work smoothly every time you start it.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Navigate the mouse pointer to the top menu of the R Commander window and click on ‘Tools’. Patiently wait until the menu unfolds as shown below in &lt;a href=&#34;#figure-rcmdr_tools_menu&#34;&gt;Figure 7&lt;/a&gt;. &lt;strong&gt;Only click once and wait patiently!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rcmdr_tools_menu&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Commander Tools Menu Item.&#34; srcset=&#34;
+               /media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_47c196274c0744d27d02f165720d60ef.webp 400w,
+               /media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_9c16ad97a304005bb9085f9105beafb4.webp 760w,
+               /media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_47c196274c0744d27d02f165720d60ef.webp&#34;
+               width=&#34;626&#34;
+               height=&#34;348&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Commander Tools Menu Item.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Next move the mouse pointer to the menu item ‘Manage Mac OS X app nap for R.app&amp;hellip;’ and click on it. &lt;strong&gt;Again only click once and wait patiently!&lt;/strong&gt; This will open the ‘Mac OS X app nap for R.app’ window to open as shown below in &lt;a href=&#34;#figure-rcmdr_app_nap_off&#34;&gt;Figure 8&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rcmdr_app_nap_off&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Mac OS X app nap for R.app Window.&#34; srcset=&#34;
+               /media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_1a4bdb511077040935cc1208c3d332c8.webp 400w,
+               /media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_300b1678bcac5c551e83304d18c16903.webp 760w,
+               /media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_1a4bdb511077040935cc1208c3d332c8.webp&#34;
+               width=&#34;732&#34;
+               height=&#34;314&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Mac OS X app nap for R.app Window.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Select the radio button ‘off (recommended)’. Wait for the selection to change. After the change occurs, click on ‘OK’ to confirm.&lt;/li&gt;
+&lt;li&gt;Navigate the mouse pointer to the top menu of the R Commander window and click on ‘File’. Wait patiently for the menu item to unfold. Navigate to ‘Exit’ &amp;gt; ‘From Commander’ and click only once it. Wait for the ‘Exit?’ window to appear and click ‘OK’. This closes R Commander.&lt;/li&gt;
+&lt;li&gt;Click on the R Console window to make it the active application.&lt;/li&gt;
+&lt;li&gt;Quit the R application either by:
+&lt;ul&gt;
+&lt;li&gt;Typing &lt;code&gt;q()&lt;/code&gt; or &lt;code&gt;quit()&lt;/code&gt; behind the R Console prompt (indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and pressing return (↩) to execute.&lt;/li&gt;
+&lt;li&gt;Using the keyboard shortcut: ⌘Q&lt;/li&gt;
+&lt;li&gt;Navigating the mouse pointer to the menu bar and clicking ‘R’ &amp;gt; ‘Quit R’&lt;/li&gt;
+&lt;li&gt;Navigation the mouse pointer to the top left corner of the R Console window and clicking on the red ball&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;No matter what you choose, you will always be asked whether you want to save a workspace image as shown below in &lt;a href=&#34;#figure-r_save_workspace&#34;&gt;Figure 9&lt;/a&gt;. Just click on the &lt;strong&gt;‘Don&amp;rsquo;t Save’&lt;/strong&gt; button to end the R application.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_save_workspace&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Save Workspace.&#34; srcset=&#34;
+               /media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_d2abd3e3686383b79c4e13c2e531c255.webp 400w,
+               /media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_75c9c47a179b6a081b209b95e9301c0b.webp 760w,
+               /media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_d2abd3e3686383b79c4e13c2e531c255.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;218&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Save Workspace.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Next time you start R Commander from the R Console of the R application using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command, the ‘Messages’ section will display the following or a similar message: &lt;code&gt;[1] NOTE: R Commander Version 2.8-0:&lt;/code&gt; followed by the day, date and time. Now R Commander will work smoothly.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;alternative-way-of-starting-r-commander-without-the-app-nap-problem&#34;&gt;Alternative way of starting R Commander without the App nap problem&lt;/h2&gt;
+&lt;p&gt;As an alternative to switching off the App Nap for the R application you could start R from a Terminal.&lt;/p&gt;
+&lt;p&gt;This is done by following these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the Terminal application from Finder &amp;gt; Applications &amp;gt; Utilities (shorcut: ⇧⌘U) or via Lauchpad under the ‘Other’ group. The terminal console prompt, where the commands will be entered, is depicted by a &lt;code&gt;%&lt;/code&gt; or a &lt;code&gt;$&lt;/code&gt; sign. Which sign is shown, depends whether your default shell is zsh (&lt;code&gt;%&lt;/code&gt; sign) or bash (&lt;code&gt;$&lt;/code&gt; sign).&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;R&lt;/code&gt; behind the prompt in the terminal console and press return (↩) to execute the command.&lt;/li&gt;
+&lt;li&gt;This will start R and the prompt, where the commands will be entered for R, will have changed into a &lt;code&gt;&amp;gt;&lt;/code&gt; sign.&lt;/li&gt;
+&lt;li&gt;Type the command &lt;code&gt;library(Rcmdr)&lt;/code&gt; behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign, and and press return (↩) to execute. This will cause R Commander to be started. The ‘Messages’ section at the bottom of R Commander will display the following or a similar message: &lt;code&gt;[1] NOTE: R Commander Version 2.8-0:&lt;/code&gt; followed by the day, date and time. This means that R Commander will work smoothly!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Quitting R Commander will return you to the terminal console, which can be recognized by the prompt sign changing back into a &lt;code&gt;%&lt;/code&gt; or &lt;code&gt;$&lt;/code&gt; sign.&lt;/p&gt;
+&lt;p&gt;To quit the active terminal console by typing &lt;code&gt;exit&lt;/code&gt; and pressing return (↩) to execute. To quit the Terminal application completely you can use the keyboard shortcut: ⌘Q or navigate the mouse pointer to the menu bar and click ‘Terminal’ &amp;gt; ‘Quit Terminal’.&lt;/p&gt;
+&lt;h2 id=&#34;restarting-r-commander&#34;&gt;Restarting R Commander&lt;/h2&gt;
+&lt;p&gt;In case R Commander crashes while using it, you will need to resart it. However, in the R Console or in the active terminal console currently running R, the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command will not restart R Commander.&lt;/p&gt;
+&lt;p&gt;The reason is, that the R Commander package is still loaded and first needs to be detached. To detach the R Commander package you can copy (⌘C) the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;detach&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;package:Rcmdr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;paste (⌘V) it behind the prompt in the R console (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;p&gt;Now R Commander can be restarted by using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command as before.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>XQuartz installation on macOS</title>
+      <link>https://www.verouden.net/post/2020/04/09/xquartz-installation-macos/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/09/xquartz-installation-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#xquartz-installation&#34;&gt;XQuartz Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15303 Statistics 1&lt;/a&gt; and &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15403&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15403 Statistics 2&lt;/a&gt; will use R Commander instead of basic R. Therefore, they will need to install R Commander.&lt;/p&gt;
+&lt;p&gt;R Commmander has been programmed in Tcl (Tool Command Language) and uses Tk as a graphical user interface toolkit. To be able to use R Commander correctly on macOS, software needs to installed that enables the use of Tcl/Tk. XQuartz is the only software on macOS, which enables the operating system to use Tcl/Tk.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install XQuartz on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;At the time this post was written the release of XQuartz was version 2.7.11. It will work on Mac OS X Snow Leopard (version 10.6.x) or later, up to and including OS X Mountain Lion (version 10.8.x).&lt;/p&gt;
+&lt;p&gt;Download XQuartz using the following link: &lt;a href=&#34;https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.7.11/XQuartz-2.7.11.dmg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; XQuartz v2.7.11 (ca. 75.9 MB)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The latest release of XQuartz, however, is version 2.8.5. This version should be used for OS X Mavericks (version 10.9.x) or later.&lt;!--, up to and including macOS Monterey (version 12.x).--&gt;&lt;/p&gt;
+&lt;p&gt;Download XQuartz using the following link: &lt;a href=&#34;https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.5/XQuartz-2.8.5.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; XQuartz v2.8.5 (ca. 103MB)&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Make sure you download and install the correct version!&lt;/p&gt;
+&lt;p&gt;To see which version of macOS is installed on your mac, click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; in the menu bar and select ‘About This Mac’.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;xquartz-installation&#34;&gt;XQuartz Installation&lt;/h2&gt;
+&lt;p&gt;The icons and screenshots shown in this post are for XQuartz v2.7.11 and have not been updated to the latest version of XQuartz. The procedure described, however, is still the same, although the version number displayed below can be different depending on the version you are installing.&lt;/p&gt;
+&lt;p&gt;To install XQuartz on macOS perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the downloaded XQuartz disk image or package. This file will most likely reside in Finder &amp;gt; Downloads (shortcut: ⌥⌘L). The file can more easily be found by switching into List view (shortcut: ⌘2). To switch to Icon view use the shortcut: ⌘1. The XQuartz disk image will look like the image displayed below in &lt;a href=&#34;#figure-xquartz_disk_image&#34;&gt;Figure 1&lt;/a&gt; (version number may differ!).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_disk_image&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon XQuartz Disk Image.&#34; srcset=&#34;
+               /media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_45da0bec9d3aef5be70556b25f302c8a.webp 400w,
+               /media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_5223fde760d7b7b146209d1cbea593e5.webp 760w,
+               /media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_45da0bec9d3aef5be70556b25f302c8a.webp&#34;
+               width=&#34;224&#34;
+               height=&#34;226&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon XQuartz Disk Image.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Opening the XQuartz disk image will cause a window labeled ‘XQuartz-2.7.11’ or ‘XQuartz-2.8.5’ to appear containing a XQuartz installer package. This package looks like the image shown in &lt;a href=&#34;#figure-xquartz_package&#34;&gt;Figure 2&lt;/a&gt;, however the version number may be different. Double click the XQuartz installer package to open the installer.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_package&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon XQuartz Installer Package.&#34; srcset=&#34;
+               /media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_e6052058ecbacfd547dd813878fa69da.webp 400w,
+               /media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_6e89c3ae8225fa8214b0b4b3f80b47de.webp 760w,
+               /media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_e6052058ecbacfd547dd813878fa69da.webp&#34;
+               width=&#34;176&#34;
+               height=&#34;172&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon XQuartz Installer Package.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The installer for XQuartz will appear, showing the Introduction as displayed below in &lt;a href=&#34;#figure-xquartz_intro&#34;&gt;Figure 3&lt;/a&gt;. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_intro&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Introduction.&#34; srcset=&#34;
+               /media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_472b182c5d15fd8f3519abf168bf582f.webp 400w,
+               /media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_e15d48ff3c1ce256a4028c7a7d8cab72.webp 760w,
+               /media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_472b182c5d15fd8f3519abf168bf582f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Introduction.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Next the Read Me will appear as shown in &lt;a href=&#34;#figure-xquartz_readme&#34;&gt;Figure 4&lt;/a&gt; below. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_readme&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Read Me.&#34; srcset=&#34;
+               /media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_18bf877bd2935d825e1a246028f4d9f9.webp 400w,
+               /media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_e91b6ece4f58ea27f6ee5e8c636de886.webp 760w,
+               /media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_18bf877bd2935d825e1a246028f4d9f9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Read Me.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Right after the Read Me a Software Licence Agreement will appear. By clicking the ‘Continue’ button you will be asked to agree with this software licence agreement as diplayed in &lt;a href=&#34;#figure-xquartz_agreed&#34;&gt;Figure 5&lt;/a&gt;. Click on ‘Agree’ to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_agreed&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Licence Agreement.&#34; srcset=&#34;
+               /media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_df9803f459709d52de1b95ec1534d107.webp 400w,
+               /media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_58041e8befd002a03bd28f3af5f81972.webp 760w,
+               /media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_df9803f459709d52de1b95ec1534d107.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Licence Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;The installer will select the best destination to install the software for you and will display the Installation Type as shown below in &lt;a href=&#34;#figure-xquartz_install_type&#34;&gt;Figure 6&lt;/a&gt;. Click on the ‘Install’ button to start the software installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_install_type&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Installation Type.&#34; srcset=&#34;
+               /media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_85f413769bcbf615231b43b8e1e9694c.webp 400w,
+               /media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_1100aa252009bc7bb140ad96eec48dc9.webp 760w,
+               /media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_85f413769bcbf615231b43b8e1e9694c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Installation Type.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Before the software installation will commence, confirmation of the user is requested as displayed in &lt;a href=&#34;#figure-xquartz_install_confirm&#34;&gt;Figure 7&lt;/a&gt;. Either use the finger print scanner on the touch bar of your mac or confirm using the password of your mac.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_install_confirm&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installation Confirmation.&#34; srcset=&#34;
+               /media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_f9d219a0540547ebb2c7daa5735e2c10.webp 400w,
+               /media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_4e5db8876543523d46bcabe327e4e4ec.webp 760w,
+               /media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_f9d219a0540547ebb2c7daa5735e2c10.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installation Confirmation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Most likely a security request will pop up from your operating system, requesting access to control system events as shown below in &lt;a href=&#34;#figure-xquartz_allow_access&#34;&gt;Figure 8&lt;/a&gt;. Click on the on the ‘OK’ button to grant access.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_allow_access&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Access Request.&#34; srcset=&#34;
+               /media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_7ad028db673d9a23d76509e9991dd54c.webp 400w,
+               /media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_1bd774ad59898ea9c8d8999b97aa9154.webp 760w,
+               /media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_7ad028db673d9a23d76509e9991dd54c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;374&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Access Request.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Now you will be warned that to make XQuartz your default X11 server, as shown in &lt;a href=&#34;#figure-xquartz_logout_warning&#34;&gt;Figure 9&lt;/a&gt; below, you will need to log out and again log into your system. Click on the on the ‘OK’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_logout_warning&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Log Out Warning for Setting X11 as Default.&#34; srcset=&#34;
+               /media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_d57fbca45398a7f0017f3d3075bdb691.webp 400w,
+               /media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_9a2698ed17e4b9994236b5c97a1cad07.webp 760w,
+               /media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_d57fbca45398a7f0017f3d3075bdb691.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;316&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Log Out Warning for Setting X11 as Default.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;The software installer will start installing XQuartz onto your mac. When completed the installer will show a summary stating, that the installation was successful (see &lt;a href=&#34;#figure-xquartz_install_success&#34;&gt;Figure 10&lt;/a&gt;). Click on the ‘Close’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_install_success&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Successfully Installed.&#34; srcset=&#34;
+               /media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_6a2cbbb449b2004744424375e4fb7403.webp 400w,
+               /media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_2c9aa5cd8c01d2bd30a7e4ea16d99159.webp 760w,
+               /media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_6a2cbbb449b2004744424375e4fb7403.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Successfully Installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;The installer will finally ask you, whether you want to keep or move the XQuartz installer package to the trashbin. Click ‘Move to Bin’ to discard the installer package and simultaneously close the XQuartz disk image. In reality the XQuartz disk image will be put into the trashbin from which it can still be recovered!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, you now have XQuartz installed on your mac 😆!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;As mentioned in step 9. you have to make XQuartz your default X11 server by logging out and again logging in on your mac. Do this by navigating your mouse pointer to the menu bar, click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; and select ‘Log Out &amp;lt;username&amp;gt;&amp;hellip;’. Here &amp;lt;username&amp;gt; will display the name you selected, while setting up your mac for the first time. Log back in and XQuartz will now be your default X11 server.&lt;/p&gt;
+&lt;p&gt;The best way, to make sure that XQuartz is set as your default X11 server, is to completely &lt;strong&gt;Shutdown and Restart your mac&lt;/strong&gt;!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Commander installation in R on Windows 10/11</title>
+      <link>https://www.verouden.net/post/2020/04/06/r-commander-installation-in-r-on-windows-10/</link>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/06/r-commander-installation-in-r-on-windows-10/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#r-commander-installation-from-the-r-gui&#34;&gt;R Commander Installation from the R GUI&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#starting-and-restarting-r-commander&#34;&gt;Starting and restarting R Commander&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#start-r-commander&#34;&gt;Start R Commander&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#restart-r-commander&#34;&gt;Restart R Commander&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT14303&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT14303 Basic Statistics&lt;/a&gt;, &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT15303&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT15303 Statistics 1&lt;/a&gt;, &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT154036&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT15403 Statistics 2&lt;/a&gt; and &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=MAT20306&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT20306 Advanced Statistics&lt;/a&gt; (first two weeks of this course) will use R Commander instead of basic R. Therefore, they will need to install R Commander.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install R Commander within R on a &lt;strong&gt;privately owned&lt;/strong&gt; desktop or laptop computer running Windows 10/11 as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    The installation instructions in this post are &lt;u&gt;&lt;strong&gt;not to be used on WURclient desktops or laptops&lt;/strong&gt;&lt;/u&gt;! For a WURclient desktop or laptop see the post: &lt;a href=&#34;https://www.verouden.net/post/2021/04/23/r-commander-installation-in-r-on-wurclient/&#34;&gt;R Commander installation in R on a WURclient computer&lt;/a&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;r-commander-installation-from-the-r-gui&#34;&gt;R Commander Installation from the R GUI&lt;/h2&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Students, who installed R by using the &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/#1-wur-appstore&#34;&gt;WUR AppStore&lt;/a&gt;, can skip the installation of R Commander. The WUR AppStore version of R already contains everything to run R Commander.&lt;/p&gt;
+&lt;p&gt;This post is only intended for students, who followed the &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/#2-manual-installation&#34;&gt;Manual Installation&lt;/a&gt; of R.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Prior requirement:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installed on Windows 10/11&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install R Commander you will need to have R installed first. If you haven&amp;rsquo;t done so already, please first install R on your Windows 10/11 computer (use the link above to go to that specific post).&lt;/p&gt;
+&lt;p&gt;This post was originally based on R version 3.6.3. For newer versions of R the steps described are the same, only some screens you will see during your installation will display a higher version number of R compared to the screenshots in this post.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start &lt;code&gt;R x64 4.3.1&lt;/code&gt; from the ‘R’ folder in the ‘Start Menu’ as displayed below in &lt;a href=&#34;#figure-startmenu_r&#34;&gt;Figure 1&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-startmenu_r&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Menu R x64&#34; srcset=&#34;
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_d8d36d69a43a8b6d3a01060a400e8dbe.webp 400w,
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_47079a3cdf45ae547a0e7d125ce8be67.webp 760w,
+               /media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/startmenu-r_hu21798dd742e7c7486630d7f742cd89c4_47149_d8d36d69a43a8b6d3a01060a400e8dbe.webp&#34;
+               width=&#34;294&#34;
+               height=&#34;430&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Menu R x64
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The R GUI (graphical user interface) will open and the cursor will be ready for input behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign. Use the mouse pointer and navigate to the top menu and select ‘Packages’ &amp;gt; ‘Install Package(s)&amp;hellip;’ as shown in &lt;a href=&#34;#figure-install_packages_rgui&#34;&gt;Figure 2&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_packages_rgui&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Install Packages&#34; srcset=&#34;
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_7305e032d9e2df9d71d7b45c756fe69c.webp 400w,
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_5ea6c806db73e503c279da299163f6ac.webp 760w,
+               /media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/install-packages-r-gui_hue2525dd14a5bc2d80a448a69071d12a9_43316_7305e032d9e2df9d71d7b45c756fe69c.webp&#34;
+               width=&#34;370&#34;
+               height=&#34;193&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Install Packages
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Now a CRAN (Comprehensive R Archive Network) mirror needs to be selected, from which packages will be installed. Select, as shown below in &lt;a href=&#34;#figure-select_cran_mirror&#34;&gt;Figure 3&lt;/a&gt;, the top one ‘0-Cloud [https]’. This to make sure, that always the nearest CRAN mirror will be used no matter where you will be on the globe 🌍. Click on the ‘OK’ button to confirm the selection.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_cran_mirror&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Select CRAN Mirror&#34; srcset=&#34;
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_8ebf53d717eef19a48ff9f8d89b95feb.webp 400w,
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_78a04fe82c87f28c85e5b96578ac05f5.webp 760w,
+               /media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/select-cran-mirror_hu0820812f8942341e732271921af56aba_12857_8ebf53d717eef19a48ff9f8d89b95feb.webp&#34;
+               width=&#34;209&#34;
+               height=&#34;77&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Select CRAN Mirror
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;After the CRAN mirror selection a list of available packages will appear. Scroll down to find the &lt;code&gt;Rcmdr&lt;/code&gt; package and click it to select. As shown below in &lt;a href=&#34;#figure-install_rcmdr_package&#34;&gt;Figure 4&lt;/a&gt; the package will turn blue, when selected. Confirm the installation by clicking the ‘OK’ button. Now a lot will happen in your display while the &lt;code&gt;Rcmdr&lt;/code&gt; pacakage and its dependencies are being installed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install_rcmdr_package&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R GUI Select the Rcmdr package to be installed.&#34; srcset=&#34;
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_530e6ba0fab0c95ec8019fc46b167d27.webp 400w,
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_1f0a704f3a9f928c5c29bb9049b07c2d.webp 760w,
+               /media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-windows/install-package-Rcmdr_huca2b3f15d93e06bd489407981260bfad_41447_530e6ba0fab0c95ec8019fc46b167d27.webp&#34;
+               width=&#34;219&#34;
+               height=&#34;262&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R GUI Select the Rcmdr package to be installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Repeat step 4. for installing the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package. This plugin is required &lt;!--in MAT-15403 Statistics 2--&gt; to be able to do assignments about Simple Linear Regression.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Once the installation of the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package has finished, you are ready 😆 to start R 4.3.1 and use R Commander.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;When using R Commander for the first time additional packages, required for R Commander to work correctly, will need to be installed. Allow the installation to be able to work smoothly without errors!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;starting-and-restarting-r-commander&#34;&gt;Starting and restarting R Commander&lt;/h2&gt;
+&lt;h3 id=&#34;start-r-commander&#34;&gt;Start R Commander&lt;/h3&gt;
+&lt;p&gt;To start R Commander type the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command behind the R Console prompt (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;h3 id=&#34;restart-r-commander&#34;&gt;Restart R Commander&lt;/h3&gt;
+&lt;p&gt;In case R Commander crashes while using it, you will need to resart it. However, in the R Console currently running R, the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command will not restart R Commander.&lt;/p&gt;
+&lt;p&gt;The reason is, that the R Commander package is still loaded and first needs to be detached. To detach the R Commander package you can copy (Ctrl+C) the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;detach&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;package:Rcmdr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;paste (Ctrl+V) it behind the prompt in the R Console (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;p&gt;Now R Commander can be restarted by using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command as before.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

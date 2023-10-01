@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rtools | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/tag/rtools/</link>
+      <atom:link href="https://www.verouden.net/tag/rtools/index.xml" rel="self" type="application/rss+xml" />
+    <description>Rtools</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Tue, 05 Jul 2022 11:15:44 +0200</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>Rtools</title>
+      <link>https://www.verouden.net/tag/rtools/</link>
+    </image>
+    
+    <item>
+      <title>Rtools installation on a Windows 10/11 or a WURclient computer</title>
+      <link>https://www.verouden.net/post/2022/07/05/rtools-installation/</link>
+      <pubDate>Tue, 05 Jul 2022 11:15:44 +0200</pubDate>
+      <guid>https://www.verouden.net/post/2022/07/05/rtools-installation/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#requirement-for-and-download-of-rtools&#34;&gt;Requirement for and Download of Rtools&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#requirement&#34;&gt;Requirement&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installation-rtools&#34;&gt;Installation Rtools&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#check-the-installation&#34;&gt;Check the Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;Many people are able to use R, without ever having the need to compile from source and, therefore, the need to install Rtools. However, if you want to do package development, compile from source, or use packages like &lt;strong&gt;rstan&lt;/strong&gt; or &lt;strong&gt;cmdstanr&lt;/strong&gt;, you will definitely need to install Rtools.&lt;/p&gt;
+&lt;p&gt;In this post the installation procedure for Rtools will be given step wise. It will work for both regular Windows 10/11 computers as well as WURclient computers.&lt;/p&gt;
+&lt;p&gt;A WURclient desktop or laptop at Wageningen University &amp;amp; Research is not a standard Windows 10 computer. WURclients use Windows 10 Enterprise, which has been modified by Facilities and Services Information Technology (FB-IT) among others with respect to installation rights for security reasons.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;This post will show how to install Rtools on a &lt;strong&gt;privately owned&lt;/strong&gt; running Windows 10/11, or a &lt;strong&gt;WURclient&lt;/strong&gt; desktop or laptop computer, where the user possesses &lt;u&gt;&lt;strong&gt;POWER USER RIGHTS&lt;/strong&gt;&lt;/u&gt;.&lt;/p&gt;
+&lt;p&gt;The only difference is how the installer for Rtools is started.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;requirement-for-and-download-of-rtools&#34;&gt;Requirement for and Download of Rtools&lt;/h2&gt;
+&lt;h3 id=&#34;requirement&#34;&gt;Requirement&lt;/h3&gt;
+&lt;p&gt;Prior requirement for using Rtools:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; R properly installed:
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/06/r-installation-windows-10/&#34;&gt;R installed on Windows 10/11&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; R installed on a WURclient via Software Center, or&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2021/01/24/r-installation-wurclient/&#34;&gt;R installed on a WURclient using a custom installation &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Without having R installed on your desktop or laptop computer it makes no sense to install RTools. The software Rtools provides, as the name suggests, tools (compilers, and such) for use within R.&lt;/p&gt;
+&lt;h3 id=&#34;download&#34;&gt;Download&lt;/h3&gt;
+&lt;p&gt;Rtools can be downloaded for the following webpage: &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/bin/windows/Rtools/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Download the correct vesion, which matches the version of R installed on your desktop or laptop computer.&lt;/p&gt;
+&lt;p&gt;For R version 4.3.0 and above the installer for Rtools can be downloaded directly from this link: &lt;a href=&#34;https://cloud.r-project.org/bin/windows/Rtools/rtools43/files/rtools43-5550-5548.exe&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Rtools43 installer (ca. 465 MB, 64-bit).&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;installation-rtools&#34;&gt;Installation Rtools&lt;/h2&gt;
+&lt;p&gt;The screenshots below are for the installation of Rtools42 and have not been updated, because the procedure for Rtool43 remains the same.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open a File Explorer window (keyboard shortcut: 🪟 + E) and navigate to your downloads folder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On a Windows 10/11 computer start the downloaded Rtools installer. For a &lt;strong&gt;WURclient&lt;/strong&gt; computer right-click the downloaded Rtools installer and select select &amp;lsquo;WUR - Run with administrative rights&amp;rsquo; (see below in &lt;a href=&#34;#figure-start_installer_wurclient&#34;&gt;Figure 1&lt;/a&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-start_installer_wurclient&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Start Rtools installer on a WURclient.&#34; srcset=&#34;
+               /media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_343ec75a9cdd02af5a9fbed9331ecd84.webp 400w,
+               /media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_c6af86ed74cf22566f17f0aa71395587.webp 760w,
+               /media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/00-installer-admin-rights_hub5fabaa704923f06efed57a0df549f34_196804_343ec75a9cdd02af5a9fbed9331ecd84.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;429&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Start Rtools installer on a WURclient.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The Rtools installer will open with the Select Destination Location window as displayed below in &lt;a href=&#34;#figure-select_destination_location&#34;&gt;Figure 2&lt;/a&gt;. &lt;strong&gt;Do not change the destination location, leave the default suggested value!&lt;/strong&gt; Click ‘Next’ to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_destination_location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select Rtools destination location.&#34; srcset=&#34;
+               /media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_d877147a18475987cb518457cd157b0a.webp 400w,
+               /media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_bd186d536afdecb1b5f192eefa29141a.webp 760w,
+               /media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/01-select-destination-location_huf4eacd18e2c2250e34084f7ab5dec042_16835_d877147a18475987cb518457cd157b0a.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select Rtools destination location.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;The installer will next show the Select Additional Tasks window, as show in &lt;a href=&#34;#figure-select_additional_tasks&#34;&gt;Figure 3&lt;/a&gt;. Make sure that both boxes are ticked and click the ‘Next’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-select_additional_tasks&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select Rtools additional tasks.&#34; srcset=&#34;
+               /media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_046f26330bb35d042746690540a00eeb.webp 400w,
+               /media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_4b3abdc797919490dc369adbc0e90003.webp 760w,
+               /media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/02-select-additional-tasks_hu88f3f5a0724c97b0d7e535d22b47391d_16118_046f26330bb35d042746690540a00eeb.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select Rtools additional tasks.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Now the installer will present a window, as displayed below in &lt;a href=&#34;#figure-ready_to_install&#34;&gt;Figure 4&lt;/a&gt;, with the selected installation options. Click the ‘Install’ button to start the installation or select ‘Back’ to modify the installer options.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ready_to_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Rtools ready to install overview.&#34; srcset=&#34;
+               /media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_65f0a39f2c8704a7a9b2320930bfd1b8.webp 400w,
+               /media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_c38a2b7a8536a8c9eb81c389743e0a3a.webp 760w,
+               /media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/03-ready-2-install_hu0520b08c230e71fc96490ecc82f910f2_18332_65f0a39f2c8704a7a9b2320930bfd1b8.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Rtools ready to install overview.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Once the installer has completed, &lt;a href=&#34;#figure-finish_setup&#34;&gt;Figure 5&lt;/a&gt; will be shown. Click the ‘Finish’ button to complete the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-finish_setup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finish the Rtools installation.&#34; srcset=&#34;
+               /media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_0c357d7f348fb624830f241361dd0c86.webp 400w,
+               /media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_e934eca497e8f117e48ab891d389f950.webp 760w,
+               /media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rtools/04-completing-rtools-setup-wizard_hudde7cddda30121ee48bc4388f13e60e8_16587_0c357d7f348fb624830f241361dd0c86.webp&#34;
+               width=&#34;499&#34;
+               height=&#34;392&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finish the Rtools installation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;check-the-installation&#34;&gt;Check the Installation&lt;/h2&gt;
+&lt;p&gt;For Rtools 4.3 there is an easy way to check, that the installation of Rtools was successful.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open R (either RGui or RStudio)&lt;/li&gt;
+&lt;li&gt;Execute the following command: &lt;code&gt;Sys.which(&amp;quot;make&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;When R returns &lt;code&gt;&amp;quot;C:\\rtools43\\usr\\bin\\make.exe&amp;quot;&lt;/code&gt;, you know that Rtools was successfully installed.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;For Rtools 4.0 the returned path will be empty.&lt;/p&gt;
+&lt;p&gt;This does not mean that the installation was not successful. Just that Rtools was not automatically added to the PATH environment variable.&lt;/p&gt;
+&lt;p&gt;If you wish to add Rtools to the PATH environment variable, please follow the instructions on &lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/rtools40.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://cran.r-project.org/bin/windows/Rtools/rtools40.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

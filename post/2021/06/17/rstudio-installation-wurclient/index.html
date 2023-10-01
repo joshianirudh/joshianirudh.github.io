@@ -1,0 +1,1698 @@
+<!DOCTYPE html><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.5.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Maikel Verouden, Ph.D." />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Instructions on how to install RStudio yourself on a WURclient without using Software Center." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="index.html" />
+
+  
+  
+  
+    <meta name="theme-color" content="#4caf50" />
+  
+
+  
+  
+
+  
+
+  <link rel="stylesheet" href="../../../../../css/vendor-bundle.min.c7b8d9abd591ba2253ea42747e3ac3f5.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha512-W0xM4mr6dEP9nREo7Z9z+9X70wytKvMGeDsj7ps2+xg5QPrEBXC8tAW1IFnzjR6eoJ90JmCnFzerQJTLzIEHjA==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css" integrity="" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="../../../../../css/wowchemy.5ea77162870bf70f879de064550a2633.css" />
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="../../../../../manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="../../../../../media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="../../../../../media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="index.html" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@mverouden" />
+    <meta property="twitter:creator" content="@mverouden" />
+  
+  <meta property="og:site_name" content="Maikel P.H. Verouden, Ph.D." />
+  <meta property="og:url" content="https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/" />
+  <meta property="og:title" content="Custom RStudio installation on a WURclient computer | Maikel P.H. Verouden, Ph.D." />
+  <meta property="og:description" content="Instructions on how to install RStudio yourself on a WURclient without using Software Center." /><meta property="og:image" content="https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/featured.jpg" />
+    <meta property="twitter:image" content="https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/featured.jpg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-06-17T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2023-08-25T20:35:22&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/"
+  },
+  "headline": "Custom RStudio installation on a WURclient computer",
+  
+  "image": [
+    "https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/featured.jpg"
+  ],
+  
+  "datePublished": "2021-06-17T00:00:00Z",
+  "dateModified": "2023-08-25T20:35:22+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Maikel Verouden, Ph.D."
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wageningen University \u0026 Research, Biometris",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Instructions on how to install RStudio yourself on a WURclient without using Software Center."
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>Custom RStudio installation on a WURclient computer | Maikel P.H. Verouden, Ph.D.</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="366d265bd1abe7a89d8771615b7cd546" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="../../../../../js/wowchemy-init.min.7ce4903cc823e4a59f7a559e798b4420.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="index.html#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="header--fixed">
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="../../../../../index.html">Maikel P.H. Verouden, Ph.D.</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="../../../../../index.html">Maikel P.H. Verouden, Ph.D.</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#posts"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#projects"><span>Projects</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#events"><span>Talks</span></a>
+          </li>
+
+          
+          
+
+          
+          <li class="nav-item dropdown">
+            <a href="index.html#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Publications</span><span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              
+                <a class="dropdown-item" href="../../../../../index.html#featured"><span>Featured Publications</span></a>
+              
+                <a class="dropdown-item" href="../../../../../index.html#publications"><span>Recent Publications</span></a>
+              
+            </div>
+          </li>
+
+          
+          
+
+          
+          <li class="nav-item dropdown">
+            <a href="index.html#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"><span>Courses</span><span class="caret"></span>
+            </a>
+            <div class="dropdown-menu">
+              
+                <a class="dropdown-item" href="../../../../../course/data-science/index.html"><span>Learn Data Science</span></a>
+              
+                <a class="dropdown-item" href="../../../../../course/robotics/index.html"><span>Learn Robotics</span></a>
+              
+            </div>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="../../../../../index.html#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+        
+
+        
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="index.html#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="index.html#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="index.html#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="index.html#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="index.html#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Custom RStudio installation on a WURclient computer</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  <span class="author-highlighted">
+      <a href="../../../../../author/maikel-verouden-ph.d./index.html">Maikel Verouden, Ph.D.</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Fri, Aug 25, 2023
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    6 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="../../../../../category/r/index.html">R</a>, <a href="../../../../../category/wur/index.html">WUR</a>, <a href="../../../../../category/wurclient/index.html">WURclient</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 480px;">
+  <div style="position: relative">
+    <img src="featured_hu9010918964b24de6d9ea86f3d5818b95_269783_720x2500_fit_q90_h2_lanczos.webp" width="720" height="480" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://unsplash.com/photos/AwDVMJKMjlU" target="_blank" rel="noopener"><strong><em>Panos Sakalakis</em> on Unsplash</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <details class="toc-inpage d-print-none  " open>
+  <summary class="font-weight-bold">Table of Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="index.html#motivation">Motivation</a>
+      <ul>
+        <li><a href="index.html#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#uninstall-a-previously-installed-rstudio-version">Uninstall a previously installed RStudio version</a>
+      <ul>
+        <li><a href="index.html#installed-from-software-center">Installed from Software Center</a></li>
+        <li><a href="index.html#installed-previously-as-a-custom-installation">Installed previously as a custom installation</a></li>
+      </ul>
+    </li>
+    <li><a href="index.html#custom-rstudio-installation">Custom RStudio installation</a>
+      <ul>
+        <li><a href="index.html#download">Download</a></li>
+        <li><a href="index.html#installation">Installation</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+<h2 id="motivation">Motivation</h2>
+<p>A WURclient desktop or laptop at Wageningen University &amp; Research is not a standard Windows 10 computer. WURclients use Windows 10 Enterprise, which has been modified by Facilities and Services Information Technology (FB-IT) among others with respect to installation rights for security reasons.</p>
+<p>WURclient desktops and laptops at Wageningen University &amp; Research can install RStudio from the Software Center, before called !Available Software, created by the IT department, which is launched by clicking on Start and selecting the &lsquo;Software Center&rsquo; tile. At the time this post was written, the latest version of RStudio in Software Center was <code>RStudio v1.4</code>, which refers to release <code>v1.4.1717</code>. Currently <code>RStudio 2023.06.1.524</code> is the latest available version in Software Center, referring to release <code>2023.06.1 Build 524</code>.</p>
+<p>This version of RStudio was placed in &lsquo;Software Center&rsquo; for educational purposes. Only once per year a new version of R (including R Commander and additional packages for several courses) and RStudio is released in Software Center.</p>
+<p>Many users, however, prefer to use the latest version of RStudio, because of new features offered in the newer version of the software. At the moment of writing this post the latest version of RStudio was v1.4.1717 named: &lsquo;Juliet Rose&rsquo; (released on 2021-06-01). The post has been updated, with the exception of the screenshots, to <code>RStudio 2023.06.2 Build 561</code> named: &ldquo;Mountain Hydrangea&rdquo;.</p>
+<div class="alert alert-note">
+  <div>
+    This post will show how to custom install RStudio on a <strong>WURclient</strong> desktop or laptop computer without using Software Center.
+  </div>
+</div>
+<div class="alert alert-warning">
+  <div>
+    The installation instructions in this post are <u><strong>not to be used on privately owned desktops or laptops</strong></u>! For a privately owned desktop or laptop see the post: <a href="../../../../2020/04/13/rstudio-installation-on-windows-10/index.html">RStudio installation on Windows 10</a>.
+  </div>
+</div>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> To be able to perform a custom installation of RStudio you need to have <u><strong>POWER USER RIGHTS</strong></u> on the WURclient desktop or laptop.</li>
+</ul>
+<p>To see whether you possess these rights, right-click any icon (except Recycle Bin or WUR HELP) on the desktop. When the opened menu contains the option &lsquo;WUR - Run with administrative rights&rsquo; (sixth or seventh from the top), it means you have power user rights on that particular desktop or laptop.</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <a href="../../../01/24/r-installation-wurclient/index.html">R installed on a WURclient using a custom installation </a></li>
+</ul>
+<p>To be able to install RStudio you will need to have R installed first. If you haven&rsquo;t done so already, please first perform a custom installation of R on your WURclient computer (use the link above to go to that specific post).</p>
+<h2 id="uninstall-a-previously-installed-rstudio-version">Uninstall a previously installed RStudio version</h2>
+<p>Before performing a new custom installation of RStudio it is recommended to uninstall a previously installed version.</p>
+<p>Here two procedures are described, follow the one that fits your needs:</p>
+<ul>
+<li><a href="index.html#installed-from-software-center">Installed from Software Center</a></li>
+<li><a href="index.html#installed-previously-as-a-custom-installation">Installed previously as a custom installation</a></li>
+</ul>
+<p>In case you have no version of RStudio installed on your WURclient desktop or laptop you can proceed to the section <a href="index.html#custom-rstudio-installation">Custom RStudio installation</a>.</p>
+<h3 id="installed-from-software-center">Installed from Software Center</h3>
+<p>If you previously installed RStudio from Software Center, then to remove R reopen the Software Center by clicking on Start and next click on the Software Center tile. If for some reason you lack this tile in your start menu, just type &lsquo;Software Center&rsquo; and it will appear in a search results window in your Windows task bar.</p>
+<p>In the left column of Software Center navigate to &lsquo;Installation Status&rsquo;. Select the installed RStudio version and click on the green button bearing the text &lsquo;Uninstall&rsquo;. This will start the removal of the software. You will be informed by the Software Center, when the software has been uninstalled.</p>
+<div class="alert alert-note">
+  <div>
+    <p>If you have not installed another version of RStudio, either via Software Center or via a custom installation, your computer should now be lacking a functioning RStudio installation. Continue with the section <a href="index.html#custom-rstudio-installation">Custom RStudio installation</a> to perform a new custom installation of RStudio.</p>
+<p>When you do still have a working RStudio installation on your WURclient computer, return to <a href="index.html#uninstall-a-previously-installed-rstudio-version">Uninstall a previously installed RStudio version</a> and follow the procedure applicable to your situation.</p>
+  </div>
+</div>
+<h3 id="installed-previously-as-a-custom-installation">Installed previously as a custom installation</h3>
+<p>Let&rsquo;s assume you previously installed RStudio version 1.3.959 on a WURclient computer (either a desktop or laptop) by following the steps for a custom installation of RStudio as described in this post. For a newer version of RStudio the steps are the same.<!--, but names of folders will differ with respect to the R version number.--></p>
+<p>To uninstall RStudio perform the following steps:</p>
+<ol>
+<li>Open a File Explorer and navigate to the folder <code>C:\MyPrograms\RStudio</code>. Right-click the file <code>Uninstall.exe</code> and select &lsquo;WUR - Run with administrative rights&rsquo; as displayed in <a href="index.html#figure-explorer_uninstall_rstudio">Figure 1</a> below.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-explorer_uninstall_rstudio">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Uninstall Custom RStudio Installation from File Explorer." srcset="../../../../../media/rstudio-wurclient/uninstall_custom_rstudio_installation_hu380c998f4901fda8000260a6205a11f3_174646_63ba7443c4ebd6fd4eb30788d1fec5ea.webp788d1fec5ea.webp 400w../../../../../media/rstudio-wurclient/uninstall_custom_rstudio_installation_hu380c998f4901fda8000260a6205a11f3_174646_9bf42889c453e65d81d08befde9a73f5.webp8befde9a73f5.webp 760../../../../../media/rstudio-wurclient/uninstall_custom_rstudio_installation_hu380c998f4901fda8000260a6205a11f3_174646_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-wurclient/uninstall_custom_rstudio_installation_hu380c998f4901fda8000260a6205a11f3_174646_63ba7443c4ebd6fd4eb30788d1fec5ea.webp"
+               width="760"
+               height="426"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      Uninstall Custom RStudio Installation from File Explorer.
+    </figcaption></figure>
+<ol start="2">
+<li>The uninstaller will start as shown below in <a href="index.html#figure-uninstall_rstudio">Figure 2</a>. Click the &lsquo;Uninstall&rsquo; to proceed.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-uninstall_rstudio">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="RStudio for Windows Uninstall Announcement." srcset="../../../../../media/rstudio-wurclient/rstudio_uninstaller_hu1ae7dc113956b8f1e02c3cf5509345b9_14628_55bd4d0a85d8fff95cea4875af1bd4f0.webp875af1bd4f0.webp 400w../../../../../media/rstudio-wurclient/rstudio_uninstaller_hu1ae7dc113956b8f1e02c3cf5509345b9_14628_00a3982beaed904996443a7f1bbb9aeb.webp3a7f1bbb9aeb.webp 760../../../../../media/rstudio-wurclient/rstudio_uninstaller_hu1ae7dc113956b8f1e02c3cf5509345b9_14628_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-wurclient/rstudio_uninstaller_hu1ae7dc113956b8f1e02c3cf5509345b9_14628_55bd4d0a85d8fff95cea4875af1bd4f0.webp"
+               width="499"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      RStudio for Windows Uninstall Announcement.
+    </figcaption></figure>
+<ol start="3">
+<li>Once the uninstallation has completed, a message of success will be display as shown below in <a href="index.html#figure-uninstall_rstudio_success">Figure 3</a>. Click the &lsquo;Close&rsquo; button to finish.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-uninstall_rstudio_success">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="RStudio for Windows Uninstalled Successfully." srcset="../../../../../media/rstudio-wurclient/rstudio_uninstall_completed_hu4a5ac36de6aec93d848d008f47f60ad4_13403_78ac6254661c839024691507efb15a47.webp507efb15a47.webp 400w../../../../../media/rstudio-wurclient/rstudio_uninstall_completed_hu4a5ac36de6aec93d848d008f47f60ad4_13403_a56e67e8d4324bc2d6669c1dcddcdbb6.webp9c1dcddcdbb6.webp 760../../../../../media/rstudio-wurclient/rstudio_uninstall_completed_hu4a5ac36de6aec93d848d008f47f60ad4_13403_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-wurclient/rstudio_uninstall_completed_hu4a5ac36de6aec93d848d008f47f60ad4_13403_78ac6254661c839024691507efb15a47.webp"
+               width="499"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      RStudio for Windows Uninstalled Successfully.
+    </figcaption></figure>
+<div class="alert alert-note">
+  <div>
+    <p>If you have not installed another version of RStudio, either via Software Center or via a custom installation, your computer should now be lacking a functioning RStudio installation. Continue with the section <a href="index.html#custom-rstudio-installation">Custom RStudio installation</a> to perform a new custom installation of RStudio.</p>
+<p>When you do still have a working RStudio installation on your WURclient computer, return to <a href="index.html#uninstall-a-previously-installed-rstudio-version">Uninstall a previously installed RStudio version</a> and follow the procedure applicable to your situation.</p>
+  </div>
+</div>
+<h2 id="custom-rstudio-installation">Custom RStudio installation</h2>
+<h3 id="download">Download</h3>
+<p>At the time this post was written, the latest stable release of RStudio was version 1.4.1717. The post has been updated to the current stable release 2023.06.2 Build 561.</p>
+<p>Download RStudio using the following link: <a href="https://download1.rstudio.org/electron/windows/RStudio-2023.06.2-561.exe" target="_blank" rel="noopener">
+  <i class="fas fa-download  pr-1 fa-fw"></i> RStudio 2023.06.2 Build 561 (ca. 212.78 MB)</a></p>
+<p>For newer versions of RStudio the steps described after the download are the same, but starting with a newer version of the RStudio executable file.</p>
+<h3 id="installation">Installation</h3>
+<p>To install RStudio perform the following steps:</p>
+<ol>
+<li>Right-click the downloaded file <strong>RStudio-2023.06.2-561.exe</strong> and select &lsquo;WUR - Run with administrative rights&rsquo;. This file will most likely reside in your Downloads folder of your user account.</li>
+<li>After the installler has started, a Welcome window will appear as displayed below in <a href="index.html#figure-rstudio_setup">Figure 4</a>. Click the ‘Next’ button to proceed.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-rstudio_setup">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Welcome screen RStudio Setup." srcset="../../../../../media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_89f97afe8513a07d58d5affe705e3391.webpffe705e3391.webp 400w../../../../../media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_f55a4b86288b75ccac10fd809fcfcf12.webpfd809fcfcf12.webp 760../../../../../media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-windows/1-rstudio-w10_hu9d9240117c38b10c52cdc898f8891ce7_15845_89f97afe8513a07d58d5affe705e3391.webp"
+               width="499"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      Welcome screen RStudio Setup.
+    </figcaption></figure>
+<ol start="3">
+<li>Now the RStudio Setup will allow you to select the installation location by selecting a destination folder. Change the Destination Folder to <code>C:\MyPrograms\Rstudio</code>, , as shown in <a href="index.html#figure-rstudio_install_location">Figure 5</a> below. Click the ‘Next’ button to continue.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-rstudio_install_location">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="RStudio Installation Location Selection." srcset="../../../../../media/rstudio-wurclient/rstudio_installation_folder_hue69a5a1d6ee61eb768de47549fbc5fd2_16131_872d9ef5c3de5972358733c92d140a36.webp3c92d140a36.webp 400w../../../../../media/rstudio-wurclient/rstudio_installation_folder_hue69a5a1d6ee61eb768de47549fbc5fd2_16131_4993469912d29c4953dc570dea6665e6.webp570dea6665e6.webp 760../../../../../media/rstudio-wurclient/rstudio_installation_folder_hue69a5a1d6ee61eb768de47549fbc5fd2_16131_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-wurclient/rstudio_installation_folder_hue69a5a1d6ee61eb768de47549fbc5fd2_16131_872d9ef5c3de5972358733c92d140a36.webp"
+               width="499"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      RStudio Installation Location Selection.
+    </figcaption></figure>
+<ol start="4">
+<li>Next the RStudio Setup allows choosing a Start Menu folder, as displayed below in <a href="index.html#figure-rstudio_startmenu_folder">Figure 6</a>, where the RStudio shortcut to start the program will be put. Click on ‘Install’ to start the installation of RStudio.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-rstudio_startmenu_folder">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="Setting the RStudio Start Menu Folder." srcset="../../../../../media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_a6f69321f9ac5913e4e71819c4a9caec.webp819c4a9caec.webp 400w../../../../../media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_81e125f2c79774c9db3f730f90adcfb7.webp730f90adcfb7.webp 760../../../../../media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-windows/3-rstudio-start-folder-w10_hufe39066e8a360cd6fb49b03e7ec4bccc_23423_a6f69321f9ac5913e4e71819c4a9caec.webp"
+               width="499"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      Setting the RStudio Start Menu Folder.
+    </figcaption></figure>
+<ol start="5">
+<li>Once the installation of RStudio has finished, the window will look like the one shown below in <a href="index.html#figure-rstudio_install_completed">Figure 7</a>. Click the ‘Finish’ button to close the setup.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-rstudio_install_completed">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img alt="RStudio Installation Completion." srcset="../../../../../media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_df77c4f2bc204e6cdc3e54366ed5e768.webp4366ed5e768.webp 400w../../../../../media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_3d3c3ae2aecb117b6177a2858e063305.webpa2858e063305.webp 760../../../../../media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_1200x1200_fit_q90_h2_lanczos_3.webp_h2_lanczos_3.webp 1200w"
+               src="../../../../../media/rstudio-windows/5-rstudio-completed-w10_hua3bbbcb039472205c08eb8445793a625_12484_df77c4f2bc204e6cdc3e54366ed5e768.webp"
+               width="499"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div><figcaption data-pre="Figure&nbsp;" data-post=":&nbsp;" class="numbered">
+      RStudio Installation Completion.
+    </figcaption></figure>
+<div class="alert alert-note">
+  <div>
+    Congratulations, 😆, you now have RStudio 2023.06.2 Build 561 installed on your WURclient desk- or laptop computer!
+  </div>
+</div>
+<!-- ## Warning Message RStudio
+
+Lately I have been getting many e-mails claiming that R/RStudio, from Software Center or the custom installation, is not working well within Wageningen University & Research.
+
+Usually the mail contains the following console message:
+```r
+Warning message:
+In normalizePath(path.expand(path), winslash, mustWork) :
+  path[1]="//WURNET.NL/Homes/user001/My Documents": Access is denied
+```
+, where `user001` displays the user's own personal WUR username.
+
+It is merely a **WARNING MESSAGE**.
+
+This message is only given in RStudio, because it is a persistent problem originating from the use of RStudio within a network environment. On the Fora of RStudio this problem has been appearing since 2014 and has still not been resolved by RStudio.
+
+Whether you installed R and RStudio on a WURclient using Software Center or via the posts of this website, the warning message does not hamper the working of R in RStudio.
+
+As user you can check, where packages are installed using the following command in RStudio:
+```r
+.libPaths()
+```
+For a custom installation R will return in the console:
+```r
+[1] "C:/ProgramData/R/win-library/4.2" "C:/MyPrograms/R/R-4.2.0/library"
+```
+In case you have a custom installation and the returned paths are different, it means you didn't follow the steps for the installation of R as described. Please reinstall R as described in [R installed on a WURclient using a custom installation ](/post/2021/01/24/r-installation-wurclient/).
+
+
+The installation via Software Center will return in the console:
+```
+[1] "C:/ProgramData/R/win-library/4.1" "C:/Program Filess/R/R-4.1.0/library"
+```
+In case you have installed via Software Center, but get different paths I urgently request you to contact first the Servicedesk IT. When they can not solve the issue, I will be contacted via them. -->
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="../../../../../tag/installation/index.html">Installation</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/r/index.html">R</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/rstudio/index.html">RStudio</a>
+  
+  <a class="badge badge-light" href="../../../../../tag/wurclient/index.html">WURclient</a>
+  
+</div>
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/&amp;text=Custom%20RStudio%20installation%20on%20a%20WURclient%20computer" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter-square">
+          <i class="fab fa-twitter-square"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/&amp;t=Custom%20RStudio%20installation%20on%20a%20WURclient%20computer" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook-square">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Custom%20RStudio%20installation%20on%20a%20WURclient%20computer&amp;body=https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope-square">
+          <i class="fas fa-envelope-square"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/&amp;title=Custom%20RStudio%20installation%20on%20a%20WURclient%20computer" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Custom%20RStudio%20installation%20on%20a%20WURclient%20computer%20https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp-square">
+          <i class="fab fa-whatsapp-square"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="../../../../../index.html"><img class="avatar mr-3 avatar-circle" src="../../../../../author/maikel-verouden-ph.d./avatar_hu7543b81bae599217a80b637684810b7a_212930_270x270_fill_q90_lanczos_center.jpg" alt="Maikel Verouden, Ph.D."></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="../../../../../index.html">Maikel Verouden, Ph.D.</a></h5>
+      <h6 class="card-subtitle">Researcher | Lecturer | IT &amp; Organization contact person</h6>
+      <p class="card-text">My research interests include Statistics, Teaching and programmable matter (statistical software).</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="../../../../../index.html#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.wur.nl/en/Persons/Maikel-dr.ing.-MPH-Maikel-Verouden.htm" target="_blank" rel="noopener">
+        <i class="fas fa-university"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://orcid.org/0000-0002-4893-3323" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Maikel_Verouden" target="_blank" rel="noopener">
+        <i class="ai ai-researchgate"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.nl/citations?hl=en&amp;user=c4GxYqwAAAAJ" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/verouden/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/mverouden" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://git.wur.nl/verou004" target="_blank" rel="noopener">
+        <i class="fab fa-gitlab"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/mverouden" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="../../../../../privacy/index.html">License: CC BY-NC-SA 4.0</a>
+    
+    
+       &middot; 
+      <a href="../../../../../terms/index.html">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    © 2018&ndash;2023 Maikel P.H. Verouden &middot; 
+
+    Powered by the
+    <a href="https://cran.r-project.org/" target="_blank" rel="noopener"><i class="fab fa-r-project"></i></a> <a href="https://github.com/rstudio/blogdown" target="_blank" rel="noopener">blogdown</a> package and the
+    <a href="https://wowchemy.com/hugo-themes/" target="_blank" rel="noopener">Wowchemy Academic Resumé theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="index.html#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+      
+
+    
+    <script src="../../../../../js/vendor-bundle.min.d26509351aa0ff874abbee824e982e9b.js"></script>
+
+    
+    
+    
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/highlight.min.js" integrity="sha512-Ypjm0o7jOxAd4hpdoppSEN0TQOC19UtPAqD+4s5AlXmUvbmmS/YMxYqAqarQYyxTnB6/rqip9qcxlNB/3U9Wdg==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/r.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/python.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/latex.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.1/build/languages/bash.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js" integrity="" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="https://www.verouden.net/post/2021/06/17/rstudio-installation-wurclient/{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+
+    
+    
+    
+    <script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+    
+    
+      <script src="../../../../../js/wowchemy-headroom.c251366b4128fd5e6b046d4c97a62a51.js" type="module"></script>
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="../../../../../en/js/wowchemy.min.43c8f7a4851160885a7d8069dfa86538.js"></script>
+
+    
+    
+      <script src="../../../../../js/wowchemy-map.a26e9d2f7238ba5b868384f1c5bc6477.js" type="module"></script>
+    
+    
+    
+    
+      
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="index.html#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="index.html#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src="../../../../../js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script>
+    var _paq = window._paq = window._paq || [];
+     
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//matomo.verouden.net/";
+      _paq.push(['setTrackerUrl', u+'matomo.php']);
+      _paq.push(['setSiteId', '1']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

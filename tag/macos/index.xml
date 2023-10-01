@@ -1,0 +1,2516 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>macOS | Maikel P.H. Verouden, Ph.D.</title>
+    <link>https://www.verouden.net/tag/macos/</link>
+      <atom:link href="https://www.verouden.net/tag/macos/index.xml" rel="self" type="application/rss+xml" />
+    <description>macOS</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><copyright>© 2018--2023 Maikel P.H. Verouden</copyright><lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.verouden.net/media/icon_huad10df73939ac9e293fe617f41f10a9f_9032_512x512_fill_lanczos_center_3.png</url>
+      <title>macOS</title>
+      <link>https://www.verouden.net/tag/macos/</link>
+    </image>
+    
+    <item>
+      <title>Anaconda (re-)installation on macOS</title>
+      <link>https://www.verouden.net/post/2022/11/07/anaconda-installation-macos/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2022/11/07/anaconda-installation-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-r-kernel&#34;&gt;Add a R kernel&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Around 34 courses at Wageningen University &amp;amp; Research use Anaconda Python as software in their course, e.g. &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB30806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-30806 Modelling in Systems Biology&lt;/a&gt; and &lt;a href=&#34;https://wur.osiris-student.nl/#/onderwijscatalogus/extern/cursus?cursuscode=SSB50806&amp;amp;collegejaar=huidig&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SSB-50806 Systems and Synthetic Biology&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The instructions in this post will show how to install Anaconda on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/h2&gt;
+&lt;p&gt;If you have previously installed Anaconda and wish to re-install the latest version or your current installation is not working as you expect, you first need to delete everything related to Anaconda. In macOS a complete removal is somewhat complicated, but doable if you follow all steps precisely as provided in this post.&lt;/p&gt;
+&lt;p&gt;For the complete removal of everything related to Anaconda the Terminal application will be used. In your Finder &amp;gt; Applications (shortcut: ⇧⌘A) there is a Utilities folder as depicted in &lt;a href=&#34;#figure-utilities_folder&#34;&gt;Figure 1&lt;/a&gt; below.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-utilities_folder&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finder Utilities Folder.&#34; srcset=&#34;
+               /media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_977414cad0d3ca1520146015f0958d03.webp 400w,
+               /media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_b55d7fd8bd6bb6b822d8285408ae8999.webp 760w,
+               /media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_977414cad0d3ca1520146015f0958d03.webp&#34;
+               width=&#34;138&#34;
+               height=&#34;176&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finder Utilities Folder.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Within this Utilities folder, which can be directly accessed by using the ⇧⌘U shortcut, the Terminal application is contained. The icon in &lt;a href=&#34;#figure-terminal_app&#34;&gt;Figure 2&lt;/a&gt; shows what the Terminal application looks like in the Finder &amp;gt; Applications &amp;gt; Utilities folder.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-terminal_app&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon Terminal Application.&#34; srcset=&#34;
+               /media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_c3ba97e8459945a34b3f28001415497b.webp 400w,
+               /media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_5e8a97e364ed245208960f638a62f6c4.webp 760w,
+               /media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_c3ba97e8459945a34b3f28001415497b.webp&#34;
+               width=&#34;138&#34;
+               height=&#34;176&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon Terminal Application.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The Terminal application can also be started via Lauchpad under the ‘Other’ group.&lt;/p&gt;
+&lt;p&gt;Steps for a complete removal of Anaconda on macOS:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Start the Terminal application. The terminal console prompt, where the commands will be entered, is depicted by a &lt;code&gt;%&lt;/code&gt; or a &lt;code&gt;$&lt;/code&gt; sign. Which sign is shown, depends whether your default shell is zsh (&lt;code&gt;%&lt;/code&gt; sign) or bash (&lt;code&gt;$&lt;/code&gt; sign).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install the &lt;code&gt;anaconda-clean&lt;/code&gt; package:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;conda install anaconda-clean
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Then, run &lt;code&gt;anaconda-clean&lt;/code&gt; with the argument &lt;code&gt;--yes&lt;/code&gt; to remove all those files and directories without being asked to confirm each one:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;anaconda-clean --yes
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;code&gt;anaconda-clean --yes&lt;/code&gt; creates a backup of all files and directories that might be removed in a folder named &lt;code&gt;.anaconda_backup&lt;/code&gt; in your home directory. Also note that &lt;code&gt;anaconda-clean&lt;/code&gt; leaves your data files in the AnacondaProjects directory untouched.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Remove all Anaconda directories from your system by sequentially executing the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf /Applications/Anaconda-Navigator.app
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -rf /opt/anaconda3
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rm -rf ~/.anaconda_backup
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sequentially open &lt;code&gt;.bash_profile&lt;/code&gt;, &lt;code&gt;tcshrc&lt;/code&gt;, &lt;code&gt;.xonshrc&lt;/code&gt;, and &lt;code&gt;.zshrc&lt;/code&gt; in TextEdit and delete the section starting with &lt;code&gt;# &amp;gt;&amp;gt;&amp;gt; conda initialize &amp;gt;&amp;gt;&amp;gt;&lt;/code&gt; and ending with &lt;code&gt;# &amp;lt;&amp;lt;&amp;lt; conda initialize &amp;lt;&amp;lt;&amp;lt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In a terminal this is done, e.g. for &lt;code&gt;.bash_profile&lt;/code&gt;, with &lt;code&gt;open -a TextEdit .bash_profile&lt;/code&gt;. Use the shortcut ⌘S to save the file, and close the file with the shortcut ⌘Q.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Having performed all 5 steps given above, your mac will be ready for a new installation of Anaconda.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;At the time this post was written, the latest release of Anaconda was version 2022.10 containing Python 3.9.13. It has been updated to the latest release version 2023.07 of Anaconda.&lt;/p&gt;
+&lt;p&gt;For newer versions of Anaconda than 2022.10 the steps described below are the same and still correct, but start with a newer version of the downloaded installer package file of Anaconda. The screenshots in this post have not been updated. Therefore, what you see during your installation can (and probably will) differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;For macOS there are two downloads of Anaconda available on the &lt;a href=&#34;https://repo.anaconda.com/archive/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Anaconda Repository Archive&lt;/a&gt;. To see which version you need click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; in the menu bar and select ‘About This Mac’.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: If you are using a mac with the newest M1 or M2 processor, download the &lt;strong&gt;Apple Silicon arm64&lt;/strong&gt; build!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Download Anaconda for your specific version of macOS using one of the following links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For an Intel processor based mac: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-MacOSX-x86_64.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 (ca. 610.5MB, &lt;strong&gt;Intel 64-bit&lt;/strong&gt; build)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For a M1/M2 processor based mac: &lt;a href=&#34;https://repo.anaconda.com/archive/Anaconda3-2023.07-2-MacOSX-arm64.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Anaconda3 2023.07-2 (ca. 643.9MB, &lt;strong&gt;ARM 64-bit&lt;/strong&gt; build)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;For installing Anaconda on macOS follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the downloaded file, either &lt;strong&gt;Anaconda3-2023.07-2-MacOSX-x86_64.pkg&lt;/strong&gt;, or &lt;strong&gt;Anaconda3-2023.07-2-MacOSX-arm64.pkg&lt;/strong&gt; depending on the processor in your mac (as explained above). This file will most likely reside in Finder &amp;gt; Downloads (shortcut: ⌥⌘L). The file can more easily be found by switching into List view (shortcut: ⌘2). To switch to Icon view use the shortcut: ⌘1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The installler will start by displaying a message as shown in &lt;a href=&#34;#figure-allow-install&#34;&gt;Figure 3&lt;/a&gt;. Click &amp;lsquo;Allow&amp;rsquo; to let the package determine if the software can be installed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow-install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Determine whether package can be installed.&#34; srcset=&#34;
+               /media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_ad5718abe3ce2b2ac11d1a0122482098.webp 400w,
+               /media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_0ceff84da9ece635dca1c027a5d21884.webp 760w,
+               /media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/1-allow-install_hud7ad61633869e72eafaacd6e4165fc66_56800_ad5718abe3ce2b2ac11d1a0122482098.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Determine whether package can be installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;When the package can be installed the welcome screen of the Anaconda3 Installer will be displayed as shown in &lt;a href=&#34;#figure-welcome-installer&#34;&gt;Figure 4&lt;/a&gt;. Click the &amp;lsquo;Continue&amp;rsquo; button to proceed with the installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-welcome-installer&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Welcome Anaconda3 Installer.&#34; srcset=&#34;
+               /media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_999e32b169b059fef301fa3f29873afc.webp 400w,
+               /media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_81e4f4884f6ea482fd753fadc8bfcb70.webp 760w,
+               /media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/2-welcome-installer_hu31ea1887c91d48480e46490872919ff0_43449_999e32b169b059fef301fa3f29873afc.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Welcome Anaconda3 Installer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Now the Read Me for the software to be installed as displayed in &lt;a href=&#34;#figure-install-readme&#34;&gt;Figure 5&lt;/a&gt; below. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install-readme&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Anaconda3 Installer Read Me.&#34; srcset=&#34;
+               /media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_45a7cdd9fd99bc69726587a507c942bc.webp 400w,
+               /media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_783b45863247c50024593b0d4c09ea93.webp 760w,
+               /media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/3-read-me-installer_hu8d8e6bb52c8b9866444c55900a18d303_120611_45a7cdd9fd99bc69726587a507c942bc.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Anaconda3 Installer Read Me.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Right after the Read Me a Software Licence Agreement will appear as shown in &lt;a href=&#34;#figure-license-terms&#34;&gt;Figure 6&lt;/a&gt;. By clicking the ‘Continue’ button you will be asked to agree with this software licence agreement as diplayed below in &lt;a href=&#34;#figure-license-agree&#34;&gt;Figure 7&lt;/a&gt;. Click on ‘Agree’ to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-license-terms&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Aanconda3 Software License Agreement.&#34; srcset=&#34;
+               /media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_97969c878eae23fbddd26d82fb7b68fe.webp 400w,
+               /media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_49ed5d85af49d2376320a1479f5c3fc0.webp 760w,
+               /media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/4-license-agreement_huedab0a634a688a4e2c28c44d7a1ddcbf_111022_97969c878eae23fbddd26d82fb7b68fe.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Aanconda3 Software License Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-license-agree&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Agree to Software License Agreement.&#34; srcset=&#34;
+               /media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_37259c25b79a5031e8ac838c1aff927d.webp 400w,
+               /media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_f3b85e1fbdc1de98a955b3d682ba33dd.webp 760w,
+               /media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/5-agree-to-terms_hu3e9dd2bbdfe111e3b273ac0cc148544c_85743_37259c25b79a5031e8ac838c1aff927d.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Agree to Software License Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;The installer will let you select how you want to install the software as shown in &lt;a href=&#34;#figure-install-type&#34;&gt;Figure 8&lt;/a&gt;. It is recommended to leave the settings as provided and click the &amp;lsquo;Continue&amp;rsquo; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install-type&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select the installation type.&#34; srcset=&#34;
+               /media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_209b619d4b14dfa1bf823ed9c417bed5.webp 400w,
+               /media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_c71d09120140feda3e086f7e89702eec.webp 760w,
+               /media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/6-installation-type_hu0637c1432fb24efba46fa1bffb1d43dc_72262_209b619d4b14dfa1bf823ed9c417bed5.webp&#34;
+               width=&#34;623&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select the installation type.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;After selecting the installation type the installer asks to provide an installation destination as displayed in &lt;a href=&#34;#figure-install-location&#34;&gt;Figure 9&lt;/a&gt;. Also here it is recommended to leave the default settings and click the &amp;lsquo;Install&amp;rsquo; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-install-location&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Select the installation location.&#34; srcset=&#34;
+               /media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_1ff2fa13ae7cebc3c3eaaff21f3b2a3d.webp 400w,
+               /media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_ffb684de64d062fab861db2e6e809e2e.webp 760w,
+               /media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/7-installation-location_huade69ff7e98dd813d7a679e7179579d1_55590_1ff2fa13ae7cebc3c3eaaff21f3b2a3d.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Select the installation location.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Your system will ask to either provide the password (see &lt;a href=&#34;#figure-confirm-installation&#34;&gt;Figure 10&lt;/a&gt;) or use the fingerprint scanner to confirm the software installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-confirm-installation&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Confirm the software installation.&#34; srcset=&#34;
+               /media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_146f7cdc8cd72dca00c549182432825f.webp 400w,
+               /media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_58ffc626b59a218b4aa89bc9de0bfe99.webp 760w,
+               /media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/8-confirm-installation_hu9c4cd4a64f0f4fe3be5864ba595cd81f_32697_146f7cdc8cd72dca00c549182432825f.webp&#34;
+               width=&#34;260&#34;
+               height=&#34;326&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Confirm the software installation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Your system may ask you to allow access to your Downloads folder, as shown in &lt;a href=&#34;#figure-allow-downloads&#34;&gt;Figure 11&lt;/a&gt;. Click the &amp;lsquo;OK&amp;rsquo; button to grant access to the Downloads folder.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-allow-downloads&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Allow access to the Downloads folder.&#34; srcset=&#34;
+               /media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_8dd01e6e10a5104b5f95a066c5a931ed.webp 400w,
+               /media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_5e39b37446885647ee1f46915ec4faca.webp 760w,
+               /media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/9-allow-access_hu0bdba77ecdceb04c285825e1bc30c911_26500_8dd01e6e10a5104b5f95a066c5a931ed.webp&#34;
+               width=&#34;262&#34;
+               height=&#34;214&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Allow access to the Downloads folder.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Once the files have been installed the Anaconda3 installer will display a message about DataSpell as shown in &lt;a href=&#34;#figure-dataspell&#34;&gt;Figure 12&lt;/a&gt;. If your interested visit [https://www.anaconda.com/dataspell]. To proceed with the installer click the &amp;lsquo;Continue&amp;rsquo; button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-dataspell&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Message about DataSpell.&#34; srcset=&#34;
+               /media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_23cddcc3039c7ccf91ceb0c94640fc47.webp 400w,
+               /media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_375e686d227deb7055f596ad61ba46d9.webp 760w,
+               /media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/10-dataspell-message_hu80b1c0ea4858a0cece82ee8a1863ebc7_66239_23cddcc3039c7ccf91ceb0c94640fc47.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Message about DataSpell.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;After the DataSpell message the Anaconda3 installer has reached the end (see &lt;a href=&#34;#figure-finish&#34;&gt;Figure 13&lt;/a&gt;). Click on the &amp;lsquo;Close&amp;rsquo; button to finalize the installer and close the installer.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-finish&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finish and close the Anaconda3 installer.&#34; srcset=&#34;
+               /media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_23cba9473dfa2b1a4ef426aa4f11fc7b.webp 400w,
+               /media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_db1e4066a8c8cc1864b8498f5302075d.webp 760w,
+               /media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/11-installation-finish_hu8d6a9b566b45c32da4a5a8d2a6811c43_66224_23cba9473dfa2b1a4ef426aa4f11fc7b.webp&#34;
+               width=&#34;620&#34;
+               height=&#34;444&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finish and close the Anaconda3 installer.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Congratulations 😆, you now have Anaconda3 2023.07-2 containing Python 3.11.4 installed on your mac!&lt;/p&gt;
+&lt;p&gt;Before actively using Anaconda, some configuration may be required. The configuration is described in the next section.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;configuration-anaconda3&#34;&gt;Configuration Anaconda3&lt;/h2&gt;
+&lt;h3 id=&#34;upgrading-anaconda-navigator-anaconda3&#34;&gt;Upgrading Anaconda Navigator (Anaconda3)&lt;/h3&gt;
+&lt;p&gt;When starting Anaconda Navigator from your Applications folder, the Navigator may open displaying the message shown in &lt;a href=&#34;#figure-navigator-upgrade&#34;&gt;Figure 14&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-navigator-upgrade&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Upgrade available for Anaconda Navigator&#34; srcset=&#34;
+               /media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_b3ddecc7a89d3ae0491986c6ff1eb4e1.webp 400w,
+               /media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_20a46542c259d38469747978673475f4.webp 760w,
+               /media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/anaconda-macos/12-upgrade-navigator_hu14cc11072348615ee132bf5ab456a842_35322_b3ddecc7a89d3ae0491986c6ff1eb4e1.webp&#34;
+               width=&#34;560&#34;
+               height=&#34;239&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Upgrade available for Anaconda Navigator
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;To upgrade Anaconda Navigator follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Click on &amp;lsquo;Yes&amp;rsquo; as shown in &lt;a href=&#34;#figure-navigator-upgrade&#34;&gt;Figure 14&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Continue the procedure as indicated on your display to perform the update of Anaconda Navigator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;add-a-r-kernel&#34;&gt;Add a R kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present. To add a R kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Terminal application as described above in &lt;a href=&#34;#complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start R by typing &lt;code&gt;R&lt;/code&gt; and press return ↩ to execute.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the R prompt type the following commands sequentially and after each command press return ↩ to execute. Below version 4.2.1 of R is assumed, do not forget to change the R version number when you are using a different version of R!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;## At the R prompt, indicated by &amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; install.packages&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;IRkernel&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; IRkernel::installspec&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; q&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;c1&#34;&gt;# Question in R: Save workspace image? [y/n/c]: n&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Close the Terminal application by typing &lt;code&gt;exit&lt;/code&gt; and press return ↩ to execute.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the R kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;h3 id=&#34;add-a-julia-kernel&#34;&gt;Add a Julia kernel&lt;/h3&gt;
+&lt;p&gt;After installing Anaconda3 only the Python kernel is present, unless you already have &lt;a href=&#34;#add-a-r-kernel&#34;&gt;added a R kernel&lt;/a&gt;. To add a Julia kernel for use inside Jupyter Notebook or JupyterLab perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Open the Terminal application as described above in &lt;a href=&#34;#complete-removal-of-a-previous-anaconda-installation-on-macos&#34;&gt;Complete removal of a previous Anaconda installation on macOS&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start Julia by typing &lt;code&gt;julia&lt;/code&gt; at the terminal prompt and press return ↩ to execute. Once Julia has started, you will see the prompt displayed as &lt;code&gt;julia&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type &lt;code&gt;]&lt;/code&gt; and the prompt will change into &lt;code&gt;(@v1.8) pkg&amp;gt;&lt;/code&gt;. This under the assumption that you have Julia v1.8.2 or later installed. For other versions of Julia the version number for package management will differ.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type the command &lt;code&gt;add IJulia&lt;/code&gt; and press return ↩ to execute. This will install a lot of packages and make the Julia kernel available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Close the Julia package manager by pressing the BACKSPACE key on your keyboard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Type &lt;code&gt;exit()&lt;/code&gt; and press return ↩ to execute, in order to close Julia.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Close the Terminal application by typing &lt;code&gt;exit&lt;/code&gt; and press return ↩ to execute.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the Julia kernel will be available in Jupyter Notebook and JupyterLab.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RStudio installation on macOS</title>
+      <link>https://www.verouden.net/post/2020/04/13/rstudio-installation-on-macos/</link>
+      <pubDate>Mon, 13 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/13/rstudio-installation-on-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#rstudio-installation&#34;&gt;RStudio Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Some of these courses (e.g. &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-20306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-20306&lt;/a&gt;, &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-32806&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-32806&lt;/a&gt;, and &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-50303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-50303&lt;/a&gt;) mainly use RStudio. Also other courses (e.g. &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/HNH-31506&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HNH-31506&lt;/a&gt; and &lt;a href=&#34;https://ssc.wur.nl/Handbook/2019/Course/BIF51306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BIF-51306&lt;/a&gt;) taught at Wageningen University &amp;amp; Research use R via RStudio as well. Therefore, students will need to be able to install RStudio.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install RStudio on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;At the time this post was written the latest stable release of RStudio was version 1.2.5033. It has been updated to the current stable release 2023.06.2 Build 5561, which will work on macOS Big Sur (version 11.x) or later.&lt;/p&gt;
+&lt;p&gt;Download RStudio using the following link: &lt;a href=&#34;https://download1.rstudio.org/electron/macos/RStudio-2023.06.2-561.dmg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; RStudio 2023.06.2 Build 561 (ca. 379.40 MB)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you are on a 32 bit system, you can use an &lt;a href=&#34;https://docs.posit.co/previous-versions/rstudio/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;older version of RStudio&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;rstudio-installation&#34;&gt;RStudio Installation&lt;/h2&gt;
+&lt;p&gt;The screenshots in the installation steps described below have not been updated. However, the procedure is correct even for newer versions of RStudio. Just bear in mind, that what you see during your installation may differ from the screenshots shown.&lt;/p&gt;
+&lt;p&gt;Prior requirement for the RStudio installation on macOS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/08/r-installation-macos/&#34;&gt;R installed and configured on macOS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install RStudio you will need to have R installed and configured first. If you haven&amp;rsquo;t done so already, please read the (re-)install and configure R on macOS (use the link above to go to that specific post) before continuing with this post.&lt;/p&gt;
+&lt;p&gt;To install RStudio on macOS perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the downloaded RStudio disk image. This file will most likely reside in Finder &amp;gt; Downloads (shortcut: ⌥⌘L). The file can more easily be found by switching into List view (shortcut: ⌘2). To switch to Icon view use the shortcut: ⌘1. The Rstudio disk image will look like the image displayed below in &lt;a href=&#34;#figure-rstudio_disk_image&#34;&gt;Figure 1&lt;/a&gt; (version number may or will differ).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_disk_image&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon RStudio Disk Image Application&#34; srcset=&#34;
+               /media/rstudio-macos/1-rstudio-dmg-icon_huc92b69929e5a083dbfe3a63a4668d41a_30210_676bf6414483c2abcd0fb3c862dd5e79.webp 400w,
+               /media/rstudio-macos/1-rstudio-dmg-icon_huc92b69929e5a083dbfe3a63a4668d41a_30210_d6a518662d11dc2f70675472cdd6181c.webp 760w,
+               /media/rstudio-macos/1-rstudio-dmg-icon_huc92b69929e5a083dbfe3a63a4668d41a_30210_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-macos/1-rstudio-dmg-icon_huc92b69929e5a083dbfe3a63a4668d41a_30210_676bf6414483c2abcd0fb3c862dd5e79.webp&#34;
+               width=&#34;226&#34;
+               height=&#34;218&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon RStudio Disk Image Application
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Opening the RStudio disk image will cause a window labeled ‘RStudio-xxxx.xx.x-xxx’ to appear (xxxx.xx.x-xxx represents the version number used), containing the RStudio application (see &lt;a href=&#34;#figure-rstudio_install&#34;&gt;Figure 2&lt;/a&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;RStudio Application Inside Disk Image&#34; srcset=&#34;
+               /media/rstudio-macos/2-rstudio-install_hu4ba8f6cdc3c1c8b9b91b9dadd0a0235d_233868_6aecc049012dab87a6c67f540ebb12d6.webp 400w,
+               /media/rstudio-macos/2-rstudio-install_hu4ba8f6cdc3c1c8b9b91b9dadd0a0235d_233868_4b6d30016472ca9dc71ed3b0fef919a3.webp 760w,
+               /media/rstudio-macos/2-rstudio-install_hu4ba8f6cdc3c1c8b9b91b9dadd0a0235d_233868_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-macos/2-rstudio-install_hu4ba8f6cdc3c1c8b9b91b9dadd0a0235d_233868_6aecc049012dab87a6c67f540ebb12d6.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;538&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      RStudio Application Inside Disk Image
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Drag the RStudio application and drop it on the Applications folder shown in the same window.&lt;/li&gt;
+&lt;li&gt;Close the ‘RStudio-xxxx.xx.x-xxx’ window by clicking on the red ball in the top left corner of the window.&lt;/li&gt;
+&lt;li&gt;The opened disk image is still mounted as a volume on your desktop and will look like the image shown below in &lt;a href=&#34;#figure-rstudio_mounted&#34;&gt;Figure 3&lt;/a&gt;. Click this icon on your desktop once to select it and press ⌘E (shortcut for eject) to close it. Now you can discard the downloaded &lt;code&gt;RStudio-xxxx.xx.x-xxx.dmg&lt;/code&gt; file from Finder &amp;gt; Downloads (shortcut: ⌥⌘L) by clicking it once to select and using the shortcut ⌦ (press: fn + ⌫) to put it in the trashbin. To completely remove the installer disk image remove it from your trashbin.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio_mounted&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Mounted RStudio Volume&#34; srcset=&#34;
+               /media/rstudio-macos/3-rstudio-desktop-volume_huebb7ff6723e0b3b301d0e95ada3ecb5a_72268_977230badac8943aa284d0577e41c788.webp 400w,
+               /media/rstudio-macos/3-rstudio-desktop-volume_huebb7ff6723e0b3b301d0e95ada3ecb5a_72268_bcda0262dfebf5f549dd94174350d7fa.webp 760w,
+               /media/rstudio-macos/3-rstudio-desktop-volume_huebb7ff6723e0b3b301d0e95ada3ecb5a_72268_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/rstudio-macos/3-rstudio-desktop-volume_huebb7ff6723e0b3b301d0e95ada3ecb5a_72268_977230badac8943aa284d0577e41c788.webp&#34;
+               width=&#34;246&#34;
+               height=&#34;188&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Mounted RStudio Volume
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, 😆, you now have successfully installed RStudio on your mac! The icon in your Applications (shortcut: ⇧⌘A) or Launcher will look the same as the R application icon you dragged and dropped in step 3. of the installation steps described above.
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Commander installation in R on macOS</title>
+      <link>https://www.verouden.net/post/2020/04/10/r-commander-installation-in-r-on-macos/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/10/r-commander-installation-in-r-on-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#r-commander-installation&#34;&gt;R Commander Installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#first-time-use-of-r-commander&#34;&gt;First time use of R Commander&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#alternative-way-of-starting-r-commander-without-the-app-nap-problem&#34;&gt;Alternative way of starting R Commander without the App nap problem&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#restarting-r-commander&#34;&gt;Restarting R Commander&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-14303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-14303 Basic Statistics&lt;/a&gt;, &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15303 Statistics 1&lt;/a&gt;, &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15403&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15403 Statistics 2&lt;/a&gt; and &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-20306&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-20306 Advanced Statistics&lt;/a&gt; (first two weeks of this course) will use R Commander instead of basic R. Therefore, they will need to install R Commander.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install R Commander within R on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;r-commander-installation&#34;&gt;R Commander Installation&lt;/h2&gt;
+&lt;p&gt;Prior requirements for the R Commander installation within R on macOS:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/08/r-installation-macos/&#34;&gt;R installed and configured on macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;a href=&#34;https://www.verouden.net/post/2020/04/09/xquartz-installation-macos/&#34;&gt;XQuartz installed on macOS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;To be able to install R Commander you will need to have both R installed and configured as well as have XQuartz installed first. If you haven&amp;rsquo;t done so already, please read the (re-)install and configure R on macOS as well as the XQuartz installation on macOS posts (use the links above to go to those specific posts) before continuing with this post.&lt;/p&gt;
+&lt;p&gt;The screenshots in this post are based on R version 3.6.3. However, the procedure and steps described are still correct for higher versions of R.&lt;/p&gt;
+&lt;p&gt;To install R commander on macOS perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start the R application from Finder &amp;gt; Applications (shortcut: ⇧⌘A) or via Launchpad. The icon representing the R application is shown in &lt;a href=&#34;#figure-r_app_icon&#34;&gt;Figure 1&lt;/a&gt; below.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_icon&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon R Application&#34; srcset=&#34;
+               /media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_321fa52271d23af9b1cf971e0fde3a80.webp 400w,
+               /media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_95469d71fdfd8e8b1399576860e6010a.webp 760w,
+               /media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_321fa52271d23af9b1cf971e0fde3a80.webp&#34;
+               width=&#34;154&#34;
+               height=&#34;178&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon R Application
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The R Console will open, as shown below in &lt;a href=&#34;#figure-r_app_console&#34;&gt;Figure 2&lt;/a&gt;, and the cursor will be ready for input behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_console&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Console&#34; srcset=&#34;
+               /media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_bc749913182a126b9c1a0e1e41d361c2.webp 400w,
+               /media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_ea388117ebd96abaca57a5ff8323b9b3.webp 760w,
+               /media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_bc749913182a126b9c1a0e1e41d361c2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;729&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Console
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;In case the ‘command line developer tools’ requirement window appears as shown in &lt;a href=&#34;#figure-otool_install&#34;&gt;Figure 3&lt;/a&gt; below, click ‘Cancel’ to make it disappear. &lt;strong&gt;There is no need to install it!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-otool_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Developer Tools Requirement&#34; srcset=&#34;
+               /media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_d25bfb54bdb0ee1b8cb22940d0a21372.webp 400w,
+               /media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_96543d4e5a7ce243346c5e549c2b509d.webp 760w,
+               /media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/2-r-app-otool-install_hud62d78038d3368f32cf7f64e4df2138e_222295_d25bfb54bdb0ee1b8cb22940d0a21372.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;401&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Developer Tools Requirement
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Navigate the mouse pointer to the menu bar click on ‘Packages &amp;amp; Data’ and select the ‘Package Installer’ (shortcut: ⌥⌘I). This will cause the R Package Installer to open as shown below in &lt;a href=&#34;#figure-r_package_install&#34;&gt;Figure 4&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_package_install&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Package Installer for Rcmdr&#34; srcset=&#34;
+               /media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_5c946982e06f2f72724bf82c59984ab8.webp 400w,
+               /media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_ac22dc8d93c2649b2726260dde22a902.webp 760w,
+               /media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/5-r-app-package-installer-rcmdr_hu5cd92a7423c6668d22fed4bd3ecaa6a1_865174_5c946982e06f2f72724bf82c59984ab8.webp&#34;
+               width=&#34;699&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Package Installer for Rcmdr
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;First click on the ‘Get List’ to retrieve the available packages on the CRAN mirror. Next type &lt;code&gt;Rcmdr&lt;/code&gt; in the ‘Package Search’ field and press return (↩) to execute the search. Select the &lt;code&gt;Rcmdr&lt;/code&gt; package in the results list underneath by clicking on it, which will make it turn blue to indicate the selection. In the last block named ‘Install Location’ select the radio button ‘At User Level’ and tick the checkbox ‘Install Dependencies’. When the ‘Package Installer’ window matches the one shown in &lt;a href=&#34;#figure-r_package_install&#34;&gt;Figure 4&lt;/a&gt; above, you click the ‘Install Selected’ button.&lt;/li&gt;
+&lt;li&gt;Loads of packages will be downloaded and installed. When the installation has finished, the ‘Package Installer’ will resemble the image shown below in &lt;a href=&#34;#figure-r_package_rcmdrplugin&#34;&gt;Figure 5&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_package_rcmdrplugin&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Package Installer for RcmdrPlugin.HH&#34; srcset=&#34;
+               /media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_ba538138aec705ab919534eeb18f26af.webp 400w,
+               /media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_4b4e62a3d35141307274b3aec3b1fbfd.webp 760w,
+               /media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/6-r-app-package-installer-plugin.hh_hu5cd92a7423c6668d22fed4bd3ecaa6a1_861387_ba538138aec705ab919534eeb18f26af.webp&#34;
+               width=&#34;699&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Package Installer for RcmdrPlugin.HH
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Now select the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt;. Make sure your ‘Install Location’ is still set to ‘At User Level’ and that the checkbox ‘Install Dependencies’ is still ticked, before clicking the ‘Install Selected’ button.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Once the installation of the &lt;code&gt;RcmdrPlugin.HH&lt;/code&gt; package has finised, you are ready to use R Commander for the first time 😆.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;Continue with the next section &amp;ldquo;First time use of R Commander&amp;rdquo; now. Do not wait until the first Computer Practicum!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;first-time-use-of-r-commander&#34;&gt;First time use of R Commander&lt;/h2&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;When using R Commander for the first time additional packages required for R Commander to work correctly will need to be installed. Allow the installation to be able to work smoothly without errors!&lt;/strong&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;To start R Commander from the R Console, type the command &lt;code&gt;library(Rcmdr)&lt;/code&gt; behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign, and and press return (↩) to execute. This will cause R Commander to be started.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    When starting &lt;strong&gt;R Commander&lt;/strong&gt; via &lt;code&gt;Packages &amp;amp; Data&lt;/code&gt; &amp;gt; &lt;code&gt;Packages Manager&lt;/code&gt; in the top bar menu of &lt;strong&gt;R&lt;/strong&gt; and marking the tick box in front of the &lt;code&gt;Rcmdr&lt;/code&gt; package, many users experience that R Commander fails to show the menu items in the top bar menu of R Commander. This is resolved by starting R Commander by explicitly type the command &lt;code&gt;libary(Rcmdr)&lt;/code&gt; at the prompt and executing by pressing return (↩) instead of using the graphical user interface of R to load the &lt;code&gt;Rcmdr&lt;/code&gt; package.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The first time you start R Commander, you will see at the bottom of the main R Commander window in the ‘Messages’ section the message as shown in &lt;a href=&#34;#figure-rcmdr_app_nap&#34;&gt;Figure 6&lt;/a&gt; below.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rcmdr_app_nap&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Commander App Nap Warning&#34; srcset=&#34;
+               /media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_acd1dc3bc78a089e0a09cf5502968b87.webp 400w,
+               /media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_e75e9cfb3cf1ffeaf52c5f0be8ee56fb.webp 760w,
+               /media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/7-r-commander-app-nap-warning_hub00cc99ea08681b208a44f8b2c2df5c8_19131_acd1dc3bc78a089e0a09cf5502968b87.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;63&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Commander App Nap Warning
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The warning is referring to a feature that was added to macOS in 2013, which  is called App Nap. App Nap puts programs you are not currently actively using or looking at into ‘sleep’ mode, blocking them from using system resources, especially the CPU, until you focus on them again. It will cause R Commander to work not very smoothly, because the R application is being put to ‘sleep’ as it is running in the background of R Commander. R Commander will at moments work with a huge lag time, which will feel like it is frozen and not responding.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Solving this problem will ask quite a bit of your patience! Fortunately you only have to do this once, afterwards R Commander will work smoothly every time you start it.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Navigate the mouse pointer to the top menu of the R Commander window and click on ‘Tools’. Patiently wait until the menu unfolds as shown below in &lt;a href=&#34;#figure-rcmdr_tools_menu&#34;&gt;Figure 7&lt;/a&gt;. &lt;strong&gt;Only click once and wait patiently!&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rcmdr_tools_menu&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Commander Tools Menu Item.&#34; srcset=&#34;
+               /media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_47c196274c0744d27d02f165720d60ef.webp 400w,
+               /media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_9c16ad97a304005bb9085f9105beafb4.webp 760w,
+               /media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/8-r-commander-manange-app-nap_hu2a6bae453490b53243fab731d6252fb8_33856_47c196274c0744d27d02f165720d60ef.webp&#34;
+               width=&#34;626&#34;
+               height=&#34;348&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Commander Tools Menu Item.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Next move the mouse pointer to the menu item ‘Manage Mac OS X app nap for R.app&amp;hellip;’ and click on it. &lt;strong&gt;Again only click once and wait patiently!&lt;/strong&gt; This will open the ‘Mac OS X app nap for R.app’ window to open as shown below in &lt;a href=&#34;#figure-rcmdr_app_nap_off&#34;&gt;Figure 8&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rcmdr_app_nap_off&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Mac OS X app nap for R.app Window.&#34; srcset=&#34;
+               /media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_1a4bdb511077040935cc1208c3d332c8.webp 400w,
+               /media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_300b1678bcac5c551e83304d18c16903.webp 760w,
+               /media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/9-r-commander-app-nap-off_hu64db143a1f48e1cafd53aea43bf633fc_33345_1a4bdb511077040935cc1208c3d332c8.webp&#34;
+               width=&#34;732&#34;
+               height=&#34;314&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Mac OS X app nap for R.app Window.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Select the radio button ‘off (recommended)’. Wait for the selection to change. After the change occurs, click on ‘OK’ to confirm.&lt;/li&gt;
+&lt;li&gt;Navigate the mouse pointer to the top menu of the R Commander window and click on ‘File’. Wait patiently for the menu item to unfold. Navigate to ‘Exit’ &amp;gt; ‘From Commander’ and click only once it. Wait for the ‘Exit?’ window to appear and click ‘OK’. This closes R Commander.&lt;/li&gt;
+&lt;li&gt;Click on the R Console window to make it the active application.&lt;/li&gt;
+&lt;li&gt;Quit the R application either by:
+&lt;ul&gt;
+&lt;li&gt;Typing &lt;code&gt;q()&lt;/code&gt; or &lt;code&gt;quit()&lt;/code&gt; behind the R Console prompt (indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and pressing return (↩) to execute.&lt;/li&gt;
+&lt;li&gt;Using the keyboard shortcut: ⌘Q&lt;/li&gt;
+&lt;li&gt;Navigating the mouse pointer to the menu bar and clicking ‘R’ &amp;gt; ‘Quit R’&lt;/li&gt;
+&lt;li&gt;Navigation the mouse pointer to the top left corner of the R Console window and clicking on the red ball&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;No matter what you choose, you will always be asked whether you want to save a workspace image as shown below in &lt;a href=&#34;#figure-r_save_workspace&#34;&gt;Figure 9&lt;/a&gt;. Just click on the &lt;strong&gt;‘Don&amp;rsquo;t Save’&lt;/strong&gt; button to end the R application.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_save_workspace&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Save Workspace.&#34; srcset=&#34;
+               /media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_d2abd3e3686383b79c4e13c2e531c255.webp 400w,
+               /media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_75c9c47a179b6a081b209b95e9301c0b.webp 760w,
+               /media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-commander-macos/10-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_d2abd3e3686383b79c4e13c2e531c255.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;218&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Save Workspace.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Next time you start R Commander from the R Console of the R application using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command, the ‘Messages’ section will display the following or a similar message: &lt;code&gt;[1] NOTE: R Commander Version 2.8-0:&lt;/code&gt; followed by the day, date and time. Now R Commander will work smoothly.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;alternative-way-of-starting-r-commander-without-the-app-nap-problem&#34;&gt;Alternative way of starting R Commander without the App nap problem&lt;/h2&gt;
+&lt;p&gt;As an alternative to switching off the App Nap for the R application you could start R from a Terminal.&lt;/p&gt;
+&lt;p&gt;This is done by following these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the Terminal application from Finder &amp;gt; Applications &amp;gt; Utilities (shorcut: ⇧⌘U) or via Lauchpad under the ‘Other’ group. The terminal console prompt, where the commands will be entered, is depicted by a &lt;code&gt;%&lt;/code&gt; or a &lt;code&gt;$&lt;/code&gt; sign. Which sign is shown, depends whether your default shell is zsh (&lt;code&gt;%&lt;/code&gt; sign) or bash (&lt;code&gt;$&lt;/code&gt; sign).&lt;/li&gt;
+&lt;li&gt;Type &lt;code&gt;R&lt;/code&gt; behind the prompt in the terminal console and press return (↩) to execute the command.&lt;/li&gt;
+&lt;li&gt;This will start R and the prompt, where the commands will be entered for R, will have changed into a &lt;code&gt;&amp;gt;&lt;/code&gt; sign.&lt;/li&gt;
+&lt;li&gt;Type the command &lt;code&gt;library(Rcmdr)&lt;/code&gt; behind the prompt, as indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign, and and press return (↩) to execute. This will cause R Commander to be started. The ‘Messages’ section at the bottom of R Commander will display the following or a similar message: &lt;code&gt;[1] NOTE: R Commander Version 2.8-0:&lt;/code&gt; followed by the day, date and time. This means that R Commander will work smoothly!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Quitting R Commander will return you to the terminal console, which can be recognized by the prompt sign changing back into a &lt;code&gt;%&lt;/code&gt; or &lt;code&gt;$&lt;/code&gt; sign.&lt;/p&gt;
+&lt;p&gt;To quit the active terminal console by typing &lt;code&gt;exit&lt;/code&gt; and pressing return (↩) to execute. To quit the Terminal application completely you can use the keyboard shortcut: ⌘Q or navigate the mouse pointer to the menu bar and click ‘Terminal’ &amp;gt; ‘Quit Terminal’.&lt;/p&gt;
+&lt;h2 id=&#34;restarting-r-commander&#34;&gt;Restarting R Commander&lt;/h2&gt;
+&lt;p&gt;In case R Commander crashes while using it, you will need to resart it. However, in the R Console or in the active terminal console currently running R, the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command will not restart R Commander.&lt;/p&gt;
+&lt;p&gt;The reason is, that the R Commander package is still loaded and first needs to be detached. To detach the R Commander package you can copy (⌘C) the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;detach&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;package:Rcmdr&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;unload&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;paste (⌘V) it behind the prompt in the R console (indicated by a &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and press return (↩) to execute the command.&lt;/p&gt;
+&lt;p&gt;Now R Commander can be restarted by using the &lt;code&gt;library(Rcmdr)&lt;/code&gt; command as before.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>XQuartz installation on macOS</title>
+      <link>https://www.verouden.net/post/2020/04/09/xquartz-installation-macos/</link>
+      <pubDate>Thu, 09 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/09/xquartz-installation-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#xquartz-installation&#34;&gt;XQuartz Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R. Students enrolled in &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15303&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15303 Statistics 1&lt;/a&gt; and &lt;a href=&#34;https://ssc.wur.nl/Handbook/Course/MAT-15403&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MAT-15403 Statistics 2&lt;/a&gt; will use R Commander instead of basic R. Therefore, they will need to install R Commander.&lt;/p&gt;
+&lt;p&gt;R Commmander has been programmed in Tcl (Tool Command Language) and uses Tk as a graphical user interface toolkit. To be able to use R Commander correctly on macOS, software needs to installed that enables the use of Tcl/Tk. XQuartz is the only software on macOS, which enables the operating system to use Tcl/Tk.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    This post will show how to install XQuartz on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;At the time this post was written the release of XQuartz was version 2.7.11. It will work on Mac OS X Snow Leopard (version 10.6.x) or later, up to and including OS X Mountain Lion (version 10.8.x).&lt;/p&gt;
+&lt;p&gt;Download XQuartz using the following link: &lt;a href=&#34;https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.7.11/XQuartz-2.7.11.dmg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; XQuartz v2.7.11 (ca. 75.9 MB)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The latest release of XQuartz, however, is version 2.8.5. This version should be used for OS X Mavericks (version 10.9.x) or later.&lt;!--, up to and including macOS Monterey (version 12.x).--&gt;&lt;/p&gt;
+&lt;p&gt;Download XQuartz using the following link: &lt;a href=&#34;https://github.com/XQuartz/XQuartz/releases/download/XQuartz-2.8.5/XQuartz-2.8.5.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; XQuartz v2.8.5 (ca. 103MB)&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;Make sure you download and install the correct version!&lt;/p&gt;
+&lt;p&gt;To see which version of macOS is installed on your mac, click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; in the menu bar and select ‘About This Mac’.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;xquartz-installation&#34;&gt;XQuartz Installation&lt;/h2&gt;
+&lt;p&gt;The icons and screenshots shown in this post are for XQuartz v2.7.11 and have not been updated to the latest version of XQuartz. The procedure described, however, is still the same, although the version number displayed below can be different depending on the version you are installing.&lt;/p&gt;
+&lt;p&gt;To install XQuartz on macOS perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the downloaded XQuartz disk image or package. This file will most likely reside in Finder &amp;gt; Downloads (shortcut: ⌥⌘L). The file can more easily be found by switching into List view (shortcut: ⌘2). To switch to Icon view use the shortcut: ⌘1. The XQuartz disk image will look like the image displayed below in &lt;a href=&#34;#figure-xquartz_disk_image&#34;&gt;Figure 1&lt;/a&gt; (version number may differ!).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_disk_image&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon XQuartz Disk Image.&#34; srcset=&#34;
+               /media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_45da0bec9d3aef5be70556b25f302c8a.webp 400w,
+               /media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_5223fde760d7b7b146209d1cbea593e5.webp 760w,
+               /media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/1-xquartz-disk-image_huf365aec59eb657ae1a57906aa53515db_28438_45da0bec9d3aef5be70556b25f302c8a.webp&#34;
+               width=&#34;224&#34;
+               height=&#34;226&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon XQuartz Disk Image.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Opening the XQuartz disk image will cause a window labeled ‘XQuartz-2.7.11’ or ‘XQuartz-2.8.5’ to appear containing a XQuartz installer package. This package looks like the image shown in &lt;a href=&#34;#figure-xquartz_package&#34;&gt;Figure 2&lt;/a&gt;, however the version number may be different. Double click the XQuartz installer package to open the installer.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_package&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon XQuartz Installer Package.&#34; srcset=&#34;
+               /media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_e6052058ecbacfd547dd813878fa69da.webp 400w,
+               /media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_6e89c3ae8225fa8214b0b4b3f80b47de.webp 760w,
+               /media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/2-xquartz-package-icon_huf4fa9e2fecbacc30880fd7c1f1dc2a2e_21427_e6052058ecbacfd547dd813878fa69da.webp&#34;
+               width=&#34;176&#34;
+               height=&#34;172&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon XQuartz Installer Package.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;The installer for XQuartz will appear, showing the Introduction as displayed below in &lt;a href=&#34;#figure-xquartz_intro&#34;&gt;Figure 3&lt;/a&gt;. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_intro&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Introduction.&#34; srcset=&#34;
+               /media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_472b182c5d15fd8f3519abf168bf582f.webp 400w,
+               /media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_e15d48ff3c1ce256a4028c7a7d8cab72.webp 760w,
+               /media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/3-xquartz-intro_hudabb97ed514d5ba06c3683330faed073_391923_472b182c5d15fd8f3519abf168bf582f.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Introduction.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Next the Read Me will appear as shown in &lt;a href=&#34;#figure-xquartz_readme&#34;&gt;Figure 4&lt;/a&gt; below. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_readme&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Read Me.&#34; srcset=&#34;
+               /media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_18bf877bd2935d825e1a246028f4d9f9.webp 400w,
+               /media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_e91b6ece4f58ea27f6ee5e8c636de886.webp 760w,
+               /media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/4-xquartz-read-me_hudabb97ed514d5ba06c3683330faed073_571614_18bf877bd2935d825e1a246028f4d9f9.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Read Me.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Right after the Read Me a Software Licence Agreement will appear. By clicking the ‘Continue’ button you will be asked to agree with this software licence agreement as diplayed in &lt;a href=&#34;#figure-xquartz_agreed&#34;&gt;Figure 5&lt;/a&gt;. Click on ‘Agree’ to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_agreed&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Licence Agreement.&#34; srcset=&#34;
+               /media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_df9803f459709d52de1b95ec1534d107.webp 400w,
+               /media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_58041e8befd002a03bd28f3af5f81972.webp 760w,
+               /media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/6-xquartz-license-agree_hudabb97ed514d5ba06c3683330faed073_583674_df9803f459709d52de1b95ec1534d107.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Licence Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;The installer will select the best destination to install the software for you and will display the Installation Type as shown below in &lt;a href=&#34;#figure-xquartz_install_type&#34;&gt;Figure 6&lt;/a&gt;. Click on the ‘Install’ button to start the software installation.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_install_type&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Installation Type.&#34; srcset=&#34;
+               /media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_85f413769bcbf615231b43b8e1e9694c.webp 400w,
+               /media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_1100aa252009bc7bb140ad96eec48dc9.webp 760w,
+               /media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/7-xquartz-install-type_hudabb97ed514d5ba06c3683330faed073_414291_85f413769bcbf615231b43b8e1e9694c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Installation Type.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;Before the software installation will commence, confirmation of the user is requested as displayed in &lt;a href=&#34;#figure-xquartz_install_confirm&#34;&gt;Figure 7&lt;/a&gt;. Either use the finger print scanner on the touch bar of your mac or confirm using the password of your mac.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_install_confirm&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installation Confirmation.&#34; srcset=&#34;
+               /media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_f9d219a0540547ebb2c7daa5735e2c10.webp 400w,
+               /media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_4e5db8876543523d46bcabe327e4e4ec.webp 760w,
+               /media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/8-xquartz-confirm-install_hu93daf817d4623f6eb637a153b59061a3_136235_f9d219a0540547ebb2c7daa5735e2c10.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installation Confirmation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Most likely a security request will pop up from your operating system, requesting access to control system events as shown below in &lt;a href=&#34;#figure-xquartz_allow_access&#34;&gt;Figure 8&lt;/a&gt;. Click on the on the ‘OK’ button to grant access.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_allow_access&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Installer Access Request.&#34; srcset=&#34;
+               /media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_7ad028db673d9a23d76509e9991dd54c.webp 400w,
+               /media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_1bd774ad59898ea9c8d8999b97aa9154.webp 760w,
+               /media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/9-xquartz-allow-access_hub0f464226f41803c5139cade09ea2d93_143237_7ad028db673d9a23d76509e9991dd54c.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;374&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Installer Access Request.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Now you will be warned that to make XQuartz your default X11 server, as shown in &lt;a href=&#34;#figure-xquartz_logout_warning&#34;&gt;Figure 9&lt;/a&gt; below, you will need to log out and again log into your system. Click on the on the ‘OK’ button to continue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_logout_warning&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Log Out Warning for Setting X11 as Default.&#34; srcset=&#34;
+               /media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_d57fbca45398a7f0017f3d3075bdb691.webp 400w,
+               /media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_9a2698ed17e4b9994236b5c97a1cad07.webp 760w,
+               /media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/10-xquartz-x11-message_huc9479aae8b0fabfb6fa251d1674d2532_92919_d57fbca45398a7f0017f3d3075bdb691.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;316&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Log Out Warning for Setting X11 as Default.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;The software installer will start installing XQuartz onto your mac. When completed the installer will show a summary stating, that the installation was successful (see &lt;a href=&#34;#figure-xquartz_install_success&#34;&gt;Figure 10&lt;/a&gt;). Click on the ‘Close’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-xquartz_install_success&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;XQuartz Successfully Installed.&#34; srcset=&#34;
+               /media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_6a2cbbb449b2004744424375e4fb7403.webp 400w,
+               /media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_2c9aa5cd8c01d2bd30a7e4ea16d99159.webp 760w,
+               /media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/xquartz-macos/11-xquartz-install-success_hudabb97ed514d5ba06c3683330faed073_385890_6a2cbbb449b2004744424375e4fb7403.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;571&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      XQuartz Successfully Installed.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;11&#34;&gt;
+&lt;li&gt;The installer will finally ask you, whether you want to keep or move the XQuartz installer package to the trashbin. Click ‘Move to Bin’ to discard the installer package and simultaneously close the XQuartz disk image. In reality the XQuartz disk image will be put into the trashbin from which it can still be recovered!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations, you now have XQuartz installed on your mac 😆!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;As mentioned in step 9. you have to make XQuartz your default X11 server by logging out and again logging in on your mac. Do this by navigating your mouse pointer to the menu bar, click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; and select ‘Log Out &amp;lt;username&amp;gt;&amp;hellip;’. Here &amp;lt;username&amp;gt; will display the name you selected, while setting up your mac for the first time. Log back in and XQuartz will now be your default X11 server.&lt;/p&gt;
+&lt;p&gt;The best way, to make sure that XQuartz is set as your default X11 server, is to completely &lt;strong&gt;Shutdown and Restart your mac&lt;/strong&gt;!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>(re-)Installation and Configuration of R on macOS</title>
+      <link>https://www.verouden.net/post/2020/04/08/r-installation-macos/</link>
+      <pubDate>Wed, 08 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://www.verouden.net/post/2020/04/08/r-installation-macos/</guid>
+      <description>&lt;details class=&#34;toc-inpage d-print-none  &#34; open&gt;
+  &lt;summary class=&#34;font-weight-bold&#34;&gt;Table of Contents&lt;/summary&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#motivation&#34;&gt;Motivation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#completely-removing-r-from-macos&#34;&gt;Completely removing R from macOS&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#download&#34;&gt;Download&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#installation&#34;&gt;Installation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#configure-the-r-application-on-macos&#34;&gt;Configure the R application on macOS&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#fix-r-application-non-utf8-locale-warning&#34;&gt;Fix R application non-UTF8 locale warning&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/details&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;!--Due to the novel coronavirus (SARS-CoV-2) and its related disease 😷 COVID-19 employees and students at Wageningen University &amp; Research are all working from home.--&gt;
+&lt;p&gt;Whether working or studying everybody uses various sorts and types of software on their computer. Students taking &lt;a href=&#34;https://www.wur.nl/en/Research-Results/Research-Institutes/plant-research/biometris/Education/BSc-and-Master-Courses.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Statistical Courses, as taught by the Mathematical and Statistical Methods group at Wageningen University &amp;amp; Research&lt;/a&gt;, will most likely use R.&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    The instructions in this post will show how to (re-)install R on a desktop or laptop computer running macOS as operating system.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In the text some symbol combinations are used for shortcuts, the following table explains the meaning of these symbols in relation to specific keys on your keyboard. To use the shortcuts press the keyboard keys simultaneously, e.g. ⇧⌘A means ⇧+⌘+A.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;  &lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Icon&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt; &lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;Keyboard Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌘&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;command&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇪&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;caps lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌥&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;option (or alt)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;↩&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;carriage return (return/enter)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌃&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;control&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌫&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;delete/backspace&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;fn&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;function&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⌦&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;forward delete (fn + ⌫)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⇧&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;shift (either left or right)&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;  &lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;⎋&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt; &lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;escape&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;completely-removing-r-from-macos&#34;&gt;Completely removing R from macOS&lt;/h2&gt;
+&lt;p&gt;If you have previously installed R and wish to re-install the latest version or your current installation is not working as you expect, you first need to delete everything related to R. In macOS a complete removal is somewhat complicated, but doable if you follow all steps precisely as provided in this post.&lt;/p&gt;
+&lt;p&gt;For the complete removal of everything related to R the Terminal application will be used. In your Finder &amp;gt; Applications (shortcut: ⇧⌘A) there is a Utilities folder as depicted in &lt;a href=&#34;#figure-utilities_folder&#34;&gt;Figure 1&lt;/a&gt; below.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-utilities_folder&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Finder Utilities Folder.&#34; srcset=&#34;
+               /media/r-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_977414cad0d3ca1520146015f0958d03.webp 400w,
+               /media/r-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_b55d7fd8bd6bb6b822d8285408ae8999.webp 760w,
+               /media/r-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/macos-utilities-icon_hu024564c8021ed0b180bd81f1ea9630a6_26152_977414cad0d3ca1520146015f0958d03.webp&#34;
+               width=&#34;138&#34;
+               height=&#34;176&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Finder Utilities Folder.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;Within this Utilities folder, which can be directly accessed by using the ⇧⌘U shortcut, the Terminal application is contained. The icon in &lt;a href=&#34;#figure-terminal_app&#34;&gt;Figure 2&lt;/a&gt; shows what the Terminal application looks like in the Finder &amp;gt; Applications &amp;gt; Utilities folder.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-terminal_app&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon Terminal Application.&#34; srcset=&#34;
+               /media/r-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_c3ba97e8459945a34b3f28001415497b.webp 400w,
+               /media/r-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_5e8a97e364ed245208960f638a62f6c4.webp 760w,
+               /media/r-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/macos-terminal-icon_hu024564c8021ed0b180bd81f1ea9630a6_21031_c3ba97e8459945a34b3f28001415497b.webp&#34;
+               width=&#34;138&#34;
+               height=&#34;176&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon Terminal Application.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The Terminal application can also be started via Lauchpad under the ‘Other’ group.&lt;/p&gt;
+&lt;p&gt;Steps for a complete removal of R on macOS:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start the Terminal application. The terminal console prompt, where the commands will be entered, is depicted by a &lt;code&gt;%&lt;/code&gt; or a &lt;code&gt;$&lt;/code&gt; sign. Which sign is shown, depends whether your default shell is zsh (&lt;code&gt;%&lt;/code&gt; sign) or bash (&lt;code&gt;$&lt;/code&gt; sign).&lt;/li&gt;
+&lt;li&gt;To delete the R application copy (⌘C) the following line, paste (⌘V) it behind the terminal console prompt and press return (↩) to execute. Provide the macOS password when asked (the typed password will not be visble!).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r /Applications/R.app
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;To delete the whole framework running behind R copy (⌘C) the following line, paste (⌘V) it behind the console prompt in the terminal and press return (↩) to execute. No password will be asked anymore, as long as you do not close the terminal application.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r /Library/Frameworks/R.framework
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;To be able to re-install R the installation receipts need to be removed. This is done by copying (⌘C) the following lines (including the *) one by one, pasting (⌘V) them behind the prompt in the terminal and pressing return (↩) to execute.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r /private/var/db/receipts/org.r-project.*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r /private/var/db/receipts/org.R-project.*
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Delete R application support by copying (⌘C) the following line, pasting (⌘V) it behind the prompt in the terminal and pressing return (↩) to execute.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r ~/Library/Application Support/R
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Clean the cache of R by copying (⌘C) the following line, pasting (⌘V) it behind the prompt in the terminal and pressing return (↩) to execute.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r ~/Library/Caches/org.R-project.org
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;To remove R preferences copy (⌘C) the following line, paste (⌘V) it behind the prompt in the terminal and press return (↩) to execute.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm ~/Library/Preferences/org.R-project.org.plist
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;Deletion of all previously installed user packages is achieved by copying (⌘C) the following line, pasting (⌘V) it behind the prompt in the terminal and pressing return (↩) to execute. A notification will be given in case the folder does not exist.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r ~/Library/R
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Delete user created environment variables, used at startup of R, copy (⌘C) the following line, paste (⌘V) it behind the prompt in the terminal and press return (↩) to execute. A notification will be given in case the file does not exist.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm  ~/.Renviron
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;10&#34;&gt;
+&lt;li&gt;Finally delete the user folder with additional settings by copying (⌘C) the following line, pasting (⌘V) it behind the prompt in the terminal and pressing return (↩) to execute. A notification will be given in case the folder does not exist.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo rm -r ~/.R
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Having performed all 10 steps given above, your mac will be ready for a new installation of R. Leave the terminal console open for now, you might need it later on.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;download&#34;&gt;Download&lt;/h2&gt;
+&lt;p&gt;At the time this post was written, the latest release of R was version 3.6.3. It has been updated to the latest release version 4.3.1 of R (nicknamed: &amp;ldquo;Beagle Scouts&amp;rdquo;) for macOS Big Sur or higher.&lt;/p&gt;
+&lt;p&gt;For newer versions of R than 3.6.3 the steps described below are the same and still correct, but start with a newer version of the downloaded package file of R. The screenshots in this post have not been updated. Therefore, what you see during your installation can (and probably will) differ with respect to the version number shown in the screenshots.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;For macOS there are four downloads for R available on the &lt;a href=&#34;https://cloud.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R-project website&lt;/a&gt;. To see which version of macOS is installed on your mac, click on
+&lt;i class=&#34;fab fa-apple  pr-1 fa-fw&#34;&gt;&lt;/i&gt; in the menu bar and select ‘About This Mac’.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: If you are using a mac with the newest M1 or M2 processor, download the &lt;strong&gt;Apple Silicon arm64&lt;/strong&gt; build!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Download R for your specific version of macOS using one of the following links:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For macOS El Capitan (10.11.x) up to and including macOS Mojave (10.14.x): &lt;a href=&#34;https://cloud.r-project.org/bin/macosx/R-3.6.3.nn.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; R 3.6.3 (ca. 77 MB,  &lt;em&gt;regular&lt;/em&gt; 64-bit)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For macOS High Sierra (10.13.x) up to and including macOS Catalina (10.15.x): &lt;a href=&#34;https://cloud.r-project.org/bin/macosx/base/R-4.2.3.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; R 4.2.3 (ca. 89 MB,  &lt;em&gt;regular&lt;/em&gt; 64-bit)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For macOS Big Sur (11.x) and higher (&lt;strong&gt;Intel 64-bit&lt;/strong&gt; build): &lt;a href=&#34;https://cloud.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.3.1-x86_64.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; R 4.3.1  (ca. 92 MB, &lt;em&gt;notarized and signed&lt;/em&gt; &lt;strong&gt;Intel 64-bit&lt;/strong&gt; build)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;For macOS Big Sur (11.x) and higher (&lt;strong&gt;Apple silicon arm64&lt;/strong&gt; build for M1 or M2 processor MACS only): &lt;a href=&#34;https://cloud.r-project.org/bin/macosx/big-sur-arm64/base/R-4.3.1-arm64.pkg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; R 4.3.1  (ca. 90 MB, &lt;em&gt;notarized and signed&lt;/em&gt; &lt;strong&gt;ARM 64-bit&lt;/strong&gt; build)&lt;/a&gt; &lt;!--Due to an error in the release for the Apple silicon arm64 build, use the above download for the Intel 64-bit version!--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    macOS Ventura (13.x) users: there is a known bug in Ventura preventing installations from some locations without a prompt. If the installation fails, move the downloaded file away from the &lt;em&gt;Downloads&lt;/em&gt; folder (e.g., to your home or Desktop)
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;For installing R on macOS follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the downloaded file, either &lt;strong&gt;R-3.6.3.nn.pkg&lt;/strong&gt;, &lt;strong&gt;R-4.2.3.pkg&lt;/strong&gt;, &lt;strong&gt;R-4.3.1-x86_64.pkg&lt;/strong&gt; or &lt;strong&gt;R-4.3.1-arm64.pkg&lt;/strong&gt; depending or your version of macOS or processor (as explained above). This file will most likely reside in Finder &amp;gt; Downloads (shortcut: ⌥⌘L). The file can more easily be found by switching into List view (shortcut: ⌘2). To switch to Icon view use the shortcut: ⌘1. The installer package will resemble the image displayed below in &lt;a href=&#34;#figure-icon_r_package&#34;&gt;Figure 3&lt;/a&gt; (text underneath can, and probably will, differ!).&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-icon_r_package&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Icon R Installer Package.&#34; srcset=&#34;
+               /media/r-macos/1-r-installer-package-icon_hu6d596950abcd27f517507b372cded666_28344_13ebd0cd9d76f28184af5fab96dc8267.webp 400w,
+               /media/r-macos/1-r-installer-package-icon_hu6d596950abcd27f517507b372cded666_28344_aadf7b57d2f0f255115787f79b0cc6fb.webp 760w,
+               /media/r-macos/1-r-installer-package-icon_hu6d596950abcd27f517507b372cded666_28344_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/1-r-installer-package-icon_hu6d596950abcd27f517507b372cded666_28344_13ebd0cd9d76f28184af5fab96dc8267.webp&#34;
+               width=&#34;166&#34;
+               height=&#34;186&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Icon R Installer Package.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The installler will start and display the introduction as shown below in &lt;a href=&#34;#figure-r_install_intro&#34;&gt;Figure 4&lt;/a&gt;. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_intro&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Installer Introduction.&#34; srcset=&#34;
+               /media/r-macos/2-r-installer-intro_hua519ed9b2f861291955a94e67717c4f8_440999_621b20707bc0b7e3ccf6cf0b5279daa2.webp 400w,
+               /media/r-macos/2-r-installer-intro_hua519ed9b2f861291955a94e67717c4f8_440999_704c3684e6507f1a6b6d10f7d62864ce.webp 760w,
+               /media/r-macos/2-r-installer-intro_hua519ed9b2f861291955a94e67717c4f8_440999_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/2-r-installer-intro_hua519ed9b2f861291955a94e67717c4f8_440999_621b20707bc0b7e3ccf6cf0b5279daa2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;524&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Installer Introduction.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Now the Read Me for the software to be installed as displayed in &lt;a href=&#34;#figure-r_install_readme&#34;&gt;Figure 5&lt;/a&gt; below. Click the ‘Continue’ button to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_readme&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Installer Read Me.&#34; srcset=&#34;
+               /media/r-macos/3-r-installer-read-me_hua519ed9b2f861291955a94e67717c4f8_613268_20ecc23f1b70ea6d8b4f1d217136c573.webp 400w,
+               /media/r-macos/3-r-installer-read-me_hua519ed9b2f861291955a94e67717c4f8_613268_161bde227453656d9a51bc5be558919c.webp 760w,
+               /media/r-macos/3-r-installer-read-me_hua519ed9b2f861291955a94e67717c4f8_613268_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/3-r-installer-read-me_hua519ed9b2f861291955a94e67717c4f8_613268_20ecc23f1b70ea6d8b4f1d217136c573.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;524&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Installer Read Me.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Right after the Read Me a Software Licence Agreement will appear. By clicking the ‘Continue’ button you will be asked to agree with this software licence agreement as diplayed below in &lt;a href=&#34;#figure-r_install_agreed&#34;&gt;Figure 6&lt;/a&gt;. Click on ‘Agree’ to proceed.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_agreed&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Installer License Agreement.&#34; srcset=&#34;
+               /media/r-macos/5-r-installer-license-agree_hua519ed9b2f861291955a94e67717c4f8_544258_cf5741dfd363fdfa184fbcd55332f167.webp 400w,
+               /media/r-macos/5-r-installer-license-agree_hua519ed9b2f861291955a94e67717c4f8_544258_ff819c9d2f0e45211949466ebeacc833.webp 760w,
+               /media/r-macos/5-r-installer-license-agree_hua519ed9b2f861291955a94e67717c4f8_544258_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/5-r-installer-license-agree_hua519ed9b2f861291955a94e67717c4f8_544258_cf5741dfd363fdfa184fbcd55332f167.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;524&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Installer License Agreement.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;The installer will select the best destination to install the software for you and will display the Installation Type as shown in &lt;a href=&#34;#figure-r_install_type&#34;&gt;Figure 7&lt;/a&gt;. Click on the ‘Install’ button to start the software installation.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    Do not Customise the installation type, unless you know what you are doing.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_type&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Installer Installation Type.&#34; srcset=&#34;
+               /media/r-macos/6-r-installer-install-type_hua519ed9b2f861291955a94e67717c4f8_423000_74575ac16eafd2ca65633b67a4234726.webp 400w,
+               /media/r-macos/6-r-installer-install-type_hua519ed9b2f861291955a94e67717c4f8_423000_6ae59048d66579a57a17c2a2854cb7d4.webp 760w,
+               /media/r-macos/6-r-installer-install-type_hua519ed9b2f861291955a94e67717c4f8_423000_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/6-r-installer-install-type_hua519ed9b2f861291955a94e67717c4f8_423000_74575ac16eafd2ca65633b67a4234726.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;524&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Installer Installation Type.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Before the software installation will commence, confirmation of the user is requested as displayed below in &lt;a href=&#34;#figure-r_install_confirm&#34;&gt;Figure 8&lt;/a&gt;. Either use the finger print scanner on the touch bar of your mac or confirm using the password of your mac.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_confirm&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Confirm R Software Installation.&#34; srcset=&#34;
+               /media/r-macos/7-r-installer-confirm-install_hu93daf817d4623f6eb637a153b59061a3_135789_46a4b5c6369bf599d9d6fbc0e96d20d5.webp 400w,
+               /media/r-macos/7-r-installer-confirm-install_hu93daf817d4623f6eb637a153b59061a3_135789_87ee83aa97775824ca583d58f21198c4.webp 760w,
+               /media/r-macos/7-r-installer-confirm-install_hu93daf817d4623f6eb637a153b59061a3_135789_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/7-r-installer-confirm-install_hu93daf817d4623f6eb637a153b59061a3_135789_46a4b5c6369bf599d9d6fbc0e96d20d5.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;320&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      Confirm R Software Installation.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;The software installer will start installing R onto your mac. When completed the installer will show a summary stating that the installation was successful as shown in &lt;a href=&#34;#figure-r_install_success&#34;&gt;Figure 9&lt;/a&gt; below. Click on the ‘Close’ button.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_success&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Software Installation Success.&#34; srcset=&#34;
+               /media/r-macos/8-r-installer-success_hu4e701dbcd9dc9dc5bac5ea64720bf57d_415900_7f8327f9e0da562c9c319a403f026d95.webp 400w,
+               /media/r-macos/8-r-installer-success_hu4e701dbcd9dc9dc5bac5ea64720bf57d_415900_24686a48e2806b8ab7aa0e5a0e372dbf.webp 760w,
+               /media/r-macos/8-r-installer-success_hu4e701dbcd9dc9dc5bac5ea64720bf57d_415900_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/8-r-installer-success_hu4e701dbcd9dc9dc5bac5ea64720bf57d_415900_7f8327f9e0da562c9c319a403f026d95.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;498&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Software Installation Success.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;The installer will finally ask you whether you want to keep or move to R installer package to the trashbin. Click ‘Move to Bin’ to discard the installer package.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Congratulations 😆, you now have R 3.6.3 or higher installed on your mac! Before actively using the R application, some configuration will be required. The configuration is described in the next section.
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;configure-the-r-application-on-macos&#34;&gt;Configure the R application on macOS&lt;/h2&gt;
+&lt;p&gt;To configure the R application on macOS perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start the R application from Finder &amp;gt; Applications (shortcut: ⇧⌘A) or via Launchpad. The icon representing the R application is shown below in &lt;a href=&#34;#figure-r_app_icon&#34;&gt;Figure 10&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_install_success&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Icon.&#34; srcset=&#34;
+               /media/r-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_321fa52271d23af9b1cf971e0fde3a80.webp 400w,
+               /media/r-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_95469d71fdfd8e8b1399576860e6010a.webp 760w,
+               /media/r-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/1-r-app-icon_hu32b5c6afd1a28d7230c602e6a066438c_21454_321fa52271d23af9b1cf971e0fde3a80.webp&#34;
+               width=&#34;154&#34;
+               height=&#34;178&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Icon.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;The R Console will open, as shown in &lt;a href=&#34;#figure-r_app_console&#34;&gt;Figure 11&lt;/a&gt; below, and the cursor will be ready for input behind the prompt, indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign. In case the R Console displays a non-UTF8 locale warning, than this needs to be remedied first. Go to the section entitled &lt;a href=&#34;#fix-r-application-non-utf8-locale-warning&#34;&gt;Fix R application non-UTF8 locale warning&lt;/a&gt; in this post to resolve this issue.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_console&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Console.&#34; srcset=&#34;
+               /media/r-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_bc749913182a126b9c1a0e1e41d361c2.webp 400w,
+               /media/r-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_ea388117ebd96abaca57a5ff8323b9b3.webp 760w,
+               /media/r-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/4-r-app-console_hu25430aa12188864e05b88d03d65a74cf_550449_bc749913182a126b9c1a0e1e41d361c2.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;729&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Console.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Navigate the mouse pointer to the menu bar click on ‘R’ &amp;gt; ‘Preferences&amp;hellip;’ (shortcut: ⌘,) to open the R application preferences. The Preferences window displayed in &lt;a href=&#34;#figure-r_app_preferences&#34;&gt;Figure 12&lt;/a&gt; will appear.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_preferences&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Preferences.&#34; srcset=&#34;
+               /media/r-macos/5-r-app-preferences_hu390e37b7735a1d5d5d89dd7cc9761aaa_400164_61aa8fb460411ceddd4318a7b936ae9d.webp 400w,
+               /media/r-macos/5-r-app-preferences_hu390e37b7735a1d5d5d89dd7cc9761aaa_400164_0bfa6dac66fc462f9f6982a7fce658a2.webp 760w,
+               /media/r-macos/5-r-app-preferences_hu390e37b7735a1d5d5d89dd7cc9761aaa_400164_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/5-r-app-preferences_hu390e37b7735a1d5d5d89dd7cc9761aaa_400164_61aa8fb460411ceddd4318a7b936ae9d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;638&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Preferences.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Click on Startup. The Preferences window will change into what is shown in &lt;a href=&#34;#figure-r_app_startup&#34;&gt;Figure 13&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_startup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Startup Preferences.&#34; srcset=&#34;
+               /media/r-macos/6-r-app-prefs-startup_hu39b120fb36dd975be54ac3b94bfc67a7_826820_4fb6e1e85b9dbcd21c676fb08b4c6fe9.webp 400w,
+               /media/r-macos/6-r-app-prefs-startup_hu39b120fb36dd975be54ac3b94bfc67a7_826820_bf4b83a3a35ad51bf15cc75a528a1d34.webp 760w,
+               /media/r-macos/6-r-app-prefs-startup_hu39b120fb36dd975be54ac3b94bfc67a7_826820_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/6-r-app-prefs-startup_hu39b120fb36dd975be54ac3b94bfc67a7_826820_4fb6e1e85b9dbcd21c676fb08b4c6fe9.webp&#34;
+               width=&#34;559&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Startup Preferences.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;Match the Startup settings displayed above in &lt;a href=&#34;#figure-r_app_startup&#34;&gt;Figure 13&lt;/a&gt;. To select the Default CRAN mirror click on the ‘Select’ button. The window shown below in &lt;a href=&#34;#figure-r_select_cran_mirror&#34;&gt;Figure 14&lt;/a&gt; will appear. Select ‘0-Cloud [https]’ and click ‘OK’ to confirm.  Having matched the settings, close the window using the red ball in the top left corner of the Startup window.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_select_cran_mirror&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Startup Preferences CRAN Mirror Selection.&#34; srcset=&#34;
+               /media/r-macos/7-r-app-prefs-startup-default-cran_hu54af9d129731380e229bce737bcc691a_508116_664eb5293ad7a8516aa9df913ad1e80c.webp 400w,
+               /media/r-macos/7-r-app-prefs-startup-default-cran_hu54af9d129731380e229bce737bcc691a_508116_a907648867cf1b1ea6cb28d6c15267ca.webp 760w,
+               /media/r-macos/7-r-app-prefs-startup-default-cran_hu54af9d129731380e229bce737bcc691a_508116_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/7-r-app-prefs-startup-default-cran_hu54af9d129731380e229bce737bcc691a_508116_664eb5293ad7a8516aa9df913ad1e80c.webp&#34;
+               width=&#34;528&#34;
+               height=&#34;760&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Startup Preferences CRAN Mirror Selection.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;Quit the R application either by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Typing &lt;code&gt;q()&lt;/code&gt; or &lt;code&gt;quit()&lt;/code&gt; behind the R Console prompt (indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and pressing return (↩) to execute.&lt;/li&gt;
+&lt;li&gt;Using the keyboard shortcut: ⌘Q&lt;/li&gt;
+&lt;li&gt;Navigating the mouse pointer to the menu bar and clicking ‘R’ &amp;gt; ‘Quit R’&lt;/li&gt;
+&lt;li&gt;Navigation the mouse pointer to the top left corner of the R Console window and clicking on the red ball&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No matter what you choose, you will always be asked whether you want to save a workspace image as shown below in &lt;a href=&#34;#figure-r_app_save_workspace&#34;&gt;Figure 15&lt;/a&gt;. Just click on the &lt;strong&gt;‘Don&amp;rsquo;t Save’&lt;/strong&gt; button to end the R application.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_save_workspace&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Save Workspace.&#34; srcset=&#34;
+               /media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_066d29201d944c3d0d29e04984eb6d9d.webp 400w,
+               /media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_a992a076b5de9f93ad2385a6018fea42.webp 760w,
+               /media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_066d29201d944c3d0d29e04984eb6d9d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;218&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Save Workspace.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    Having configured the R application, you are now ready to actively start using it!
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;fix-r-application-non-utf8-locale-warning&#34;&gt;Fix R application non-UTF8 locale warning&lt;/h2&gt;
+&lt;p&gt;When the R Console displays a non-UTF8 locale warning at the startup of the R application, it will look like the image shown below in &lt;a href=&#34;#figure-r_app_language_warning&#34;&gt;Figure 16&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_language_warning&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Console with Language Warning.&#34; srcset=&#34;
+               /media/r-macos/2-r-app-language-warning_hu25430aa12188864e05b88d03d65a74cf_666336_8ecd56b0fed174a8424ded1eadffec43.webp 400w,
+               /media/r-macos/2-r-app-language-warning_hu25430aa12188864e05b88d03d65a74cf_666336_6718dc81580c274de1f15bc421b38803.webp 760w,
+               /media/r-macos/2-r-app-language-warning_hu25430aa12188864e05b88d03d65a74cf_666336_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/2-r-app-language-warning_hu25430aa12188864e05b88d03d65a74cf_666336_8ecd56b0fed174a8424ded1eadffec43.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;729&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Console with Language Warning.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;The remedy for this issue is not difficult, just perform the following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to the open terminal console. If you do not have one yet, open the Terminal application from Finder &amp;gt; Applications &amp;gt; Utilities (shorcut: ⇧⌘U) or via Lauchpad under the ‘Other’ group. The terminal console prompt, where the commands will be entered, is depicted by a &lt;code&gt;%&lt;/code&gt; or a &lt;code&gt;$&lt;/code&gt; sign. Which sign is shown, depends whether your default shell is zsh (&lt;code&gt;%&lt;/code&gt; sign) or bash (&lt;code&gt;$&lt;/code&gt; sign).&lt;/li&gt;
+&lt;li&gt;Copy (⌘C) the following line, paste (⌘V) it behind the prompt in the terminal console and press return (↩) to execute the command.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;defaults write org.R-project.R force.LANG en_US.UTF-8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Quit the active terminal console by typing &lt;code&gt;exit&lt;/code&gt; and pressing return (↩) to execute. To quit the Terminal application completely you can use the keyboard shortcut: ⌘Q or navigate the mouse pointer to the menu bar and click ‘Terminal’ &amp;gt; ‘Quit Terminal’.&lt;/li&gt;
+&lt;li&gt;Go back to the R Console and quit the R application either by:
+&lt;ul&gt;
+&lt;li&gt;Typing &lt;code&gt;q()&lt;/code&gt; or &lt;code&gt;quit()&lt;/code&gt; behind the R Console prompt (indicated by the &lt;code&gt;&amp;gt;&lt;/code&gt; sign) and pressing return (↩) to execute.&lt;/li&gt;
+&lt;li&gt;Using the keyboard shortcut: ⌘Q&lt;/li&gt;
+&lt;li&gt;Navigating the mouse pointer to the menu bar and clicking ‘R’ &amp;gt; ‘Quit R’&lt;/li&gt;
+&lt;li&gt;Navigation the mouse pointer to the top left corner of the R Console window and clicking on the red ball&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;No matter what you choose, you will always be asked whether you want to save a workspace image as shown in &lt;a href=&#34;#figure-r_app_save_workspace2&#34;&gt;Figure 17&lt;/a&gt; below. Just click on the &lt;strong&gt;‘Don&amp;rsquo;t Save’&lt;/strong&gt; button to end the R application.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-r_app_save_workspace2&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;R Application Save Workspace.&#34; srcset=&#34;
+               /media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_066d29201d944c3d0d29e04984eb6d9d.webp 400w,
+               /media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_a992a076b5de9f93ad2385a6018fea42.webp 760w,
+               /media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_1200x1200_fit_q90_h2_lanczos_3.webp 1200w&#34;
+               src=&#34;https://www.verouden.net/media/r-macos/3-r-app-save-workspace_hu844e6b86e25f98b94626193a6bbd9ea2_176794_066d29201d944c3d0d29e04984eb6d9d.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;218&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption data-pre=&#34;Figure&amp;nbsp;&#34; data-post=&#34;:&amp;nbsp;&#34; class=&#34;numbered&#34;&gt;
+      R Application Save Workspace.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;Go back to step 1. of the &lt;a href=&#34;#configure-the-r-application-on-macos&#34;&gt;Configure the R application on macOS&lt;/a&gt; section.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
